@@ -2,9 +2,6 @@ import React from "react";
 import "./inputStyle.css";
 
 const Input = props => {
-  {
-    console.log(props.placeholder);
-  }
   return (
     <div className="form-group">
       <div>
@@ -19,7 +16,7 @@ const Input = props => {
         type={props.type}
         value={props.value}
         placeholder={props.placeholder}
-        onChange={props.usernameChangeHandler}
+        onChange={props.handleChange}
       />
     </div>
   );

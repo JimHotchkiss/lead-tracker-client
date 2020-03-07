@@ -18,6 +18,8 @@ class UserFormContainer extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
+    this.emailChangeHandler = this.emailChangeHandler.bind(this);
+    this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
   }
 
   handleFormSubmit(event) {
@@ -27,13 +29,22 @@ class UserFormContainer extends Component {
     console.log("handle form clear");
   }
   usernameChangeHandler(event) {
-    console.log("in usernameChangeHandler");
+    let value = event.target.value;
+    this.setState(prevState => ({
+      newUser: { ...prevState.newUser, username: value }
+    }));
   }
   emailChangeHandler(event) {
-    console.log("email change handler");
+    let value = event.target.value;
+    this.setState(prevState => ({
+      newUser: { ...prevState.newUser, email: value }
+    }));
   }
   passwordChangeHandler(event) {
-    console.log("password change handler");
+    let value = event.target.value;
+    this.setState(prevState => ({
+      newUser: { ...prevState.newUser, password: value }
+    }));
   }
 
   render() {
@@ -42,28 +53,28 @@ class UserFormContainer extends Component {
         <Input
           title={"Username"}
           type={"text"}
-          name="username"
+          name={"username"}
           value={this.state.newUser.username}
           placeholder={"Enter your username"}
-          onChange={this.usernameChangeHandler}
+          handleChange={this.usernameChangeHandler}
         />{" "}
         {/* Username */}
         <Input
           title={"Email"}
           type={"text"}
-          name="email"
+          name={"email"}
           value={this.state.newUser.email}
           placeholder={"Enter your email"}
-          onChange={this.emailChangeHandler}
+          handleChange={this.emailChangeHandler}
         />{" "}
         {/* Password */}
         <Input
           title={"Password"}
-          type={"text"}
-          name="email"
+          type={"password"}
+          name={"password"}
           value={this.state.newUser.password}
           placeholder={"Enter your password"}
-          onChange={this.passwordChangeHandler}
+          handleChange={this.passwordChangeHandler}
         />{" "}
         {/* Password */}
         <ButtonComponent />
