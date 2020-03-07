@@ -2,3 +2,6 @@
   margin: 1em;
   padding: 1em;
 }
+.form-label {
+  font-weight: bold;
+}
