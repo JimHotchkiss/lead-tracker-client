@@ -16,17 +16,24 @@ class UserFormContainer extends Component {
       userAccess: ["Representative", "Administrator"]
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
+    this.handleFormClear = this.handleFormClear.bind(this);
     this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
     this.emailChangeHandler = this.emailChangeHandler.bind(this);
     this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
   }
 
   handleFormSubmit(event) {
-    console.log("handle form submit");
+    // console.log("handle form submit");
   }
-  handleClearForm(event) {
-    console.log("handle form clear");
+  handleFormClear(event) {
+    event.preventDefault();
+    this.setState({
+      newUser: {
+        username: "",
+        email: "",
+        password: ""
+      }
+    });
   }
   usernameChangeHandler(event) {
     let value = event.target.value;
@@ -77,10 +84,27 @@ class UserFormContainer extends Component {
           handleChange={this.passwordChangeHandler}
         />{" "}
         {/* Password */}
-        <ButtonComponent />
+        <ButtonComponent
+          style={buttonStyle}
+          action={this.handleFormSubmit}
+          type={"primary"}
+          title={"submit"}
+        />
+        <ButtonComponent
+          style={buttonStyle}
+          action={this.handleFormClear}
+          type={"light"}
+          title={"clear"}
+        />
       </form>
     );
   }
 }
+
+const buttonStyle = {
+  minWidth: "10em",
+  marginTop: "5px",
+  marginRight: "10px"
+};
 
 export default UserFormContainer;

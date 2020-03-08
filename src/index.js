@@ -4,5 +4,6 @@ import App from "./App";
 import "./styles.css";
 // Bootstrap stylesheet
 import "bootstrap/dist/css/bootstrap.min.css";
+import store from "./store.js";
 
 ReactDOM.render(<App />, document.getElementById("root"));
