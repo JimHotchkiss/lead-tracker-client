@@ -1,7 +1,10 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 
-const newUserReducer = (state = [], action) => {
+const newUserReducer = (
+  state = { username: "", email: "", password: "" },
+  action
+) => {
   switch (action.type) {
     case "CREATE_USER":
       return action.newUser;
@@ -12,7 +15,6 @@ const newUserReducer = (state = [], action) => {
 
 const manageReducers = combineReducers({
   newUser: newUserReducer
-  // I can add more reducers as needed
 });
 
 const store = createStore(

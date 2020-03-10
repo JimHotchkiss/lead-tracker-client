@@ -6,15 +6,15 @@ import ButtonComponent from "../components/ButtonComponent";
 class UserFormContainer extends Component {
   constructor(props) {
     super(props);
-    // state - will connect Redux soon
+
     this.state = {
       newUser: {
         username: "",
         email: "",
         password: ""
-      },
-      userAccess: ["Representative", "Administrator"]
+      }
     };
+
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormClear = this.handleFormClear.bind(this);
     this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
@@ -23,7 +23,7 @@ class UserFormContainer extends Component {
   }
 
   handleFormSubmit(event) {
-    // console.log("handle form submit");
+    console.log("handle form submit", this.state.newUser);
   }
   handleFormClear(event) {
     event.preventDefault();
