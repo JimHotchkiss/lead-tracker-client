@@ -1,29 +1,24 @@
 import React, { Component } from "react";
 import "./formContainer.css";
-import Input from "../components/Input";
+// import Input from "../components/Input";
 import ButtonComponent from "../components/ButtonComponent";
+import { connect } from "react-redux";
+import { updateNewUserForm } from "../actions/newUserForm";
+import { newUserSubmit } from "../actions/newUserSubmit";
 
 class UserFormContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      newUser: {
-        username: "",
-        email: "",
-        password: ""
-      }
-    };
-
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleFormClear = this.handleFormClear.bind(this);
-    this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
-    this.emailChangeHandler = this.emailChangeHandler.bind(this);
-    this.passwordChangeHandler = this.passwordChangeHandler.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
   handleFormSubmit(event) {
-    console.log("handle form submit", this.state.newUser);
+    event.preventDefault();
+    const formData = this.props.newUserFormData;
+    this.props.newUserSubmit(formData);
   }
   handleFormClear(event) {
     event.preventDefault();
@@ -35,55 +30,98 @@ class UserFormContainer extends Component {
       }
     });
   }
-  usernameChangeHandler(event) {
-    let value = event.target.value;
-    this.setState(prevState => ({
-      newUser: { ...prevState.newUser, username: value }
-    }));
-  }
-  emailChangeHandler(event) {
-    let value = event.target.value;
-    this.setState(prevState => ({
-      newUser: { ...prevState.newUser, email: value }
-    }));
-  }
-  passwordChangeHandler(event) {
-    let value = event.target.value;
-    this.setState(prevState => ({
-      newUser: { ...prevState.newUser, password: value }
-    }));
+  onChangeHandler(event) {
+    const { name, value } = event.target;
+    // this is the data
+    const formData = Object.assign({}, this.props.newUserFormData, {
+      [name]: value
+    });
+    // This is the action
+    this.props.updateNewUserForm(formData);
   }
 
   render() {
+    const { username, email, password } = this.props.newUserFormData;
     return (
       <form onSubmit={this.handleFormSubmit} className="form-container">
-        <Input
-          title={"Username"}
-          type={"text"}
-          name={"username"}
-          value={this.state.newUser.username}
-          placeholder={"Enter your username"}
-          handleChange={this.usernameChangeHandler}
-        />{" "}
         {/* Username */}
-        <Input
-          title={"Email"}
-          type={"text"}
-          name={"email"}
-          value={this.state.newUser.email}
-          placeholder={"Enter your email"}
-          handleChange={this.emailChangeHandler}
-        />{" "}
+        <div className="form-group">
+          <div>
+            <label className="form-label" htmlFor="username">
+              Username
+            </label>
+          </div>
+          <input
+            className="form-input"
+            id={Math.ceil(Math.random() * 10)}
+            name="username"
+            type="text"
+            value={username}
+            placeholder="Enter Your Username"
+            onChange={this.onChangeHandler}
+          />
+        </div>
+        {/* Email */}
+        <div className="form-group">
+          <div>
+            <label className="form-label" htmlFor="email">
+              Email
+            </label>
+          </div>
+          <input
+            className="form-input"
+            id={Math.ceil(Math.random() * 10)}
+            name="email"
+            type="text"
+            value={email}
+            placeholder="Enter Your Email"
+            onChange={this.onChangeHandler}
+          />
+        </div>
         {/* Password */}
-        <Input
-          title={"Password"}
-          type={"password"}
-          name={"password"}
-          value={this.state.newUser.password}
-          placeholder={"Enter your password"}
-          handleChange={this.passwordChangeHandler}
-        />{" "}
+        <div className="form-group">
+          <div>
+            <label className="form-label" htmlFor="password">
+              Email
+            </label>
+          </div>
+          <input
+            className="form-input"
+            id={Math.ceil(Math.random() * 10)}
+            name="password"
+            type="password"
+            value={password}
+            placeholder="Enter Your Password"
+            onChange={this.onChangeHandler}
+          />
+        </div>
+        {/* Username */}
+        {/* <Input
+          title="Username"
+          type="text"
+          name="username"
+          value={username}
+          placeholder="Enter your username"
+          handleChange={this.onChangeHandler}
+        />{" "} */}
+        {/* Email */}
+        {/* <Input
+          title="Email"
+          type="text"
+          name="email"
+          value={email}
+          placeholder="Enter your email"
+          handleChange={this.onChangeHandler}
+        />{" "} */}
         {/* Password */}
+        {/* <Input
+          title="Password"
+          type="password"
+          name="password"
+          value={password}
+          placeholder="Enter your password"
+          handleChange={this.onChangeHandler}
+        />{" "} */}
         <ButtonComponent
           style={buttonStyle}
           action={this.handleFormSubmit}
@@ -107,4 +145,10 @@ const buttonStyle = {
   marginRight: "10px"
 };
 
-export default UserFormContainer;
+const mapStateToProps = state => {
+  return { newUserFormData: state.newUser };
+};
+
+export default connect(mapStateToProps, { updateNewUserForm, newUserSubmit })(
+  UserFormContainer
+);

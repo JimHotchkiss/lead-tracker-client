@@ -1,17 +1,6 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
-
-const newUserReducer = (
-  state = { username: "", email: "", password: "" },
-  action
-) => {
-  switch (action.type) {
-    case "CREATE_USER":
-      return action.newUser;
-    default:
-      return state;
-  }
-};
+import newUserReducer from "./reducers/newUserFormData";
 
 const manageReducers = combineReducers({
   newUser: newUserReducer
