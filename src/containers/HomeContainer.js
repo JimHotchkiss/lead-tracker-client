@@ -20,6 +20,11 @@ class HomeContainer extends Component {
               path="/users/:id"
               render={routerProps => <RepDashboardContainer {...routerProps} />}
             />
+            <Route
+              exact={true}
+              path="/login"
+              render={routerProps => <UserFormContainer {...routerProps} />}
+            />
           </Switch>
         </Router>
       </div>

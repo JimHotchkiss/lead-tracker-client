@@ -33,9 +33,7 @@ class UserFormContainer extends Component {
   onChangeHandler(event) {
     const { name, value } = event.target;
     // this is the data
-    const formData = Object.assign({}, this.props.newUserFormData, {
-      [name]: value
-    });
+    const formData = { ...this.props.newUserFormData, [name]: value };
     // This is the action
     this.props.updateNewUserForm(formData);
   }
