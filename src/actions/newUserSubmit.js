@@ -21,8 +21,14 @@ export const newUserSubmit = formData => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ user: formData })
-    });
-    // .then(response => response.json())
-    // .then(newUserData => dispatch({ type: "SIGN_IN", payload: newUserData }));
+    })
+      .then(response => response.json())
+      .then(user => {
+        if (user.error) {
+          console.log(user.error);
+        } else {
+          dispatch({ type: "SIGN_IN", user });
+        }
+      });
   };
 };

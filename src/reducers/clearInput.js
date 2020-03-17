@@ -1,14 +1,14 @@
 const initialState = {
-  users: [],
   username: "",
   email: "",
   password: ""
 };
 
 export default (state = initialState, action) => {
+  console.log("clear reducer");
   switch (action.type) {
-    case "CREATE_USER":
-      return action.formData;
+    case "CLEAR_INPUT":
+      return state;
     default:
       return state;
   }

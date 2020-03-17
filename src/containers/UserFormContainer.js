@@ -4,6 +4,8 @@ import "./formContainer.css";
 import ButtonComponent from "../components/ButtonComponent";
 import { connect } from "react-redux";
 import { updateNewUserForm } from "../actions/newUserForm";
+// import clear input action
+import { clearInputAction } from "../actions/clearInput";
 import { newUserSubmit } from "../actions/newUserSubmit";
 
 class UserFormContainer extends Component {
@@ -22,17 +24,12 @@ class UserFormContainer extends Component {
   }
   handleFormClear(event) {
     event.preventDefault();
-    this.setState({
-      newUser: {
-        username: "",
-        email: "",
-        password: ""
-      }
-    });
+    console.log("handle clear");
+    this.props.clearInputAction();
   }
   onChangeHandler(event) {
     const { name, value } = event.target;
-    // this is the data
+    // this is the data adding it to state
     const formData = { ...this.props.newUserFormData, [name]: value };
     // This is the action
     this.props.updateNewUserForm(formData);
@@ -144,9 +141,11 @@ const buttonStyle = {
 };
 
 const mapStateToProps = state => {
-  return { newUserFormData: state.newUser };
+  return { newUserFormData: state.currentUser };
 };
 
-export default connect(mapStateToProps, { updateNewUserForm, newUserSubmit })(
-  UserFormContainer
-);
+export default connect(mapStateToProps, {
+  updateNewUserForm,
+  newUserSubmit,
+  clearInputAction
+})(UserFormContainer);
