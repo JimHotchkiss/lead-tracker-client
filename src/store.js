@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import newUserReducer from "./reducers/newUserFormData";
-import clearInput from "./reducers/clearInput";
+import newUserSubmit from "./reducers/newUserSubmit";
 
 const manageReducers = combineReducers({
-  currentUser: newUserReducer,
-  currentInput: clearInput
+  currentUser: newUserSubmit,
+  currentInput: newUserReducer
 });
 
 const store = createStore(

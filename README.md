@@ -66,3 +66,32 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+- Input Component:
+  {/_ Username _/}
+  {/_ <Input
+            title="Username"
+            type="text"
+            name="username"
+            value={username}
+            placeholder="Enter your username"
+            handleChange={this.onChangeHandler}
+          />{" "} _/}
+  {/_ Email _/}
+  {/_ <Input
+            title="Email"
+            type="text"
+            name="email"
+            value={email}
+            placeholder="Enter your email"
+            handleChange={this.onChangeHandler}
+          />{" "} _/}
+  {/_ Password _/}
+  {/_ <Input
+            title="Password"
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Enter your password"
+            handleChange={this.onChangeHandler}
+          />{" "} _/}
