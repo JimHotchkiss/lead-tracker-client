@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./formContainer.css";
-// import Input from "../components/Input";
 import ButtonComponent from "../components/ButtonComponent";
 import { connect } from "react-redux";
 import { updateNewUserForm } from "../actions/newUserForm";
@@ -82,7 +81,7 @@ class UserFormContainer extends Component {
           <div className="form-group">
             <div>
               <label className="form-label" htmlFor="password">
-                Email
+                Password
               </label>
             </div>
             <input

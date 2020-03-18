@@ -15,20 +15,20 @@ export const getUsers = formData => {
 // Get Current user
 export const getCurrentUser = () => {
   return dispatch => {
-    console.log("in dispatch");
+    console.log("getCurrentUser");
     return fetch(`${API_URL}/current_user`, {
+      credentials: "include",
       method: "GET",
       headers: {
         "Content-Type": "application/json"
       }
     })
       .then(response => response.json())
-      .then(currentUser => {
-        console.log(currentUser);
-        if (currentUser.error) {
-          alert(currentUser.error);
+      .then(user => {
+        if (user.error) {
+          alert(user.error);
         } else {
-          dispatch({ type: "GET_CURRENT_USER", currentUser });
+          dispatch({ type: "SET_CURRENT_USER", user });
         }
       });
   };
@@ -38,6 +38,7 @@ export const getCurrentUser = () => {
 export const newUserSubmit = formData => {
   return dispatch => {
     return fetch(`${API_URL}/login`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -49,7 +50,7 @@ export const newUserSubmit = formData => {
         if (user.error) {
           alert(user.error);
         } else {
-          dispatch({ type: "SIGN_IN", user });
+          dispatch({ type: "SET_CURRENT_USER", user });
         }
       });
   };
