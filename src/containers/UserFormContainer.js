@@ -3,7 +3,7 @@ import "./formContainer.css";
 import ButtonComponent from "../components/ButtonComponent";
 import { connect } from "react-redux";
 import { updateNewUserForm } from "../actions/newUserForm";
-import { newUserSubmit } from "../actions/newUserSubmit";
+import { newUserSubmit, userLogOut } from "../actions/newUserSubmit";
 
 class UserFormContainer extends Component {
   constructor(props) {
@@ -21,7 +21,8 @@ class UserFormContainer extends Component {
   }
   handleLogOut(event) {
     event.preventDefault();
-    console.log("handle clear");
+    console.log("in handle log out");
+    this.props.userLogOut();
   }
   onChangeHandler(event) {
     const { name, value } = event.target;
@@ -131,5 +132,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   updateNewUserForm,
-  newUserSubmit
+  newUserSubmit,
+  userLogOut
 })(UserFormContainer);

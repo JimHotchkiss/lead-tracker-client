@@ -34,7 +34,19 @@ export const getCurrentUser = () => {
   };
 };
 
-// POST Request
+// Delete Request - Logout
+export const userLogOut = () => {
+  console.log("in logout action");
+  return dispatch => {
+    dispatch({ type: "LOG_OUT" });
+    return fetch(`${API_URL}/logout`, {
+      credentials: "include",
+      method: "DELETE"
+    });
+  };
+};
+
+// POST Request - Login
 export const newUserSubmit = formData => {
   return dispatch => {
     return fetch(`${API_URL}/login`, {
