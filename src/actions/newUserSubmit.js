@@ -15,7 +15,6 @@ export const getUsers = formData => {
 // Get Current user
 export const getCurrentUser = () => {
   return dispatch => {
-    console.log("getCurrentUser");
     return fetch(`${API_URL}/current_user`, {
       credentials: "include",
       method: "GET",
@@ -36,7 +35,6 @@ export const getCurrentUser = () => {
 
 // Delete Request - Logout
 export const userLogOut = () => {
-  console.log("in logout action");
   return dispatch => {
     dispatch({ type: "LOG_OUT" });
     return fetch(`${API_URL}/logout`, {

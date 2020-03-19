@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./formContainer.css";
 import ButtonComponent from "../components/ButtonComponent";
 import { connect } from "react-redux";
-import { updateNewUserForm } from "../actions/newUserForm";
+import { updateNewUserForm, clearUserInput } from "../actions/newUserForm";
 import { newUserSubmit, userLogOut } from "../actions/newUserSubmit";
 
 class UserFormContainer extends Component {
@@ -18,10 +18,10 @@ class UserFormContainer extends Component {
     event.preventDefault();
     const formData = this.props.newUserFormData;
     this.props.newUserSubmit(formData);
+    this.props.clearUserInput();
   }
   handleLogOut(event) {
     event.preventDefault();
-    console.log("in handle log out");
     this.props.userLogOut();
   }
   onChangeHandler(event) {
@@ -46,7 +46,7 @@ class UserFormContainer extends Component {
     };
     const renderForm = () => {
       return (
-        <div>
+        <div className="form-div">
           <div className="form-group">
             <div>
               <label className="form-label" htmlFor="username">
@@ -55,7 +55,6 @@ class UserFormContainer extends Component {
             </div>
             <input
               className="form-input"
-              id={Math.ceil(Math.random() * 10)}
               name="username"
               type="text"
               value={username}
@@ -71,7 +70,6 @@ class UserFormContainer extends Component {
             </div>
             <input
               className="form-input"
-              id={Math.ceil(Math.random() * 10)}
               name="email"
               type="text"
               value={email}
@@ -87,7 +85,6 @@ class UserFormContainer extends Component {
             </div>
             <input
               className="form-input"
-              id={Math.ceil(Math.random() * 10)}
               name="password"
               type="password"
               value={password}
@@ -125,7 +122,7 @@ const buttonStyle = {
 
 const mapStateToProps = state => {
   return {
-    newUserFormData: state.currentInput,
+    newUserFormData: state.userInput,
     currentUser: state.currentUser
   };
 };
@@ -133,5 +130,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   updateNewUserForm,
   newUserSubmit,
+  clearUserInput,
   userLogOut
 })(UserFormContainer);

@@ -1,7 +1,13 @@
 .form-container {
   margin: 1em;
   padding: 1em;
+  margin-top: 10%;
+  height: 100vh;
 }
 .form-label {
   font-weight: bold;
 }
+
+/* .form-div {
+  margin-top: 10%;
+} */
