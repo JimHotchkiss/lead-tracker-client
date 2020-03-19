@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import NavBar from "../components/Navbar";
 import RepDashboardContainer from "./RepDashboardContainer";
 import UserFormContainer from "./UserFormContainer";
 // Import BrowswerRouter
@@ -8,6 +9,7 @@ class HomeContainer extends Component {
     return (
       <div className="home-container">
         {/* NavBar */}
+        <NavBar />
         <Router>
           <Switch>
             <Route

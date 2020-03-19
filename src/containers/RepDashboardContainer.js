@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import LeadChart from "../components/LeadChart";
+import "./dashboard.css";
 
 class RepDashboardContainer extends Component {
   // constructor(props) {
@@ -6,8 +8,10 @@ class RepDashboardContainer extends Component {
   // }
   render() {
     return (
-      <div>
-        <h3>Rep Dashboard Container</h3>
+      <div className="dashboard-container">
+        <div className="dashboard-top-div">
+          <LeadChart />
+        </div>
       </div>
     );
   }
