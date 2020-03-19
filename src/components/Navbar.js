@@ -25,7 +25,7 @@ class NavBar extends Component {
     return (
       <Navbar variant="light" expand="lg" bg="light" fixed="top">
         <Container>
-          <Navbar.Brand href="#home">Lead Tracker</Navbar.Brand>
+          <Navbar.Brand href="/users/:id">Lead Tracker</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             {this.props.currentUser ? signedIn() : notLoggedIn()}
