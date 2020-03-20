@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "./chart.css";
-import { HorizontalBar, Bar } from "react-chartjs-2";
+import { HorizontalBar, Bar, Line } from "react-chartjs-2";
 
 class StatusChart extends Component {
   render() {
@@ -11,7 +11,7 @@ class StatusChart extends Component {
         {
           label: "Leads By Status",
           data: [8, 12, 3, 6],
-          backgroundColor: ["#8B9EE4", "#A48BE4", "#E48BCB", "#E48B9E"]
+          backgroundColor: ["#3cb4dc", "#c5dce4", "#145970", "#8bcbe4"]
         }
       ]
     };
@@ -25,7 +25,8 @@ class StatusChart extends Component {
             xAxes: [
               {
                 ticks: {
-                  suggestedMin: 0
+                  suggestedMin: 0,
+                  suggestedMax: 15
                 }
               }
             ]
@@ -33,7 +34,7 @@ class StatusChart extends Component {
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: "Leads By Status",
+            text: "Status Of Leads",
             fontSize: 25
           },
           legend: {

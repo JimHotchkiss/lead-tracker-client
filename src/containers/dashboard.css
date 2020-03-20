@@ -23,14 +23,14 @@
 }
 
 .pie-chart-div {
-  height: 75%;
+  height: 100%;
 }
 
-.pie-chart-text {
+/* .pie-chart-text {
   margin: 5px;
   height: 23%;
   background-color: #f7f7f7;
-}
+} */
 
 .sub-div-right {
   background-color: #f7f7f7;
