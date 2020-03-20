@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "./chart.css";
-import { Doughnut, Line, Pie, Bar } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 class LeadsChart extends Component {
   render() {

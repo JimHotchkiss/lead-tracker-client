@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LeadsChart from "../components/LeadsChart";
 import StatusChart from "../components/StatusChart";
 import "./dashboard.css";
+import LeadsTable from "../components/LeadsTable";
 
 class RepDashboardContainer extends Component {
   // constructor(props) {
@@ -16,13 +17,14 @@ class RepDashboardContainer extends Component {
             <div className="pie-chart-div">
               <LeadsChart />
             </div>
-            {/* <div className="pie-chart-text">text component will go here</div> */}
           </div>
           <div className="sub-div-right">
             <div className="right-top-chart">
               <StatusChart />
             </div>
-            <div className="right-bottom-chart"></div>
+            <div className="right-bottom-chart">
+              <LeadsTable />
+            </div>
           </div>
         </div>
       </div>

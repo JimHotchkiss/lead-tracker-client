@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "./chart.css";
-import { HorizontalBar, Bar, Line } from "react-chartjs-2";
+import { HorizontalBar } from "react-chartjs-2";
 
 class StatusChart extends Component {
   render() {
