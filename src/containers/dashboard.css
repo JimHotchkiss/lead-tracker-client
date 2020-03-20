@@ -5,10 +5,47 @@
 }
 
 .dashboard-top-div {
-  margin-top: 4em;
-  height: 600px;
-  width: 95%;
+  background-color: #c5dce4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 3em;
+  height: 650px;
+  width: 100%;
   padding: 8px;
+}
 
-  background-color: slategray;
+.sub-div-left {
+  height: 98%;
+  width: 90%;
+  margin: 8px;
+  background-color: #f7f7f7;
+}
+
+.pie-chart-div {
+  height: 75%;
+}
+
+.pie-chart-text {
+  justify-content: center;
+  margin: 5px;
+  height: 23%;
+  background-color: #f7f7f7;
+}
+
+.sub-div-right {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  height: 98%;
+  width: 90%;
+}
+
+.right-top-chart {
+  height: 50%;
+}
+.right-bottom-chart {
+  height: 50%;
+  background-color: silver;
 }

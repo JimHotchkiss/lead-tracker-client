@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import LeadChart from "../components/LeadChart";
+import LeadsChart from "../components/LeadsChart";
+import StatusChart from "../components/StatusChart";
 import "./dashboard.css";
 
 class RepDashboardContainer extends Component {
@@ -9,8 +10,20 @@ class RepDashboardContainer extends Component {
   render() {
     return (
       <div className="dashboard-container">
+        {/* Main div */}
         <div className="dashboard-top-div">
-          <LeadChart />
+          <div className="sub-div-left">
+            <div className="pie-chart-div">
+              <LeadsChart />
+            </div>
+            <div className="pie-chart-text">text component will go here</div>
+          </div>
+          <div className="sub-div-right">
+            <div className="right-top-chart">
+              <StatusChart />
+            </div>
+            <div className="right-bottom-chart"></div>
+          </div>
         </div>
       </div>
     );
