@@ -10,13 +10,13 @@
   flex-direction: row;
   justify-content: space-around;
   margin-top: 3em;
-  height: 650px;
+  height: 645px;
   width: 100%;
   padding: 8px;
 }
 
 .sub-div-left {
-  height: 98%;
+  height: 98.2%;
   width: 90%;
   margin: 8px;
   background-color: #f7f7f7;
@@ -27,7 +27,6 @@
 }
 
 .pie-chart-text {
-  justify-content: center;
   margin: 5px;
   height: 23%;
   background-color: #f7f7f7;
@@ -38,7 +37,7 @@
   display: flex;
   flex-direction: column;
   margin: 8px;
-  height: 98%;
+  height: 98.2%;
   width: 90%;
 }
 
@@ -47,5 +46,4 @@
 }
 .right-bottom-chart {
   height: 50%;
-  background-color: silver;
 }
