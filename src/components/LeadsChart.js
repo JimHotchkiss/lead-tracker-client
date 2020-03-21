@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "./chart.css";
-import { Pie } from "react-chartjs-2";
+import { Pie, Doughnut } from "react-chartjs-2";
 
 class LeadsChart extends Component {
   render() {
@@ -11,7 +11,7 @@ class LeadsChart extends Component {
         {
           label: "Leads By Categories",
           data: [8, 12, 3, 6],
-          backgroundColor: ["#3cb4dc", "#c5dce4", "#145970", "#8bcbe4"]
+          backgroundColor: ["#BBE3DB", "#72969E", "#40689B", "#5A757F"]
         }
       ]
     };
@@ -24,13 +24,9 @@ class LeadsChart extends Component {
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: "Leads By Categories",
+            text: "Leads By Product",
             fontSize: 25
           }
-          // legend: {
-          //   display: true,
-          //   position: "center"
-          // }
         }}
       />
     );

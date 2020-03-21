@@ -23,7 +23,13 @@ class NavBar extends Component {
     };
 
     return (
-      <Navbar variant="light" expand="lg" bg="light" fixed="top">
+      <Navbar
+        className="navbar"
+        variant="light"
+        expand="lg"
+        bg="light"
+        fixed="top"
+      >
         <Container>
           <Navbar.Brand href="/users/:id">Lead Tracker</Navbar.Brand>
           <Navbar.Toggle />

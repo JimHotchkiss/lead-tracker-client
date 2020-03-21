@@ -35,17 +35,23 @@ class LeadsTable extends Component {
               birthCity: 34
             }
           ]}
-          options={{
-            headerStyle: {
-              backgroundColor: "#8bcbe4",
-              color: "#FFF"
-            }
-          }}
+          // options={{
+          //   headerStyle: {
+          //     backgroundColor: "#8bcbe4",
+          //     color: "#FFF"
+          //   }
+          // }}
           actions={[
             {
               icon: "search",
-              tooltip: "Search this lead",
+              tooltip: "View and make changes to this lead",
               onClick: (event, rowData) => alert("You deleted " + rowData.name)
+            },
+            {
+              icon: "delete",
+              tooltip: "Remove lead",
+              onClick: (event, rowData) =>
+                alert("You want to delete " + rowData.name)
             }
           ]}
         />
