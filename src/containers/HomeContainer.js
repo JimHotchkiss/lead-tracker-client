@@ -4,7 +4,11 @@ import RepDashboardContainer from "./RepDashboardContainer";
 import UserFormContainer from "./UserFormContainer";
 // Import BrowswerRouter
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 class HomeContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="home-container">
@@ -12,11 +16,11 @@ class HomeContainer extends Component {
         <NavBar />
         <Router>
           <Switch>
-            <Route
+            {/* <Route
               exact={true}
               path="/users/new"
               render={routerProps => <UserFormContainer {...routerProps} />}
-            />
+            /> */}
             <Route
               exact={true}
               path="/users/:id"
@@ -34,4 +38,4 @@ class HomeContainer extends Component {
   }
 }
 
-export default HomeContainer;
+export default connect(null)(HomeContainer);

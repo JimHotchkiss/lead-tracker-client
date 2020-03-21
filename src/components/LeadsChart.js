@@ -2,16 +2,18 @@ import React from "react";
 import { Component } from "react";
 import "./chart.css";
 import { Pie, Doughnut } from "react-chartjs-2";
+import { connect } from "react-redux";
 
 class LeadsChart extends Component {
   render() {
+    console.log(this.props.currentUser.username);
     const data = {
       labels: ["Camera", "Monitor", "Digital Capture", "Insufflator"],
       datasets: [
         {
           label: "Leads By Categories",
           data: [8, 12, 3, 6],
-          backgroundColor: ["#BBE3DB", "#72969E", "#40689B", "#5A757F"]
+          backgroundColor: ["#1b83dc", "#4e9ee4", "#9ac8ef", "#cce3f7"]
         }
       ]
     };
@@ -24,7 +26,7 @@ class LeadsChart extends Component {
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: "Leads By Product",
+            text: `${this.props.currentUser.username}'s Leads By Product`,
             fontSize: 25
           }
         }}
@@ -33,4 +35,10 @@ class LeadsChart extends Component {
   }
 }
 
-export default LeadsChart;
+const stateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  };
+};
+
+export default connect(stateToProps)(LeadsChart);

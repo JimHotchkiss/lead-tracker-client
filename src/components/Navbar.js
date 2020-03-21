@@ -2,24 +2,32 @@ import React from "react";
 import { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
+import { userLogOut } from "../actions/newUserSubmit";
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+
+  handleLogOut(event) {
+    console.log("handl logout");
+    event.preventDefault();
+    this.props.userLogOut();
   }
   render() {
     const signedIn = () => {
       return (
-        <Navbar.Text>
-          <span className="name-span"> {this.props.currentUser.username} </span>
-          is logged in
-        </Navbar.Text>
+        <Button onClick={this.handleLogOut} variant="link">
+          {this.props.currentUser.username} log out?
+        </Button>
       );
     };
 
     const notLoggedIn = () => {
-      return <Navbar.Text>Your shit aint logged in</Navbar.Text>;
+      return <div>Login fix</div>;
     };
 
     return (
@@ -47,4 +55,4 @@ const mapStateToProps = state => {
     currentUser: state.currentUser
   };
 };
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, { userLogOut })(NavBar);

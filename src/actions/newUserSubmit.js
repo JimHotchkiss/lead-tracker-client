@@ -1,13 +1,13 @@
 // Async Actions
 const API_URL = process.env.REACT_APP_API_URL;
 
-// GET Request
-export const getUsers = formData => {
+// GET Leads
+export const getLeads = formData => {
   return dispatch => {
-    return fetch(`${API_URL}/users`)
+    return fetch(`${API_URL}/leads`)
       .then(response => response.json())
-      .then(newUser => {
-        console.log(newUser);
+      .then(leads => {
+        dispatch({ type: "GET_LEADS", leads });
       });
   };
 };

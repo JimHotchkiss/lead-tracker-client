@@ -11,7 +11,7 @@ class StatusChart extends Component {
         {
           label: "Leads By Status",
           data: [8, 12, 3, 6],
-          backgroundColor: ["#BBE3DB", "#72969E", "#40689B", "#5A757F"]
+          backgroundColor: ["#1b83dc", "#4e9ee4", "#9ac8ef", "#cce3f7"]
         }
       ]
     };

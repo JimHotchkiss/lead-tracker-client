@@ -3,15 +3,17 @@ import LeadsChart from "../components/LeadsChart";
 import StatusChart from "../components/StatusChart";
 import "./dashboard.css";
 import LeadsTable from "../components/LeadsTable";
+import { connect } from "react-redux";
 
 class RepDashboardContainer extends Component {
   // constructor(props) {
   //   super(props);
   // }
   render() {
-    return (
-      <div className="dashboard-container">
-        {/* Main div */}
+    console.log(this.props.currentUser);
+    console.log(this.props.leads);
+    const renderDashboard = () => {
+      return (
         <div className="dashboard-top-div">
           <div className="sub-div-left">
             <div className="pie-chart-div">
@@ -27,9 +29,21 @@ class RepDashboardContainer extends Component {
             </div>
           </div>
         </div>
+      );
+    };
+    return (
+      <div className="dashboard-container">
+        {this.props.currentUser ? renderDashboard() : null}
       </div>
     );
   }
 }
 
-export default RepDashboardContainer;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser,
+    leads: state.leads
+  };
+};
+
+export default connect(mapStateToProps)(RepDashboardContainer);
