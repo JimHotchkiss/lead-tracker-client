@@ -1,3 +1,7 @@
-.navbar {
-  background-color: pink;
+.welcome-span {
+  padding-left: 30%;
+}
+
+.welcome-color {
+  color: #4e9ee4;
 }

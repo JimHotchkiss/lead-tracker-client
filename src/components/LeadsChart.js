@@ -26,7 +26,7 @@ class LeadsChart extends Component {
           maintainAspectRatio: false,
           title: {
             display: true,
-            text: `${this.props.currentUser.username}'s Leads By Product`,
+            text: `Leads By Product`,
             fontSize: 25
           }
         }}

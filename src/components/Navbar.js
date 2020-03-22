@@ -1,10 +1,12 @@
 import React from "react";
+import "./navbar.css";
 import { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { userLogOut } from "../actions/newUserSubmit";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class NavBar extends Component {
   constructor(props) {
@@ -18,16 +20,27 @@ class NavBar extends Component {
     this.props.userLogOut();
   }
   render() {
-    const signedIn = () => {
+    const logOut = () => {
       return (
         <Button onClick={this.handleLogOut} variant="link">
-          {this.props.currentUser.username} log out?
+          {" "}
+          log out
         </Button>
       );
     };
 
+    const welcome = () => {
+      return (
+        <Navbar.Brand className="welcome-span">
+          <span className="welcome-color">
+            Welcome {this.props.currentUser.username}
+          </span>
+        </Navbar.Brand>
+      );
+    };
+
     const notLoggedIn = () => {
-      return <div>Login fix</div>;
+      return <div>You're logged out</div>;
     };
 
     return (
@@ -39,10 +52,11 @@ class NavBar extends Component {
         fixed="top"
       >
         <Container>
-          <Navbar.Brand href="/users/:id">Lead Tracker</Navbar.Brand>
+          <Navbar.Brand>Lead Tracker</Navbar.Brand>
+          {this.props.currentUser ? welcome() : null}
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            {this.props.currentUser ? signedIn() : notLoggedIn()}
+            {this.props.currentUser ? logOut() : notLoggedIn()}
           </Navbar.Collapse>
         </Container>
       </Navbar>
