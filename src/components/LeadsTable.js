@@ -3,8 +3,20 @@ import { Component } from "react";
 import MaterialTable from "material-table";
 
 class LeadsTable extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    let columns = {};
     const MultipleActions = () => {
+      if (this.props.leads) {
+        this.props.leads.map(lead => {
+          for (let [key, value] of Object.entries(lead.attributes)) {
+            console.log(`${key}: ${key} ${value}`);
+          }
+        });
+      }
+
       return (
         <MaterialTable
           title="Leads"
@@ -35,12 +47,6 @@ class LeadsTable extends Component {
               birthCity: 34
             }
           ]}
-          // options={{
-          //   headerStyle: {
-          //     backgroundColor: "#8bcbe4",
-          //     color: "#FFF"
-          //   }
-          // }}
           actions={[
             {
               icon: "search",

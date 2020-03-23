@@ -15,7 +15,6 @@ class NavBar extends Component {
   }
 
   handleLogOut(event) {
-    console.log("handl logout");
     event.preventDefault();
     this.props.userLogOut();
   }

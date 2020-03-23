@@ -10,13 +10,28 @@ class RepDashboardContainer extends Component {
   //   super(props);
   // }
   render() {
-    console.log(this.props.currentUser);
-    console.log(this.props.leads);
+    let leads;
+    let userLeads;
+    const currentUserLeads = () => {
+      if (this.props.leads) {
+        leads = this.props.leads.data.filter(lead => lead.attributes.user);
+      }
+      filterLeads(leads);
+    };
+
+    const filterLeads = leads => {
+      if (leads) {
+        userLeads = leads.filter(
+          lead => lead.id === this.props.currentUser.id.toString()
+        );
+      }
+    };
     const renderDashboard = () => {
       return (
         <div className="dashboard-top-div">
           <div className="sub-div-left">
             <div className="pie-chart-div">
+              {currentUserLeads()}
               <LeadsChart />
             </div>
           </div>
@@ -25,7 +40,7 @@ class RepDashboardContainer extends Component {
               <StatusChart />
             </div>
             <div className="right-bottom-chart">
-              <LeadsTable />
+              <LeadsTable leads={userLeads} />
             </div>
           </div>
         </div>
@@ -34,6 +49,7 @@ class RepDashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         {this.props.currentUser ? renderDashboard() : null}
+        {/* {this.props.leads ? console.log(currentUserLeads()) : null} */}
       </div>
     );
   }

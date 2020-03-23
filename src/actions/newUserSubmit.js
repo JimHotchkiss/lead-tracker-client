@@ -2,7 +2,7 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
 // GET Leads
-export const getLeads = formData => {
+export const getLeads = () => {
   return dispatch => {
     return fetch(`${API_URL}/leads`)
       .then(response => response.json())

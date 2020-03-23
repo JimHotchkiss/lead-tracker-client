@@ -19,7 +19,7 @@ class UserFormContainer extends Component {
     const formData = this.props.newUserFormData;
     this.props.newUserSubmit(formData);
     this.props.clearUserInput();
-    this.props.getLeads(formData);
+    this.props.getLeads();
   }
   onChangeHandler(event) {
     const { name, value } = event.target;
