@@ -7,16 +7,20 @@ class LeadsTable extends Component {
     super(props);
   }
   render() {
-    let columns = {};
-    const MultipleActions = () => {
+    const columns = () => {
+      const newArray = [];
       if (this.props.leads) {
         this.props.leads.map(lead => {
           for (let [key, value] of Object.entries(lead.attributes)) {
-            console.log(`${key}: ${key} ${value}`);
+            if (key === lead.attributes.product) {
+              return newArray.push(key);
+            }
           }
         });
       }
-
+      console.log(newArray);
+    };
+    const MultipleActions = () => {
       return (
         <MaterialTable
           title="Leads"
@@ -63,7 +67,12 @@ class LeadsTable extends Component {
         />
       );
     };
-    return <div className="leads-table">{MultipleActions()}</div>;
+    return (
+      <div className="leads-table">
+        {columns()}
+        {MultipleActions()}
+      </div>
+    );
   }
 }
 
