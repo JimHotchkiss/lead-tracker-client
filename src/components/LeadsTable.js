@@ -2,18 +2,18 @@ import React from "react";
 import { Component } from "react";
 import Table from "react-bootstrap/Table";
 class LeadsTable extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
+    console.log(this.props.data);
+    const showLeads = this.props.leads.map(lead => {
+      return <th key={lead}>{lead}</th>;
+    });
+
     return (
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Leads</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            {showLeads}
           </tr>
         </thead>
         <tbody>

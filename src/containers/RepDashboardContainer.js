@@ -6,32 +6,57 @@ import LeadsTable from "../components/LeadsTable";
 import { connect } from "react-redux";
 
 class RepDashboardContainer extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
   render() {
+    const dataArray = [];
+    let data;
+    let leadsData;
+    const leadsArray = [];
     let leads;
     let userLeads;
+    const leadsDataFunction = () => {
+      if (this.props.leads) {
+        data = this.props.leads.data.filter(lead => lead.attributes.user);
+      }
+      if (data) {
+        leadsData = data.filter(
+          item => item.id === this.props.currentUser.id.toString()
+        );
+      }
+      if (leadsData) {
+        leadsData.map(object => {
+          Object.values(object.attributes).forEach(value => {
+            if (typeof value === "string") {
+              dataArray.push(value);
+            }
+          });
+        });
+      }
+      return dataArray;
+    };
     const currentUserLeads = () => {
       if (this.props.leads) {
         leads = this.props.leads.data.filter(lead => lead.attributes.user);
       }
-      filterLeads(leads);
-    };
-
-    const filterLeads = leads => {
       if (leads) {
         userLeads = leads.filter(
           lead => lead.id === this.props.currentUser.id.toString()
         );
       }
+      if (userLeads) {
+        userLeads.map(object => {
+          Object.keys(object.attributes).forEach((key, value) => {
+            leadsArray.push(key);
+          });
+        });
+      }
+      return leadsArray;
     };
+
     const renderDashboard = () => {
       return (
         <div className="dashboard-top-div">
           <div className="sub-div-left">
             <div className="pie-chart-div">
-              {currentUserLeads()}
               <LeadsChart />
             </div>
           </div>
@@ -40,7 +65,10 @@ class RepDashboardContainer extends Component {
               <StatusChart />
             </div>
             <div className="right-bottom-chart">
-              <LeadsTable leads={userLeads} />
+              <LeadsTable
+                data={leadsDataFunction()}
+                leads={currentUserLeads()}
+              />
             </div>
           </div>
         </div>
@@ -49,7 +77,6 @@ class RepDashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         {this.props.currentUser ? renderDashboard() : null}
-        {/* {this.props.leads ? console.log(currentUserLeads()) : null} */}
       </div>
     );
   }
