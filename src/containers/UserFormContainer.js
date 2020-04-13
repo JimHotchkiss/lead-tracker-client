@@ -3,7 +3,7 @@ import "./formContainer.css";
 import ButtonComponent from "../components/ButtonComponent";
 import { connect } from "react-redux";
 import { updateNewUserForm, clearUserInput } from "../actions/newUserForm";
-import { newUserSubmit, getLeads } from "../actions/newUserSubmit";
+import { newUserSubmit } from "../actions/newUserSubmit";
 import RepDashboardContainer from "./RepDashboardContainer";
 
 class UserFormContainer extends Component {
@@ -19,7 +19,7 @@ class UserFormContainer extends Component {
     const formData = this.props.newUserFormData;
     this.props.newUserSubmit(formData);
     this.props.clearUserInput();
-    this.props.getLeads();
+    // this.props.getLeads();
   }
   onChangeHandler(event) {
     const { name, value } = event.target;
@@ -113,13 +113,13 @@ class UserFormContainer extends Component {
 const buttonStyle = {
   minWidth: "10em",
   marginTop: "5px",
-  marginRight: "10px"
+  marginRight: "10px",
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     newUserFormData: state.userInput,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
   };
 };
 
@@ -127,5 +127,4 @@ export default connect(mapStateToProps, {
   updateNewUserForm,
   newUserSubmit,
   clearUserInput,
-  getLeads
 })(UserFormContainer);
