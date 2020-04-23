@@ -6,12 +6,9 @@ import UserFormContainer from "./UserFormContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 class HomeContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
-      <div className="home-container">
+      <div className='home-container'>
         {/* NavBar */}
         <NavBar />
         <Router>
@@ -23,13 +20,15 @@ class HomeContainer extends Component {
             /> */}
             <Route
               exact={true}
-              path="/users/:id"
-              render={routerProps => <RepDashboardContainer {...routerProps} />}
+              path='/users/:id'
+              render={(routerProps) => (
+                <RepDashboardContainer {...routerProps} />
+              )}
             />
             <Route
               exact={true}
-              path="/login"
-              render={routerProps => <UserFormContainer {...routerProps} />}
+              path='/login'
+              render={(routerProps) => <UserFormContainer {...routerProps} />}
             />
           </Switch>
         </Router>

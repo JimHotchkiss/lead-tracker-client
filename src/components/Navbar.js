@@ -6,7 +6,6 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { userLogOut } from "../actions/newUserSubmit";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class NavBar extends Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class NavBar extends Component {
     this.props.userLogOut();
   }
   render() {
-    console.log(this.props);
+    console.log("inside navBar", this.props);
     const logOut = () => {
       return (
         <Button onClick={this.handleLogOut} variant='link'>

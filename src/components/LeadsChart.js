@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "./chart.css";
-import { Pie, Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { connect } from "react-redux";
 
 class LeadsChart extends Component {
@@ -12,9 +12,9 @@ class LeadsChart extends Component {
         {
           label: "Leads By Categories",
           data: [8, 12, 3, 6],
-          backgroundColor: ["#1b83dc", "#4e9ee4", "#9ac8ef", "#cce3f7"]
-        }
-      ]
+          backgroundColor: ["#1b83dc", "#4e9ee4", "#9ac8ef", "#cce3f7"],
+        },
+      ],
     };
     return (
       <Pie
@@ -26,17 +26,17 @@ class LeadsChart extends Component {
           title: {
             display: true,
             text: `Leads By Product`,
-            fontSize: 25
-          }
+            fontSize: 25,
+          },
         }}
       />
     );
   }
 }
 
-const stateToProps = state => {
+const stateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
   };
 };
 

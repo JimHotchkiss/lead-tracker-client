@@ -4,27 +4,7 @@ import StatusChart from "../components/StatusChart";
 import "./dashboard.css";
 import LeadsTable from "../components/LeadsTable";
 import { connect } from "react-redux";
-const API_URL = process.env.REACT_APP_API_URL;
 class RepDashboardContainer extends Component {
-  // componentDidMount() {
-  // console.log("log");
-  // fetch(`${API_URL}/leads`)
-  //   .then((response) => response.json())
-  //   .then((leads) => console.log(leads));
-  // return (dispatch) => {
-  //   console.log("inside");
-  //   return fetch(`${API_URL}/leads`)
-  //     .then((response) => response.json())
-  //     .then((leads) => {
-  //       console.log(leads);
-  //       if (leads.error) {
-  //         alert(leads.error);
-  //       } else {
-  //         dispatch({ type: "SET_LEADS", leads });
-  //       }
-  //     });
-  // };
-  // }
   render() {
     const renderDashboard = () => {
       return (

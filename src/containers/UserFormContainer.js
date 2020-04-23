@@ -19,7 +19,6 @@ class UserFormContainer extends Component {
     const formData = this.props.newUserFormData;
     this.props.newUserSubmit(formData);
     this.props.clearUserInput();
-    // this.props.getLeads();
   }
   onChangeHandler(event) {
     const { name, value } = event.target;
@@ -43,51 +42,51 @@ class UserFormContainer extends Component {
     };
     const renderForm = () => {
       return (
-        <div className="form-container">
+        <div className='form-container'>
           <form onSubmit={this.handleFormSubmit}>
-            <div className="form-div">
-              <div className="form-group">
+            <div className='form-div'>
+              <div className='form-group'>
                 <div>
-                  <label className="form-label" htmlFor="username">
+                  <label className='form-label' htmlFor='username'>
                     Username
                   </label>
                 </div>
                 <input
-                  className="form-input"
-                  name="username"
-                  type="text"
+                  className='form-input'
+                  name='username'
+                  type='text'
                   value={username}
-                  placeholder="Enter Your Username"
+                  placeholder='Enter Your Username'
                   onChange={this.onChangeHandler}
                 />
               </div>
-              <div className="form-group">
+              <div className='form-group'>
                 <div>
-                  <label className="form-label" htmlFor="email">
+                  <label className='form-label' htmlFor='email'>
                     Email
                   </label>
                 </div>
                 <input
-                  className="form-input"
-                  name="email"
-                  type="text"
+                  className='form-input'
+                  name='email'
+                  type='text'
                   value={email}
-                  placeholder="Enter Your Email"
+                  placeholder='Enter Your Email'
                   onChange={this.onChangeHandler}
                 />
               </div>
-              <div className="form-group">
+              <div className='form-group'>
                 <div>
-                  <label className="form-label" htmlFor="password">
+                  <label className='form-label' htmlFor='password'>
                     Password
                   </label>
                 </div>
                 <input
-                  className="form-input"
-                  name="password"
-                  type="password"
+                  className='form-input'
+                  name='password'
+                  type='password'
                   value={password}
-                  placeholder="Enter Your Password"
+                  placeholder='Enter Your Password'
                   onChange={this.onChangeHandler}
                 />
               </div>
@@ -102,7 +101,7 @@ class UserFormContainer extends Component {
       <div>
         <div>{!this.props.currentUser ? renderForm() : null}</div>
 
-        <div className="dashboard">
+        <div className='dashboard'>
           {this.props.currentUser ? <RepDashboardContainer /> : null}
         </div>
       </div>
