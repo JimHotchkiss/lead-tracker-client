@@ -19,9 +19,10 @@ class NavBar extends Component {
     this.props.userLogOut();
   }
   render() {
+    console.log(this.props);
     const logOut = () => {
       return (
-        <Button onClick={this.handleLogOut} variant="link">
+        <Button onClick={this.handleLogOut} variant='link'>
           {" "}
           log out
         </Button>
@@ -30,8 +31,8 @@ class NavBar extends Component {
 
     const welcome = () => {
       return (
-        <Navbar.Brand className="welcome-span">
-          <span className="welcome-color">
+        <Navbar.Brand className='welcome-span'>
+          <span className='welcome-color'>
             Welcome {this.props.currentUser.username}
           </span>
         </Navbar.Brand>
@@ -44,17 +45,16 @@ class NavBar extends Component {
 
     return (
       <Navbar
-        className="navbar"
-        variant="light"
-        expand="lg"
-        bg="light"
-        fixed="top"
-      >
+        className='navbar'
+        variant='light'
+        expand='lg'
+        bg='light'
+        fixed='top'>
         <Container>
           <Navbar.Brand>Lead Tracker</Navbar.Brand>
           {this.props.currentUser ? welcome() : null}
           <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Collapse className='justify-content-end'>
             {this.props.currentUser ? logOut() : notLoggedIn()}
           </Navbar.Collapse>
         </Container>
@@ -63,9 +63,9 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
   };
 };
 export default connect(mapStateToProps, { userLogOut })(NavBar);

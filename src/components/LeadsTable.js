@@ -3,18 +3,11 @@ import { Component } from "react";
 import Table from "react-bootstrap/Table";
 class LeadsTable extends Component {
   render() {
-    // const showLeads = this.props.leads.map((lead) => {
-    //   if (lead === "contact" || lead === "product" || lead === "description") {
-    //     return <th key={lead}>{lead}</th>;
-    //   }
-    // });
-
     return (
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Leads</th>
-            {/* {showLeads} */}
           </tr>
         </thead>
         <tbody>
@@ -32,7 +25,7 @@ class LeadsTable extends Component {
           </tr>
           <tr>
             <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
+            <td colSpan='2'>Larry the Bird</td>
             <td>@twitter</td>
           </tr>
           <tr>
@@ -49,7 +42,7 @@ class LeadsTable extends Component {
           </tr>
           <tr>
             <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
+            <td colSpan='2'>Larry the Bird</td>
             <td>@twitter</td>
           </tr>
           <tr>
@@ -66,7 +59,7 @@ class LeadsTable extends Component {
           </tr>
           <tr>
             <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
+            <td colSpan='2'>Larry the Bird</td>
             <td>@twitter</td>
           </tr>
         </tbody>
