@@ -17,8 +17,8 @@ class NavBar extends Component {
     event.preventDefault();
     this.props.userLogOut();
   }
+
   render() {
-    console.log("inside navBar", this.props);
     const logOut = () => {
       return (
         <Button onClick={this.handleLogOut} variant='link'>
@@ -32,7 +32,7 @@ class NavBar extends Component {
       return (
         <Navbar.Brand className='welcome-span'>
           <span className='welcome-color'>
-            Welcome {this.props.currentUser.username}
+            Welcome {this.props.currentUser.data.attributes.username}
           </span>
         </Navbar.Brand>
       );

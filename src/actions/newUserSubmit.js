@@ -3,7 +3,6 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 // Get Current user
 export const getCurrentUser = () => {
-  console.log("getCurrentUser after login");
   return (dispatch) => {
     return fetch(`${API_URL}/current_user`, {
       credentials: "include",
@@ -14,7 +13,6 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log("inside action creator", user);
         if (user.error) {
           alert(user.error);
         } else {
@@ -38,7 +36,6 @@ export const userLogOut = () => {
 
 // POST Request - Login
 export const newUserSubmit = (formData) => {
-  console.log("inside newUserSubmit");
   return (dispatch) => {
     return fetch(`${API_URL}/login`, {
       credentials: "include",
@@ -50,6 +47,7 @@ export const newUserSubmit = (formData) => {
     })
       .then((response) => response.json())
       .then((user) => {
+        console.log(user);
         if (user.error) {
           alert(user.error);
         } else {

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 class LeadsChart extends Component {
   render() {
+    console.log(this.props);
     const data = {
       labels: ["Camera", "Monitor", "Digital Capture", "Insufflator"],
       datasets: [
