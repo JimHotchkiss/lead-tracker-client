@@ -20,6 +20,7 @@ class StatusChart extends Component {
 
   setData = () => {
     this.props.currentUser.included.map((item) => {
+      console.log(item);
       for (const property in item.attributes) {
         if (item.attributes[property] === "New") {
           this.setState((state) => {
@@ -43,6 +44,10 @@ class StatusChart extends Component {
   };
 
   render() {
+    console.log("new:", this.state.new);
+    console.log("open:", this.state.open);
+    console.log("pending:", this.state.pending);
+    console.log("closed:", this.state.closed);
     const obj = this.state;
     const limits = Object.keys(obj).map(function (key) {
       return obj[key];

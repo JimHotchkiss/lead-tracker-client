@@ -12,16 +12,27 @@ class LeadsTable extends Component {
   }
 
   render() {
+    this.props.currentUser.included.map(function (item, index) {
+      if (item.type === "lead") {
+        console.log(index);
+      }
+    });
+    console.log(this.props.currentUser);
     return (
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Leads</th>
+            <th></th>
+            <th>Contact</th>
+            <th>Product</th>
+            <th>Urgency</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
+            <td>
+              <a href='#!'>1</a>
+            </td>
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
