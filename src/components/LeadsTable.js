@@ -1,7 +1,16 @@
 import React from "react";
 import { Component } from "react";
 import Table from "react-bootstrap/Table";
+import { connect } from "react-redux";
+
 class LeadsTable extends Component {
+  constructor() {
+    super();
+    this.state = {
+      holding: null,
+    };
+  }
+
   render() {
     return (
       <Table striped bordered hover>
@@ -68,4 +77,10 @@ class LeadsTable extends Component {
   }
 }
 
-export default LeadsTable;
+const stateToProps = (state) => {
+  return {
+    currentUser: state.currentUser,
+  };
+};
+
+export default connect(stateToProps)(LeadsTable);

@@ -44,10 +44,6 @@ class LeadsChart extends Component {
   };
 
   render() {
-    console.log("camera:", this.state.camera);
-    console.log("monitor:", this.state.monitor);
-    console.log("digital_capture:", this.state.digital_capture);
-    console.log("insufflator:", this.state.insufflator);
     const data = {
       labels: ["Camera", "Monitor", "Digital Capture", "Insufflator"],
       datasets: [
