@@ -5,14 +5,60 @@ import { Pie } from "react-chartjs-2";
 import { connect } from "react-redux";
 
 class LeadsChart extends Component {
+  constructor() {
+    super();
+    this.state = {
+      camera: 0,
+      monitor: 0,
+      digital_capture: 0,
+      insufflator: 0,
+    };
+  }
+
+  componentDidMount() {
+    this.setData();
+  }
+
+  setData = () => {
+    this.props.currentUser.included.map((item) => {
+      for (const property in item.attributes) {
+        if (item.attributes[property] === "Camera") {
+          this.setState((state) => {
+            return { camera: state.camera + 1 };
+          });
+        } else if (item.attributes[property] === "Monitor") {
+          this.setState((state) => {
+            return { monitor: state.monitor + 1 };
+          });
+        } else if (item.attributes[property] === "Digital Capture") {
+          this.setState((state) => {
+            return { digital_capture: state.digital_capture + 1 };
+          });
+        } else if (item.attributes[property] === "Insufflator") {
+          this.setState((state) => {
+            return { insufflator: state.insufflator + 1 };
+          });
+        }
+      }
+    });
+  };
+
   render() {
-    console.log(this.props);
+    console.log("camera:", this.state.camera);
+    console.log("monitor:", this.state.monitor);
+    console.log("digital_capture:", this.state.digital_capture);
+    console.log("insufflator:", this.state.insufflator);
     const data = {
       labels: ["Camera", "Monitor", "Digital Capture", "Insufflator"],
       datasets: [
         {
           label: "Leads By Categories",
-          data: [8, 12, 3, 6],
+          data: [
+            this.state.camera,
+            this.state.monitor,
+            this.state.digital_capture,
+            this.state.insufflator,
+          ],
           backgroundColor: ["#1b83dc", "#4e9ee4", "#9ac8ef", "#cce3f7"],
         },
       ],
