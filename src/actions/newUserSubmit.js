@@ -13,6 +13,7 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
+        console.log(user);
         if (user.error) {
           alert(user.error);
         } else {

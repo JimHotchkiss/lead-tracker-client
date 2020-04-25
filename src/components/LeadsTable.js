@@ -4,115 +4,37 @@ import Table from "react-bootstrap/Table";
 import { connect } from "react-redux";
 
 class LeadsTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      counter: 0,
-      contacts: [],
-      products: [],
-      urgencies: 0,
-    };
-  }
-
-  componentDidMount() {
-    this.setProducts();
-    this.setContacts();
-    // this.setUrgenies();
-  }
-
-  setProducts = () => {
-    this.props.currentUser.included.map((item) => {
-      for (const property in item.attributes) {
-        if (property === "product") {
-          this.setState((state) => {
-            return { products: [...state.products, item.attributes[property]] };
-          });
-        }
-      }
-    });
-  };
-
-  setContacts = () => {
-    this.props.currentUser.included.map((item) => {
-      for (const property in item.attributes) {
-        if (property === "email") {
-          this.setState((state) => {
-            return { contacts: [...state.contacts, item.attributes[property]] };
-          });
-        }
-      }
-    });
-  };
-
   render() {
-    console.log(this.props.currentUser);
+    const tableOutput = this.props.currentUser.included.map((item, index) => {
+      if (item.type === "lead") {
+        console.log(item.attributes);
+        return (
+          <tr key={Math.random()}>
+            <td>
+              <a href='#'>{item.attributes.contact_email}</a>
+            </td>
+            <td>{item.attributes.urgency}</td>
 
-    const products = this.state.products.map((item) => {
-      return <td key={Math.random()}>{item}</td>;
+            <td>
+              <a href='#'>{item.attributes.product}</a>
+            </td>
+            <td>{item.attributes.status}</td>
+          </tr>
+        );
+      }
     });
 
-    const contacts = this.state.contacts.map((contact) => {
-      return <td key={Math.random()}>{contact}</td>;
-    });
     return (
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th></th>
             <th>Contact</th>
-            <th>Product</th>
             <th>Urgency</th>
+            <th>Product</th>
+            <th>Status</th>
           </tr>
         </thead>
-        <tbody key={Math.random()}>
-          <tr>{contacts}</tr>
-          <tr>
-            {products}
-            {/* <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td> */}
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan='2'>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan='2'>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan='2'>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
+        <tbody>{tableOutput}</tbody>
       </Table>
     );
   }
