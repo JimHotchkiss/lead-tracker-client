@@ -2,6 +2,10 @@
   padding-left: 30%;
 }
 
-.welcome-color {
+.name-color {
+  color: #4e9ee4;
+}
+
+.logout-link {
   color: #4e9ee4;
 }

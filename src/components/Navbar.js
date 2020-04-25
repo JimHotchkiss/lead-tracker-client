@@ -4,6 +4,8 @@ import { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { BrowserRouter as Router, Link, NavLink } from "react-router-dom";
+
 import { connect } from "react-redux";
 import { userLogOut } from "../actions/newUserSubmit";
 
@@ -21,27 +23,26 @@ class NavBar extends Component {
   render() {
     const logOut = () => {
       return (
-        <Button onClick={this.handleLogOut} variant='link'>
-          {" "}
+        <Link className='logout-link' onClick={this.handleLogOut} to='login'>
           log out
-        </Button>
+        </Link>
       );
     };
 
     const welcome = () => {
       return (
         <Navbar.Brand className='welcome-span'>
-          <span className='welcome-color'>
-            Welcome {this.props.currentUser.data.attributes.username}
+          <span>
+            Welcome{" "}
+            <span className='name-color'>
+              {this.props.currentUser.data.attributes.username}
+            </span>
           </span>
         </Navbar.Brand>
       );
     };
 
-    const notLoggedIn = () => {
-      return <div>You're logged out</div>;
-    };
-
+    const notLoggedIn = <div>You're logged out</div>;
     return (
       <Navbar
         className='navbar'
@@ -54,7 +55,7 @@ class NavBar extends Component {
           {this.props.currentUser ? welcome() : null}
           <Navbar.Toggle />
           <Navbar.Collapse className='justify-content-end'>
-            {this.props.currentUser ? logOut() : notLoggedIn()}
+            {this.props.currentUser ? logOut() : notLoggedIn}
           </Navbar.Collapse>
         </Container>
       </Navbar>
