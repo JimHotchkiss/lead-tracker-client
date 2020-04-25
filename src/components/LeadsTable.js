@@ -4,20 +4,56 @@ import Table from "react-bootstrap/Table";
 import { connect } from "react-redux";
 
 class LeadsTable extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      holding: null,
+      counter: 0,
+      contacts: [],
+      products: [],
+      urgencies: 0,
     };
   }
 
-  render() {
-    this.props.currentUser.included.map(function (item, index) {
-      if (item.type === "lead") {
-        console.log(index);
+  componentDidMount() {
+    this.setProducts();
+    this.setContacts();
+    // this.setUrgenies();
+  }
+
+  setProducts = () => {
+    this.props.currentUser.included.map((item) => {
+      for (const property in item.attributes) {
+        if (property === "product") {
+          this.setState((state) => {
+            return { products: [...state.products, item.attributes[property]] };
+          });
+        }
       }
     });
+  };
+
+  setContacts = () => {
+    this.props.currentUser.included.map((item) => {
+      for (const property in item.attributes) {
+        if (property === "email") {
+          this.setState((state) => {
+            return { contacts: [...state.contacts, item.attributes[property]] };
+          });
+        }
+      }
+    });
+  };
+
+  render() {
     console.log(this.props.currentUser);
+
+    const products = this.state.products.map((item) => {
+      return <td key={Math.random()}>{item}</td>;
+    });
+
+    const contacts = this.state.contacts.map((contact) => {
+      return <td key={Math.random()}>{contact}</td>;
+    });
     return (
       <Table striped bordered hover>
         <thead>
@@ -28,20 +64,14 @@ class LeadsTable extends Component {
             <th>Urgency</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody key={Math.random()}>
+          <tr>{contacts}</tr>
           <tr>
-            <td>
-              <a href='#!'>1</a>
-            </td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
+            {products}
+            {/* <td>2</td>
             <td>Jacob</td>
             <td>Thornton</td>
-            <td>@fat</td>
+            <td>@fat</td> */}
           </tr>
           <tr>
             <td>3</td>

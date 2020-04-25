@@ -20,7 +20,6 @@ class StatusChart extends Component {
 
   setData = () => {
     this.props.currentUser.included.map((item) => {
-      console.log(item);
       for (const property in item.attributes) {
         if (item.attributes[property] === "New") {
           this.setState((state) => {
