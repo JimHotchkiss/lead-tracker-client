@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import UserFormContainer from "./UserFormContainer";
+import "./formContainer.css";
 import LeadsChart from "../components/LeadsChart";
 import StatusChart from "../components/StatusChart";
 import "./dashboard.css";

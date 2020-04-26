@@ -15,6 +15,7 @@ class StatusChart extends Component {
   }
 
   componentDidMount() {
+    console.log("inside chart CDM", this.props.currentUser);
     this.setData();
   }
 
@@ -43,10 +44,10 @@ class StatusChart extends Component {
   };
 
   render() {
-    console.log("new:", this.state.new);
-    console.log("open:", this.state.open);
-    console.log("pending:", this.state.pending);
-    console.log("closed:", this.state.closed);
+    // console.log("new:", this.state.new);
+    // console.log("open:", this.state.open);
+    // console.log("pending:", this.state.pending);
+    // console.log("closed:", this.state.closed);
     const obj = this.state;
     const limits = Object.keys(obj).map(function (key) {
       return obj[key];

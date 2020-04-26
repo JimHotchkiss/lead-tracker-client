@@ -29,6 +29,7 @@ class UserFormContainer extends Component {
   }
 
   render() {
+    console.log("rederform");
     const { username, email, password } = this.props.newUserFormData;
     const submitButton = () => {
       return (
