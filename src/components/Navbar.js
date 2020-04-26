@@ -3,31 +3,15 @@ import "./navbar.css";
 import { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import { BrowserRouter as Router, Link, NavLink } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { userLogOut } from "../actions/newUserSubmit";
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userId: null,
-    };
+  constructor() {
+    super();
     this.handleLogOut = this.handleLogOut.bind(this);
   }
-
-  componentDidMount() {
-    this.setId();
-  }
-
-  setId = () => {
-    if (this.props.currentUser) {
-      console.log(this.props.currentUser);
-    } else {
-      console.log("fucking nothing");
-    }
-  };
 
   handleLogOut(event) {
     event.preventDefault();
@@ -35,6 +19,12 @@ class NavBar extends Component {
   }
 
   render() {
+    const userId = this.props.currentUser
+      ? this.props.currentUser.data.id
+      : ":id";
+    const userName = this.props.currentUser
+      ? this.props.currentUser.data.attributes.username
+      : "not logged in";
     const logOut = () => {
       return (
         <div>
@@ -52,10 +42,8 @@ class NavBar extends Component {
         <Navbar.Brand className='welcome-span'>
           <span>
             Welcome{" "}
-            <Link className='users-id' to='/users/:id'>
-              <span className='name-color'>
-                {this.props.currentUser.data.attributes.username}
-              </span>
+            <Link className='users-id' to={`/users/${userId}`}>
+              <span className='name-color'>{userName}</span>
             </Link>
           </span>
         </Navbar.Brand>

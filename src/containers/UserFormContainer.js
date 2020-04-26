@@ -7,11 +7,15 @@ import { newUserSubmit } from "../actions/newUserSubmit";
 import RepDashboardContainer from "./RepDashboardContainer";
 
 class UserFormContainer extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+
+  componentDidMount() {
+    console.log("user form container CDM:", this.props.currentUser);
   }
 
   handleFormSubmit(event) {
@@ -29,7 +33,6 @@ class UserFormContainer extends Component {
   }
 
   render() {
-    console.log("rederform");
     const { username, email, password } = this.props.newUserFormData;
     const submitButton = () => {
       return (

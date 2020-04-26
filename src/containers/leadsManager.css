@@ -1,7 +1,21 @@
 .manage-leads-div {
+  display: flex;
+  flex-direction: column;
   margin-top: 100px;
   height: 250px;
   width: 200px;
   background: lightcyan;
   color: #4e9ee4;
+}
+
+.show-lead-div {
+  height: 150px;
+  width: 100px;
+  background: plum;
+}
+
+.show-contact-div {
+  height: 150px;
+  width: 100px;
+  background: lightblue;
 }
