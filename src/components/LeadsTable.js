@@ -7,6 +7,13 @@ import { Link } from "react-router-dom";
 class LeadsTable extends Component {
   constructor() {
     super();
+    this.handleLeadId = this.handleLeadId.bind(this);
+  }
+
+  handleLeadId(event) {
+    event.preventDefault();
+    console.log(event.target);
+    // this.props.userLogOut();
   }
 
   componentDidMount() {
