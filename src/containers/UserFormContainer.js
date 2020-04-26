@@ -14,10 +14,6 @@ class UserFormContainer extends Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
-  componentDidMount() {
-    console.log("user form container CDM:", this.props.currentUser);
-  }
-
   handleFormSubmit(event) {
     event.preventDefault();
     const formData = this.props.newUserFormData;

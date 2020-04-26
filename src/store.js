@@ -2,9 +2,11 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
 import newUserReducer from "./reducers/newUserFormData";
 import newUserSubmit from "./reducers/newUserSubmit";
+import showLeadReducer from "./reducers/showLeadReducer";
 const manageReducers = combineReducers({
   currentUser: newUserSubmit,
   userInput: newUserReducer,
+  showLeadDetails: showLeadReducer,
 });
 
 const store = createStore(

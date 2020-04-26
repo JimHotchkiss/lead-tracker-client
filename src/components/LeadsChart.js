@@ -16,12 +16,10 @@ class LeadsChart extends Component {
   }
 
   componentDidMount() {
-    console.log("lead chart CDM", this.props.currentUser);
     this.setData();
   }
 
   setData = () => {
-    console.log("lead charts:", this.props.currentUser);
     this.props.currentUser.included.map((item) => {
       for (const property in item.attributes) {
         if (item.attributes[property] === "Camera") {

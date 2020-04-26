@@ -15,7 +15,6 @@ class StatusChart extends Component {
   }
 
   componentDidMount() {
-    console.log("inside chart CDM", this.props.currentUser);
     this.setData();
   }
 

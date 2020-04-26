@@ -3,21 +3,17 @@ import { Component } from "react";
 import Table from "react-bootstrap/Table";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { showLeadAction } from "../actions/showLeadAction";
 
 class LeadsTable extends Component {
   constructor() {
     super();
-    this.handleLeadId = this.handleLeadId.bind(this);
+    this.showLead = this.showLead.bind(this);
   }
 
-  handleLeadId(event) {
-    event.preventDefault();
-    console.log(event.target);
-    // this.props.userLogOut();
-  }
-
-  componentDidMount() {
-    console.log("Inside leads table CDM:", this.props.currentUser);
+  showLead(event) {
+    // event.preventDefault();
+    // this.props.showLeadAction();
   }
   render() {
     const tableOutput = this.props.currentUser.included.map((item, index) => {
@@ -32,7 +28,9 @@ class LeadsTable extends Component {
 
             <td>
               <Link
+                id={item.attributes.id}
                 className='show-lead-link'
+                onClick={this.showLead}
                 to={`/leads/${item.attributes.id}`}>
                 {item.attributes.product}
               </Link>
@@ -65,4 +63,4 @@ const stateToProps = (state) => {
   };
 };
 
-export default connect(stateToProps)(LeadsTable);
+export default connect(stateToProps, { showLeadAction })(LeadsTable);
