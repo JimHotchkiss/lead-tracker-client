@@ -22,7 +22,7 @@ class LeadsTable extends Component {
         return (
           <tr key={Math.random()}>
             <td>
-              <a href='#'>{item.attributes.contact_email}</a>
+              <a href='#!'>{item.attributes.contact_email}</a>
             </td>
             <td>{item.attributes.urgency}</td>
 

@@ -7,26 +7,17 @@ import { newUserSubmit } from "../actions/newUserSubmit";
 import RepDashboardContainer from "./RepDashboardContainer";
 
 class UserFormContainer extends Component {
-  constructor() {
-    super();
-
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-  }
-
-  handleFormSubmit(event) {
+  handleFormSubmit = (event) => {
     event.preventDefault();
     const formData = this.props.newUserFormData;
     this.props.newUserSubmit(formData);
     this.props.clearUserInput();
-  }
-  onChangeHandler(event) {
+  };
+  onChangeHandler = (event) => {
     const { name, value } = event.target;
-    // this is the data adding it to state
     const formData = { ...this.props.newUserFormData, [name]: value };
-    // This is the action
     this.props.updateNewUserForm(formData);
-  }
+  };
 
   render() {
     const { username, email, password } = this.props.newUserFormData;

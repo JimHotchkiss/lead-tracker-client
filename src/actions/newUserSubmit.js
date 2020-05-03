@@ -24,7 +24,6 @@ export const getCurrentUser = () => {
 
 // Delete Request - Logout
 export const userLogOut = () => {
-  console.log("getCurrentUser after page refresh");
   return (dispatch) => {
     dispatch({ type: "LOG_OUT" });
     return fetch(`${API_URL}/logout`, {

@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 class RepDashboardContainer extends Component {
   render() {
     const renderDashboard = () => {
+      console.log(this.props.currentUser.data.attributes.leads[0]);
       return (
         <div className='dashboard-top-div'>
           <div className='sub-div-left'>

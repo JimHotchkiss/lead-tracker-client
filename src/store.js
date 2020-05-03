@@ -6,6 +6,7 @@ import showLeadReducer from "./reducers/showLeadReducer";
 const manageReducers = combineReducers({
   currentUser: newUserSubmit,
   userInput: newUserReducer,
+  leads: newUserSubmit,
   showLeadDetails: showLeadReducer,
 });
 
