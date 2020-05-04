@@ -6,10 +6,12 @@ import StatusChart from "../components/StatusChart";
 import "./dashboard.css";
 import LeadsTable from "../components/LeadsTable";
 import { connect } from "react-redux";
+import { Route, Redirect } from "react-router-dom";
+
 class RepDashboardContainer extends Component {
   render() {
+    console.log(this.props);
     const renderDashboard = () => {
-      console.log(this.props.currentUser.data.attributes.leads[0]);
       return (
         <div className='dashboard-top-div'>
           <div className='sub-div-left'>
@@ -31,6 +33,13 @@ class RepDashboardContainer extends Component {
     return (
       <div className='dashboard-container'>
         {this.props.currentUser ? renderDashboard() : null}
+        <Route exact path='/login'>
+          {this.props.currentUser ? (
+            <Redirect to='/users/:id' />
+          ) : (
+            <UserFormContainer />
+          )}
+        </Route>
       </div>
     );
   }

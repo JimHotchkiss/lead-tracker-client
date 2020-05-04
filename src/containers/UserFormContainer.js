@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { updateNewUserForm, clearUserInput } from "../actions/newUserForm";
 import { newUserSubmit } from "../actions/newUserSubmit";
 import RepDashboardContainer from "./RepDashboardContainer";
+import { Route, Redirect } from "react-router-dom";
 
 class UserFormContainer extends Component {
   handleFormSubmit = (event) => {

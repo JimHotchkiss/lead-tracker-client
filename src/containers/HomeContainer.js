@@ -8,12 +8,22 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 class HomeContainer extends Component {
   render() {
+    if (this.props.currentUser) {
+      console.log(this.props.currentUser.data.attributes.leads);
+    }
+
     return (
       <div className='home-container'>
         <NavBar />
         <Switch>
           <Route path='/users/:id'>
-            <RepDashboardContainer />
+            <RepDashboardContainer
+              leads={
+                this.props.currentUser
+                  ? this.props.currentUser.data.attributes.leads
+                  : null
+              }
+            />
           </Route>
           <Route path='/login'>
             <UserFormContainer />
