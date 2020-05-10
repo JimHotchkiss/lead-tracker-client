@@ -7,10 +7,16 @@ form {
   align-items: center;
   justify-content: center;
   margin: 30% auto;
+  padding-bottom: 50px;
   padding-top: 30px;
   background-color: #dae1e7;
 }
 
-.container .password-input {
-  padding-bottom: 50px;
+.container label {
+  margin-top: 16px;
+}
+
+.container button {
+  margin-top: 16px;
+  width: 100%;
 }
