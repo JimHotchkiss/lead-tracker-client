@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [value, setValue] = useState("");
   return (
-    <div>
-      <h3>Login</h3>
+    <div className='container-fluid'>
+      <form>
+        <div>
+          <label>Login</label>
+        </div>
+        <input placeholder='' />
+      </form>
     </div>
   );
 };
