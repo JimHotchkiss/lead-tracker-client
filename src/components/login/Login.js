@@ -1,42 +1,54 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { userInput } from "../../redux/actions/userSyncActions";
+import { userSubmit } from "../../redux/actions/userAsyncActions";
+
 import "./login.css";
 
-const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-
-  const handleUserNameChange = (e) => {
-    setUserName(e.target.value);
+const Login = (props) => {
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    const formData = { ...props.userData, [name]: value };
+    props.userInput(formData);
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const handleSubmit = (e) => {
+    console.log("handleSubmit");
+    // Prevent normal behavior(reload page)
+    e.preventDefault();
+    const formData = props.userData;
+    props.userSubmit(formData);
+    // Clear userInput
+
+    console.log(e);
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const { username, email, password } = props.userInput;
   return (
     <div className='container '>
-      <form>
+      <div className='title-div'></div>
+      <form onSubmit={handleSubmit}>
         <div className='userName-label'>
           <label>Username:</label>
         </div>
         <div className='userName-input'>
           <input
-            placeholder='Username'
+            value={username}
+            name='username'
+            placeholder='Enter your username'
             type='text'
-            onChange={handleUserNameChange}
+            onChange={handleOnChange}
           />
         </div>
         <div className='email-label'>
           <label>Email:</label>
           <div className='email-input'>
             <input
-              placeholder='Email'
+              value={email}
+              name='email'
+              placeholder='Enter your email'
               type='text'
-              onChange={handleEmailChange}
+              onChange={handleOnChange}
             />
           </div>
         </div>
@@ -45,22 +57,26 @@ const Login = () => {
         </div>
         <div className='password-input'>
           <input
-            placeholder='Password'
+            value={password}
+            name='password'
+            placeholder='Enter your password'
             type='password'
-            onChange={handlePasswordChange}
+            onChange={handleOnChange}
           />
         </div>
         <div className='submit-div'>
-          <button type='button' className='btn btn-primary'>
-            Submit
-          </button>
+          {/* <input value='submit' type='submit' /> */}
+          <button className='btn btn-primary'>Submit</button>
         </div>
       </form>
-      {userName}
-      {password}
-      {email}
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    userData: state.userInput,
+  };
+};
+
+export default connect(mapStateToProps, { userInput, userSubmit })(Login);
