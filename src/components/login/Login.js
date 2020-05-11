@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { userInput } from "../../redux/actions/userSyncActions";
-import { userSubmit } from "../../redux/actions/userAsyncActions";
+import { userSubmit, userLogOut } from "../../redux/actions/userAsyncActions";
 
 import "./login.css";
 
@@ -13,14 +13,16 @@ const Login = (props) => {
   };
 
   const handleSubmit = (e) => {
-    console.log("handleSubmit");
     // Prevent normal behavior(reload page)
     e.preventDefault();
     const formData = props.userData;
     props.userSubmit(formData);
     // Clear userInput
+  };
 
-    console.log(e);
+  const handleLogOUt = (e) => {
+    e.preventDefault();
+    props.userLogOut();
   };
 
   const { username, email, password } = props.userInput;
@@ -69,6 +71,7 @@ const Login = (props) => {
           <button className='btn btn-primary'>Submit</button>
         </div>
       </form>
+      <input type='submit' onClick={handleLogOUt} />
     </div>
   );
 };
@@ -79,4 +82,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { userInput, userSubmit })(Login);
+export default connect(mapStateToProps, { userInput, userSubmit, userLogOut })(
+  Login
+);
