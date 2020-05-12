@@ -1,6 +1,31 @@
 // Asynchronized request
 const API_URL = process.env.REACT_APP_API_URL;
 
+export const getCurrentUserSuccess = (current_user) => {
+  return { type: "CURRENT_USER", current_user };
+};
+
+// Get Current User
+export const getCurrentUser = () => {
+  return (dispatch) => {
+    return fetch(`${API_URL}/current_user`, {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((current_user) => {
+        if (current_user.error) {
+          alert(current_user.error);
+        } else {
+          dispatch(getCurrentUserSuccess(current_user));
+        }
+      });
+  };
+};
+
 export const userLogOutSuccess = () => {
   return { type: "USER_LOGOUT" };
 };
