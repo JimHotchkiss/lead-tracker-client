@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 
 const DashBoard = (props) => {
-  // useEffect is causing an infinit loop
-  // useEffect(() => {
-  //   props.getCurrentUser();
-  // });
+  useEffect(() => {
+    props.getCurrentUser();
+  }, []);
+
+  console.log(props.currentUser);
   return (
     <div>
       <p>You'll need to login to see this page</p>
