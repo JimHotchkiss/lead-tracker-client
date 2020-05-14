@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Header = () => {
+const Header = ({ user }) => {
   const activeStyle = { color: "#E43F5A" };
+
+  console.log(user);
   return (
     <nav>
       <NavLink exact to='/' activeStyle={activeStyle}>
@@ -18,4 +21,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps)(Header);

@@ -16,7 +16,7 @@ const DashBoard = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { currentUser: state.currentUser };
+  return { currentUser: state.currentUser, user: state.user };
 };
 
 export default connect(mapStateToProps, { getCurrentUser })(DashBoard);

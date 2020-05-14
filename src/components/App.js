@@ -13,6 +13,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={DashBoard} />
           <Route path='/login' component={Login} />
+          <Route path='/logout' component={Login} />
         </Switch>
       </div>
     );
