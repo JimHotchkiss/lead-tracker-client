@@ -81,6 +81,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     userData: state.userInput,
+    user: state.user,
   };
 };
 
