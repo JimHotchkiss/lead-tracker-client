@@ -6,7 +6,6 @@ const DashBoard = (props) => {
   useEffect(() => {
     props.getCurrentUser();
   }, []);
-  console.log(props.currentUser);
 
   return (
     <div>

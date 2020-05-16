@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { userInput } from "../../redux/actions/userSyncActions";
 import { userSubmit, userLogOut } from "../../redux/actions/userAsyncActions";
-
 import "./login.css";
+import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
   const handleOnChange = (e) => {
@@ -16,11 +16,9 @@ const Login = (props) => {
     // Prevent normal behavior(reload page)
     e.preventDefault();
     const formData = props.userData;
-    props.userSubmit(formData);
+    props.userSubmit(formData, props);
     // Clear userInput
     // perhaps call redirect in here?
-
-    props.history.push("/");
   };
 
   const handleLogOUt = (e) => {
@@ -29,6 +27,7 @@ const Login = (props) => {
   };
 
   const { username, email, password } = props.userInput;
+
   return (
     <div className='container '>
       <div className='title-div'></div>
@@ -83,6 +82,7 @@ const mapStateToProps = (state) => {
   return {
     userData: state.userInput,
     user: state.user,
+    currentUser: state.currentUser,
   };
 };
 

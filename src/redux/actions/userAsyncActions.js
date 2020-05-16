@@ -45,8 +45,12 @@ export const userSubmitSucess = (user) => {
   return { type: "USER_LOGIN", user };
 };
 
+export const routeToDashBoard = (props) => {
+  props.history.push("/");
+};
+
 // User Login
-export const userSubmit = (formData) => {
+export const userSubmit = (formData, props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/login`, {
       credentials: "include",
@@ -62,6 +66,7 @@ export const userSubmit = (formData) => {
           alert(user.error);
         } else {
           dispatch(userSubmitSucess(user));
+          routeToDashBoard(props);
         }
       });
   };
