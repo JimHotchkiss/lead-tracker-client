@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 
 const Header = ({ user }) => {
   const activeStyle = { color: "#E43F5A" };
-
-  console.log(user);
   return (
     <nav>
       <NavLink exact to='/' activeStyle={activeStyle}>

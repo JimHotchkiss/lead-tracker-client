@@ -6,17 +6,21 @@ const DashBoard = (props) => {
   useEffect(() => {
     props.getCurrentUser();
   }, []);
-
   console.log(props.currentUser);
+
   return (
     <div>
-      <p>You'll need to login to see this page</p>
+      <p>
+        {props.currentUser && props.currentUser.error
+          ? "Say, bitch, you need to be logged in motherfucker"
+          : "Because you're logged in, I'll show you all your data"}
+      </p>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  return { currentUser: state.currentUser, user: state.user };
+  return { currentUser: state.currentUser };
 };
 
 export default connect(mapStateToProps, { getCurrentUser })(DashBoard);

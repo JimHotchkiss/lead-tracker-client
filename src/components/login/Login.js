@@ -13,13 +13,14 @@ const Login = (props) => {
   };
 
   const handleSubmit = (e) => {
-    console.log(e.target.name);
     // Prevent normal behavior(reload page)
     e.preventDefault();
     const formData = props.userData;
     props.userSubmit(formData);
     // Clear userInput
     // perhaps call redirect in here?
+
+    props.history.push("/");
   };
 
   const handleLogOUt = (e) => {

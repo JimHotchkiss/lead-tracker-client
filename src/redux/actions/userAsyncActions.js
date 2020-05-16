@@ -18,7 +18,8 @@ export const getCurrentUser = () => {
       .then((response) => response.json())
       .then((current_user) => {
         if (current_user.error) {
-          alert(current_user.error);
+          // alert(current_user.error);
+          dispatch(getCurrentUserSuccess(current_user));
         } else {
           dispatch(getCurrentUserSuccess(current_user));
         }
@@ -46,7 +47,6 @@ export const userSubmitSucess = (user) => {
 
 // User Login
 export const userSubmit = (formData) => {
-  console.log(formData);
   return (dispatch) => {
     return fetch(`${API_URL}/login`, {
       credentials: "include",
