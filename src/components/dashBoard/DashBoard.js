@@ -1,23 +1,23 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 
-const DashBoard = ({ currentUser, getCurrentUser }) => {
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
+class DashBoard extends Component {
+  componentDidMount() {
+    this.props.getCurrentUser().catch((error) => {
+      alert("Loading failure" + error);
+    });
+  }
 
-  return (
-    <div>
-      {currentUser !== null ? console.log(currentUser.included) : null}
-      <p>
-        {currentUser && currentUser.error
-          ? "Say, bitch, you need to be logged in motherfucker"
-          : "Because you're logged in, I'll show you all your data"}
-      </p>
-    </div>
-  );
-};
+  render() {
+    console.log(this.props.currentUser);
+    return (
+      <div>
+        <p>fuck</p>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state) => {
   return { currentUser: state.currentUser };
