@@ -1,8 +1,8 @@
 // Asynchronized request
 const API_URL = process.env.REACT_APP_API_URL;
 
-export const getCurrentUserSuccess = (current_user) => {
-  return { type: "CURRENT_USER", current_user };
+export const getCurrentUserSuccess = (user) => {
+  return { type: "CURRENT_USER", user };
 };
 
 // Get Current User
@@ -16,12 +16,11 @@ export const getCurrentUser = () => {
       },
     })
       .then((response) => response.json())
-      .then((current_user) => {
-        if (current_user.error) {
-          // alert(current_user.error);
-          dispatch(getCurrentUserSuccess(current_user));
+      .then((user) => {
+        if (user.error) {
+          dispatch(getCurrentUserSuccess(user.included));
         } else {
-          dispatch(getCurrentUserSuccess(current_user));
+          dispatch(getCurrentUserSuccess(user.included));
         }
       });
   };
@@ -49,6 +48,10 @@ export const routeToDashBoard = (props) => {
   props.history.push("/");
 };
 
+export const setCurrentUser = (user) => {
+  return { type: "CURRENT_USER", user };
+};
+
 // User Login
 export const userSubmit = (formData, props) => {
   return (dispatch) => {
@@ -65,7 +68,7 @@ export const userSubmit = (formData, props) => {
         if (user.error) {
           alert(user.error);
         } else {
-          dispatch(userSubmitSucess(user));
+          dispatch(userSubmitSucess(user.data.attributes));
           routeToDashBoard(props);
         }
       });
