@@ -1,17 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCurrentUser } from "../../redux/actions/userAsyncActions";
-import PieChart from "../piechart/PieChart";
+import Leads from "../leads/Leads";
 class DashBoard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      cameras: 0,
-      digital_captures: 0,
-      insufflators: 0,
-      monitors: 0,
-    };
-  }
   componentDidMount() {
     const { currentUser } = this.props;
     if (currentUser === null) {
@@ -22,11 +13,11 @@ class DashBoard extends Component {
   }
 
   render() {
-    console.log(this.props.leads);
-
+    const leads = this.props.leads;
     return (
       <div style={{ height: "500px" }}>
-        <PieChart
+        <Leads
+          leads={leads}
           camera='12'
           monitor='4'
           digital_capture='10'
@@ -38,10 +29,15 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.attributes);
   return {
     currentUser: state.currentUser,
-    // leads: state.currentUser.leads,
+    leads: state.leads.map((lead) => {
+      return {
+        ...lead,
+        contact: state.contacts.find((a) => a.id === lead.contact_id),
+      };
+    }),
+
     user: state.user,
   };
 };
