@@ -3,6 +3,15 @@ import { connect } from "react-redux";
 import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 import PieChart from "../piechart/PieChart";
 class DashBoard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      cameras: 0,
+      digital_captures: 0,
+      insufflators: 0,
+      monitors: 0,
+    };
+  }
   componentDidMount() {
     const { currentUser } = this.props;
     if (currentUser === null) {
@@ -11,10 +20,19 @@ class DashBoard extends Component {
       });
     }
   }
+
   render() {
     if (this.props.currentUser !== null) {
-      console.log(this.props.currentUser.username, this.props.attributes);
+      this.props.attributes.map((item) => {
+        if (item.type === "lead") {
+          if (item.attributes.product === "Camera") {
+            alert("sup, yo!?");
+          }
+        }
+      });
     }
+
+    console.log(this.state);
 
     return (
       <div style={{ height: "500px" }}>
