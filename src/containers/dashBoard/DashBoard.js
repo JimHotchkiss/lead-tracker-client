@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCurrentUser } from "../../redux/actions/userAsyncActions";
-import Leads from "../leads/Leads";
+import Products from "../../components/products/Products";
 class DashBoard extends Component {
   componentDidMount() {
     const { currentUser } = this.props;
@@ -13,15 +13,19 @@ class DashBoard extends Component {
   }
 
   render() {
-    const leads = this.props.leads;
+    const { leads } = this.props;
+    const { cameras } = this.props;
+    const { monitors } = this.props;
+    const { digital_captures } = this.props;
+    const { insufflators } = this.props;
     return (
       <div style={{ height: "500px" }}>
-        <Leads
+        <Products
           leads={leads}
-          camera='12'
-          monitor='4'
-          digital_capture='10'
-          insufflator='6'
+          cameras={cameras}
+          monitors={monitors}
+          digital_captures={digital_captures}
+          insufflators={insufflators}
         />
       </div>
     );
@@ -37,7 +41,12 @@ const mapStateToProps = (state) => {
         contact: state.contacts.find((a) => a.id === lead.contact_id),
       };
     }),
-
+    cameras: state.leads.filter((lead) => lead.product === "Camera"),
+    monitors: state.leads.filter((lead) => lead.product === "Monitor"),
+    digital_captures: state.leads.filter(
+      (lead) => lead.product === "Digital Capture"
+    ),
+    insufflators: state.leads.filter((lead) => lead.product === "Insufflator"),
     user: state.user,
   };
 };

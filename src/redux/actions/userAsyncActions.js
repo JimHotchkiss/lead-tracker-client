@@ -23,7 +23,7 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log(user.data.attributes.leads);
+        console.log(user.data.attributes.leads[0].product);
         if (user.error) {
           dispatch(getCurrentUserSuccess(user.data.attributes));
           dispatch(getLeadsSuccess(user.data.attributes.leads));

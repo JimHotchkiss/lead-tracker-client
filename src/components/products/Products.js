@@ -1,17 +1,16 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
-const PieChart = (props) => {
-  console.log(props);
+const Products = (props) => {
   const data = {
     labels: ["Camera", "Monitor", "Digital Capture", "Insufflator"],
     datasets: [
       {
         label: "Leads By Categories",
         data: [
-          props.camera,
-          props.monitor,
-          props.digital_capture,
-          props.insufflator,
+          props.cameras.length,
+          props.monitors.length,
+          props.digital_captures.length,
+          props.insufflators.length,
         ],
         backgroundColor: ["#1b83dc", "#4e9ee4", "#9ac8ef", "#cce3f7"],
       },
@@ -35,4 +34,4 @@ const PieChart = (props) => {
   );
 };
 
-export default PieChart;
+export default Products;
