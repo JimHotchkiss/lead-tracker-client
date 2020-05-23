@@ -1,7 +1,7 @@
 export default (state = [], action) => {
   switch (action.type) {
-    case "SET_ATTRIBUTES":
-      return action.attributes;
+    case "SET_LEADS":
+      return action.leads;
     default:
       return state;
   }

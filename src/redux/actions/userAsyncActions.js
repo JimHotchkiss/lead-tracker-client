@@ -4,8 +4,11 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const getCurrentUserSuccess = (user) => {
   return { type: "CURRENT_USER", user };
 };
-export const getAttributesSuccess = (attributes) => {
-  return { type: "SET_ATTRIBUTES", attributes };
+export const getLeadsSuccess = (leads) => {
+  return { type: "SET_LEADS", leads };
+};
+export const getContactsSuccess = (contacts) => {
+  return { type: "SET_CONTACTS", contacts };
 };
 
 // Get Current User
@@ -20,12 +23,15 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
+        console.log(user.data.attributes.leads);
         if (user.error) {
           dispatch(getCurrentUserSuccess(user.data.attributes));
-          dispatch(getAttributesSuccess(user.included));
+          dispatch(getLeadsSuccess(user.data.attributes.leads));
+          dispatch(getContactsSuccess(user.data.attributes.contacts));
         } else {
           dispatch(getCurrentUserSuccess(user.data.attributes));
-          dispatch(getAttributesSuccess(user.included));
+          dispatch(getLeadsSuccess(user.data.attributes.leads));
+          dispatch(getContactsSuccess(user.data.attributes.contacts));
         }
       });
   };

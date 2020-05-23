@@ -22,17 +22,7 @@ class DashBoard extends Component {
   }
 
   render() {
-    if (this.props.currentUser !== null) {
-      this.props.attributes.map((item) => {
-        if (item.type === "lead") {
-          if (item.attributes.product === "Camera") {
-            alert("sup, yo!?");
-          }
-        }
-      });
-    }
-
-    console.log(this.state);
+    console.log(this.props.leads);
 
     return (
       <div style={{ height: "500px" }}>
@@ -48,9 +38,10 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.attributes);
   return {
     currentUser: state.currentUser,
-    attributes: state.attributes,
+    // leads: state.currentUser.leads,
     user: state.user,
   };
 };
