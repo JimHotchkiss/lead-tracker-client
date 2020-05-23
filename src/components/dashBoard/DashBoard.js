@@ -5,14 +5,16 @@ import PieChart from "../piechart/PieChart";
 class DashBoard extends Component {
   componentDidMount() {
     const { currentUser } = this.props;
-    if (currentUser.length === 0) {
+    if (currentUser === null) {
       this.props.getCurrentUser().catch((error) => {
         alert("Loading failure" + error);
       });
     }
   }
   render() {
-    console.log(this.props.currentUser);
+    if (this.props.currentUser !== null) {
+      console.log(this.props.currentUser.username, this.props.attributes);
+    }
 
     return (
       <div style={{ height: "500px" }}>
@@ -30,6 +32,7 @@ class DashBoard extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
+    attributes: state.attributes,
     user: state.user,
   };
 };

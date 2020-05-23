@@ -4,6 +4,9 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const getCurrentUserSuccess = (user) => {
   return { type: "CURRENT_USER", user };
 };
+export const getAttributesSuccess = (attributes) => {
+  return { type: "SET_ATTRIBUTES", attributes };
+};
 
 // Get Current User
 export const getCurrentUser = () => {
@@ -18,9 +21,11 @@ export const getCurrentUser = () => {
       .then((response) => response.json())
       .then((user) => {
         if (user.error) {
-          dispatch(getCurrentUserSuccess(user.included));
+          dispatch(getCurrentUserSuccess(user.data.attributes));
+          dispatch(getAttributesSuccess(user.included));
         } else {
-          dispatch(getCurrentUserSuccess(user.included));
+          dispatch(getCurrentUserSuccess(user.data.attributes));
+          dispatch(getAttributesSuccess(user.included));
         }
       });
   };

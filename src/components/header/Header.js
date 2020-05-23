@@ -11,10 +11,17 @@ const Header = ({ user }) => {
         DashBoard
       </NavLink>{" "}
       {" | "}
-      <NavLink to='/login' activeStyle={activeStyle}>
-        {" "}
-        Login{" "}
-      </NavLink>
+      {user !== null ? (
+        <NavLink to='/logout' activeStyle={activeStyle}>
+          {" "}
+          Logout{" "}
+        </NavLink>
+      ) : (
+        <NavLink to='/login' activeStyle={activeStyle}>
+          {" "}
+          Login{" "}
+        </NavLink>
+      )}
     </nav>
   );
 };

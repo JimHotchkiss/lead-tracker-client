@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 import userReducer from "./reducers/userReducers";
 import userSubmit from "./reducers/userSubmit";
 import currentUser from "./reducers/currentUser";
+import attributes from "./reducers/attributesReducer";
 const manageReducers = combineReducers({
   userInput: userReducer,
   user: userSubmit,
   currentUser: currentUser,
+  attributes: attributes,
 });
 
 const store = createStore(
