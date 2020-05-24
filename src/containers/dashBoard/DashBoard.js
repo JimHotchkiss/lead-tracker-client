@@ -20,14 +20,20 @@ class DashBoard extends Component {
     const { digital_captures } = this.props;
     const { insufflators } = this.props;
     return (
-      <div className='products-component-div'>
-        <Products
-          leads={leads}
-          cameras={cameras}
-          monitors={monitors}
-          digital_captures={digital_captures}
-          insufflators={insufflators}
-        />
+      <div className='dashboard-container-div'>
+        <div className='products-component-div'>
+          <Products
+            leads={leads}
+            cameras={cameras}
+            monitors={monitors}
+            digital_captures={digital_captures}
+            insufflators={insufflators}
+          />
+        </div>
+        <div className='table-graph-div'>
+          <div className='table-component-div'></div>
+          <div className='graph-component-div'></div>
+        </div>
       </div>
     );
   }
