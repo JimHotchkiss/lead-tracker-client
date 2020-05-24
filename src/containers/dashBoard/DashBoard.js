@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 import Products from "../../components/products/Products";
+import "./dashBoard.css";
 class DashBoard extends Component {
   componentDidMount() {
     const { currentUser } = this.props;
@@ -19,7 +20,7 @@ class DashBoard extends Component {
     const { digital_captures } = this.props;
     const { insufflators } = this.props;
     return (
-      <div style={{ height: "500px" }}>
+      <div className='products-component-div'>
         <Products
           leads={leads}
           cameras={cameras}

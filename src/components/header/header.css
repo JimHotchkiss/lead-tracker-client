@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  background: #262626;
+  width: 120px;
+  height: 100vh;
+}
+
+.loginImgDiv {
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  background: transparent url("./img/user-white.png") 0% 0% no-repeat
+    padding-box;
+  background-size: 40px;
+  opacity: 1;
+}
+
+.logContainer p {
+  color: #fff;
+}
+
+.dashBoardImgDiv {
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  background: transparent url("./img/dashboard.png") 0% 0% no-repeat padding-box;
+  background-size: 40px;
+  opacity: 1;
+}
+
+.dashBoardLink p {
+  color: #fff;
+}
+
+.dashBoardLink {
+  margin-bottom: 740px;
+}

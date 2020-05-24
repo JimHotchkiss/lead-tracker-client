@@ -1,5 +1,6 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
+import "./products.css";
 const Products = (props) => {
   const data = {
     labels: ["Camera", "Monitor", "Digital Capture", "Insufflator"],
@@ -12,25 +13,31 @@ const Products = (props) => {
           props.digital_captures.length,
           props.insufflators.length,
         ],
-        backgroundColor: ["#1b83dc", "#4e9ee4", "#9ac8ef", "#cce3f7"],
+        backgroundColor: ["#507DBC", "#A1C6EA", "#BBD1EA", "#DAE3E5"],
       },
     ],
   };
 
   return (
-    <Pie
-      data={data}
-      width={30}
-      height={15}
-      options={{
-        maintainAspectRatio: false,
-        title: {
-          display: true,
-          text: `Leads By Product`,
-          fontSize: 25,
-        },
-      }}
-    />
+    <div className='pie-chart-div'>
+      <Pie
+        data={data}
+        width={750}
+        height={350}
+        options={{
+          maintainAspectRatio: false,
+          legend: {
+            position: "top",
+            fullWidth: true,
+          },
+          title: {
+            display: true,
+            text: `Leads By Product`,
+            fontSize: 25,
+          },
+        }}
+      />
+    </div>
   );
 };
 
