@@ -3,7 +3,7 @@ import { Pie } from "react-chartjs-2";
 import "./products.css";
 const Products = (props) => {
   const data = {
-    labels: ["Camera", "Monitor", "Digital Capture", "Insufflator"],
+    labels: ["Cameras", "Monitors", "Digital Captures", "Insufflators"],
     datasets: [
       {
         label: "Leads By Categories",

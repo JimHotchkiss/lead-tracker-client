@@ -30,7 +30,7 @@ const BarGraphComponent = (props) => {
     <div className='horizontal-bar-div'>
       <HorizontalBar
         data={data}
-        width={5}
+        width={20}
         height={350}
         options={{
           scales: {

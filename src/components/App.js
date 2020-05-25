@@ -12,12 +12,11 @@ class App extends Component {
         <div>
           <Header />
         </div>
-        <div>
+        <div className='components-div'>
           <Switch>
             <Route exact path='/' component={DashBoard} />
             <Route path='/login' component={Login} />
             <Route path='/users/:id' component={Users} />
-            <Route path='/logout' component={Login} />
           </Switch>
         </div>
       </div>

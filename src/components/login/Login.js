@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { userInput } from "../../redux/actions/userSyncActions";
-import { userSubmit, userLogOut } from "../../redux/actions/userAsyncActions";
+import { userSubmit } from "../../redux/actions/userAsyncActions";
 import "./login.css";
-import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
   const handleOnChange = (e) => {
@@ -21,15 +20,10 @@ const Login = (props) => {
     // perhaps call redirect in here?
   };
 
-  const handleLogOUt = (e) => {
-    e.preventDefault();
-    props.userLogOut();
-  };
-
   const { username, email, password } = props.userInput;
 
   return (
-    <div className='container '>
+    <div className='container-div'>
       <div className='title-div'></div>
       <form onSubmit={handleSubmit}>
         <div className='userName-label'>
@@ -69,11 +63,9 @@ const Login = (props) => {
           />
         </div>
         <div className='submit-div'>
-          {/* <input value='submit' type='submit' /> */}
           <button className='btn btn-primary'>Submit</button>
         </div>
       </form>
-      <input value='logout' type='submit' onClick={handleLogOUt} />
     </div>
   );
 };
@@ -86,6 +78,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { userInput, userSubmit, userLogOut })(
-  Login
-);
+export default connect(mapStateToProps, { userInput, userSubmit })(Login);

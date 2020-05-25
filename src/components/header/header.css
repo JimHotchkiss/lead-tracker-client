@@ -1,17 +1,20 @@
-.navbar {
+.nav-bar-div {
   display: flex;
   flex-direction: column;
   background: #262626;
   width: 120px;
   height: 100vh;
+  margin: 0;
+  padding-top: 32px;
+  padding-left: 18px;
 }
 
 .loginImgDiv {
   width: 40px;
   height: 40px;
   margin-left: 16px;
-  margin-top: 24px;
-  margin-bottom: 8px;
+  margin-top: 32px;
+  margin-bottom: 4px;
   background: transparent url("./img/user-white.png") 0% 0% no-repeat
     padding-box;
   background-size: 40px;
@@ -22,6 +25,10 @@
   margin-left: 22px;
 }
 
+#login-img {
+  margin-left: 20px;
+}
+
 .logContainer p {
   color: #fff;
 }
@@ -30,15 +37,31 @@
   width: 40px;
   height: 40px;
   margin-left: 16px;
+  margin-top: 24px;
   background: transparent url("./img/dashboard.png") 0% 0% no-repeat padding-box;
   background-size: 40px;
   opacity: 1;
 }
 
-.dashBoardLink p {
-  color: #fff;
+.add-lead-img-div {
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  background: transparent url("./img/add-icon.png") 0% 0% no-repeat padding-box;
+  background-size: 40px;
+  opacity: 1;
 }
 
-.dashBoardLink {
-  margin-bottom: 740px;
+.add-lead-div {
+  margin-top: 24px;
+}
+
+.add-lead-div p {
+  color: #fff;
+  margin-top: 8px;
+  margin-left: 4px;
+}
+
+.dashBoardLink p {
+  color: #fff;
 }
