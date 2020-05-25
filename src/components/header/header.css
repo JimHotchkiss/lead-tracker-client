@@ -18,6 +18,10 @@
   opacity: 1;
 }
 
+#logout-img {
+  margin-left: 22px;
+}
+
 .logContainer p {
   color: #fff;
 }

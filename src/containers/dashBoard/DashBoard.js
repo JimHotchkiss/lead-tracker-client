@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 import Products from "../../components/products/Products";
+import BarGraphComponent from "../../components/barGraphComponent/BarGraphComponent";
+import TableComponent from "../../components/tableComponent/TableComponent";
 import "./dashBoard.css";
 class DashBoard extends Component {
   componentDidMount() {
@@ -19,6 +21,10 @@ class DashBoard extends Component {
     const { monitors } = this.props;
     const { digital_captures } = this.props;
     const { insufflators } = this.props;
+    const { statusNew } = this.props;
+    const { statusOpen } = this.props;
+    const { statusPending } = this.props;
+    const { statusClosed } = this.props;
     return (
       <div className='dashboard-container-div'>
         <div className='products-component-div'>
@@ -31,8 +37,17 @@ class DashBoard extends Component {
           />
         </div>
         <div className='table-graph-div'>
-          <div className='table-component-div'></div>
-          <div className='graph-component-div'></div>
+          <div className='table-component-div'>
+            <TableComponent />
+          </div>
+          <div className='graph-component-div'>
+            <BarGraphComponent
+              statusNew={statusNew}
+              statusOpen={statusOpen}
+              statusPending={statusPending}
+              statusClosed={statusClosed}
+            />
+          </div>
         </div>
       </div>
     );
@@ -54,6 +69,10 @@ const mapStateToProps = (state) => {
       (lead) => lead.product === "Digital Capture"
     ),
     insufflators: state.leads.filter((lead) => lead.product === "Insufflator"),
+    statusNew: state.leads.filter((lead) => lead.status === "New"),
+    statusOpen: state.leads.filter((lead) => lead.status === "Open"),
+    statusPending: state.leads.filter((lead) => lead.status === "Pending"),
+    statusClosed: state.leads.filter((lead) => lead.status === "Closed"),
     user: state.user,
   };
 };

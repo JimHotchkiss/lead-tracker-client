@@ -1,0 +1,17 @@
+.table-component-div {
+  max-height: 500px;
+  margin-bottom: 18px;
+  padding: 24px;
+  overflow: scroll;
+}
+
+.table-title-div {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.table-title-div h3 {
+  font-family: "Roboto", sans-serif;
+  color: #262626;
+  opacity: 0.7;
+}

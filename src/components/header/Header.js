@@ -9,7 +9,7 @@ const Header = ({ user }) => {
       <div className='logContainer'>
         {user !== null ? (
           <NavLink to='/logout' style={{ textDecoration: "none" }}>
-            <div className='loginImgDiv'></div>
+            <div id='logout-img' className='loginImgDiv'></div>
             <p>User logout</p>
           </NavLink>
         ) : (
