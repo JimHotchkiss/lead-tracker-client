@@ -24,7 +24,9 @@ const Login = (props) => {
 
   return (
     <div className='container-div'>
-      <div className='title-div'></div>
+      <div className='title-div'>
+        <h3>User Login</h3>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className='userName-label'>
           <label>Username:</label>

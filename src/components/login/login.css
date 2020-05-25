@@ -11,6 +11,13 @@
   background-color: #eff7f6;
 }
 
+.title-div h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  color: #262626;
+  opacity: 0.7;
+}
+
 .container-div {
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
