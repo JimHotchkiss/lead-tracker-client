@@ -38,7 +38,7 @@ class DashBoard extends Component {
         </div>
         <div className='table-graph-div'>
           <div className='table-component-div'>
-            <TableComponent />
+            <TableComponent leads={leads} />
           </div>
           <div className='graph-component-div'>
             <BarGraphComponent

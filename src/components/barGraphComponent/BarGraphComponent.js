@@ -3,14 +3,12 @@ import { HorizontalBar } from "react-chartjs-2";
 import "./barGraph.css";
 
 const BarGraphComponent = (props) => {
-  console.log(props);
   const obj = props;
   const limits = Object.keys(obj).map(function (key) {
     return obj[key].length;
   });
   const min = Math.min.apply(null, limits);
   const max = Math.max.apply(null, limits);
-  console.log(min);
   const data = {
     labels: ["New", "Open", "Pending", "Closed"],
     datasets: [

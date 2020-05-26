@@ -23,7 +23,6 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log(user);
         if (user.error) {
           dispatch(getCurrentUserSuccess(user.data.attributes));
           dispatch(getLeadsSuccess(user.data.attributes.leads));
