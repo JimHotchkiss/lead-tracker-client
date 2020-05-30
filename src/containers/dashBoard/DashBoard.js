@@ -4,6 +4,7 @@ import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 import Products from "../../components/products/Products";
 import BarGraphComponent from "../../components/barGraphComponent/BarGraphComponent";
 import TableComponent from "../../components/tableComponent/TableComponent";
+import { Route } from "react-router-dom";
 import "./dashBoard.css";
 class DashBoard extends Component {
   componentDidMount() {

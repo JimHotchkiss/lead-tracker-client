@@ -1,8 +1,8 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "./tableComponent.css";
-const TableComponent = (props) => {
-  console.log(props);
+const TableComponent = ({ leads }) => {
+  const data = (leads) => {};
   return (
     <div className='table-component-div'>
       <div className='table-title-div'>

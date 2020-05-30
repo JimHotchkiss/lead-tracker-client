@@ -7,28 +7,22 @@ import "./header.css";
 
 class Header extends Component {
   handleLogOut = (e) => {
-    e.preventDefault();
     this.props.userLogOut();
   };
   render() {
+    const { currentUser } = this.props;
     return (
       <div className='nav-bar-div'>
         <div className='logContainer'>
-          {this.props.user !== null ? (
-            <div
-              className='logout-div'
-              onClick={this.handleLogOut}
-              to='/logout'
-              style={{ textDecoration: "none" }}>
-              <div id='logout-img' className='loginImgDiv'></div>
-              <p>User logout</p>
-            </div>
-          ) : (
+          {currentUser ? (
             <NavLink to='/login' style={{ textDecoration: "none" }}>
-              <div id='login-img' className='loginImgDiv'></div>
-              <p>User login</p>
+              <div
+                onClick={this.handleLogOut}
+                id='login-img'
+                className='loginImgDiv'></div>
+              <p>User logout</p>
             </NavLink>
-          )}
+          ) : null}
         </div>
         <div className='dashBoardLink'>
           <NavLink exact to='/' style={{ textDecoration: "none" }}>
@@ -48,7 +42,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user };
+  return { currentUser: state.currentUser };
 };
 
 export default connect(mapStateToProps, { userLogOut })(Header);

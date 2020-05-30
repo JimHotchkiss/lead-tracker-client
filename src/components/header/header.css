@@ -33,6 +33,10 @@
   color: #fff;
 }
 
+.logout-div:hover {
+  cursor: pointer;
+}
+
 .dashBoardImgDiv {
   width: 40px;
   height: 40px;
