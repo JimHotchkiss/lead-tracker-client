@@ -14,15 +14,13 @@ class Header extends Component {
     return (
       <div className='nav-bar-div'>
         <div className='logContainer'>
-          {currentUser ? (
-            <NavLink to='/login' style={{ textDecoration: "none" }}>
-              <div
-                onClick={this.handleLogOut}
-                id='login-img'
-                className='loginImgDiv'></div>
-              <p>User logout</p>
-            </NavLink>
-          ) : null}
+          <NavLink to='/login' style={{ textDecoration: "none" }}>
+            <div
+              onClick={this.handleLogOut}
+              id='login-img'
+              className='loginImgDiv'></div>
+            <p>User logout</p>
+          </NavLink>
         </div>
         <div className='dashBoardLink'>
           <NavLink exact to='/' style={{ textDecoration: "none" }}>
