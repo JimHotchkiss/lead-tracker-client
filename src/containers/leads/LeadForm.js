@@ -1,12 +1,35 @@
 import React, { Component } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { leadFormInput } from "../../redux/actions/leadSyncActions";
 import "./leadForm.css";
 
 class LeadForm extends Component {
+  constructor(props) {
+    super(props);
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleOnChange = (e) => {
+    const { name, value } = e.target;
+    const leadFormData = { ...this.props.leadFormData, [name]: value };
+    console.log(leadFormData);
+    this.props.leadFormInput(leadFormData);
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
   render() {
+    const {
+      lead_description,
+      name,
+      email,
+      phone_number,
+    } = this.props.leadFormInput;
     return (
       <div className='lead-form-div'>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <div className='lead-form-title'>
             <h3>Lead Information</h3>
           </div>
@@ -21,7 +44,13 @@ class LeadForm extends Component {
           </Form.Group>
           <Form.Group controlId='exampleForm.ControlTextarea1'>
             <Form.Label>Lead Description</Form.Label>
-            <Form.Control as='textarea' rows='3' />
+            <Form.Control
+              onChange={this.handleOnChange}
+              value={lead_description}
+              name='lead_description'
+              as='textarea'
+              rows='3'
+            />
           </Form.Group>
 
           <Form.Group controlId='exampleForm.ControlSelect1'>
@@ -46,20 +75,47 @@ class LeadForm extends Component {
           </div>
           <Form.Group controlId='formGroupEmail'>
             <Form.Label>Name</Form.Label>
-            <Form.Control type='email' placeholder='Enter name' />
+            <Form.Control
+              onChange={this.handleOnChange}
+              value={name}
+              name='name'
+              type='text'
+              placeholder='Enter name'
+            />
           </Form.Group>
           <Form.Group controlId='formGroupEmail'>
             <Form.Label>Email</Form.Label>
-            <Form.Control type='email' placeholder='Enter email' />
+            <Form.Control
+              onChange={this.handleOnChange}
+              value={email}
+              name='email'
+              type='email'
+              placeholder='Enter email'
+            />
           </Form.Group>
           <Form.Group controlId='formGroupPassword'>
             <Form.Label>Phone Number</Form.Label>
-            <Form.Control type='password' placeholder='Enter phone number' />
+            <Form.Control
+              onChange={this.handleOnChange}
+              value={phone_number}
+              name='phone_number'
+              type='phone_number'
+              placeholder='Enter phone number'
+            />
           </Form.Group>
+          <Button variant='primary' type='submit'>
+            Submit
+          </Button>
         </Form>
       </div>
     );
   }
 }
 
-export default LeadForm;
+const mapStateToProps = (state) => {
+  return {
+    leadFormData: state.leadFormInput,
+  };
+};
+
+export default connect(mapStateToProps, { leadFormInput })(LeadForm);

@@ -16,8 +16,6 @@ const Login = (props) => {
     e.preventDefault();
     const formData = props.userData;
     props.userSubmit(formData, props);
-    // Clear userInput
-    // perhaps call redirect in here?
   };
 
   const { username, email, password } = props.userInput;
