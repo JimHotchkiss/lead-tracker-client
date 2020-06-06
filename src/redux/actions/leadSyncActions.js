@@ -1,7 +1,7 @@
-export const leadFormInput = (formData) => {
+export const leadFormInput = (leadData) => {
   return {
     type: "LEAD_FORM_INPUT",
-    formData,
+    leadData,
   };
 };
 

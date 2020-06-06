@@ -12,18 +12,20 @@ class LeadForm extends Component {
   }
   handleOnChange = (e) => {
     const { name, value } = e.target;
-    const leadFormData = { ...this.props.leadFormData, [name]: value };
-    console.log(leadFormData);
-    this.props.leadFormInput(leadFormData);
+    const leadData = { ...this.props.leadFormData, [name]: value };
+    this.props.leadFormInput(leadData);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.props.leadData);
+    const formData = this.props.leadData;
+    // this.props.userSubmit(formData, this.props);
   };
   render() {
     const {
       lead_description,
-      name,
+      contact_name,
       email,
       phone_number,
     } = this.props.leadFormInput;
@@ -77,9 +79,9 @@ class LeadForm extends Component {
             <Form.Label>Name</Form.Label>
             <Form.Control
               onChange={this.handleOnChange}
-              value={name}
-              name='name'
-              type='text'
+              value={contact_name}
+              name='contact_name'
+              type='name'
               placeholder='Enter name'
             />
           </Form.Group>
@@ -113,8 +115,9 @@ class LeadForm extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    leadFormData: state.leadFormInput,
+    leadFormData: state.leadInput,
   };
 };
 
