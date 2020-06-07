@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { leadFormInput } from "../../redux/actions/leadSyncActions";
+import { leadSubmit } from "../../redux/actions/leadAsyncActions";
+
 import "./leadForm.css";
 
 class LeadForm extends Component {
@@ -18,9 +20,9 @@ class LeadForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.props.leadData);
+    console.log(this.props.leadFormData);
     const formData = this.props.leadData;
-    // this.props.userSubmit(formData, this.props);
+    this.props.leadSubmit(formData, this.props);
   };
   render() {
     const {
@@ -37,12 +39,17 @@ class LeadForm extends Component {
           </div>
           <Form.Group controlId='exampleForm.ControlSelect1'>
             <Form.Label>Product</Form.Label>
-            <Form.Control as='select'>
-              <option>Camera</option>
-              <option>Monitor</option>
-              <option>Digital Capture</option>
-              <option>Insufflator</option>
-            </Form.Control>
+
+            <select
+              className='form-control'
+              name='product'
+              onChange={this.handleOnChange}>
+              <option value=''>Select</option>
+              <option value='camera'>Camera</option>
+              <option value='monitor'>Monitor</option>
+              <option value='digital_capture'>Digital Capture</option>
+              <option value='insufflator'>Insufflator</option>
+            </select>
           </Form.Group>
           <Form.Group controlId='exampleForm.ControlTextarea1'>
             <Form.Label>Lead Description</Form.Label>
@@ -57,20 +64,28 @@ class LeadForm extends Component {
 
           <Form.Group controlId='exampleForm.ControlSelect1'>
             <Form.Label>Urgency</Form.Label>
-            <Form.Control as='select'>
-              <option>Low</option>
-              <option>Medium</option>
-              <option>High</option>
-            </Form.Control>
+            <select
+              className='form-control'
+              onChange={this.handleOnChange}
+              name='urgency'>
+              <option value=''>Select</option>
+              <option value='low'>Low</option>
+              <option value='medium'>Medium</option>
+              <option value='high'>High</option>
+            </select>
           </Form.Group>
           <Form.Group controlId='exampleForm.ControlSelect1'>
             <Form.Label>Status</Form.Label>
-            <Form.Control as='select'>
-              <option>New</option>
-              <option>Open</option>
-              <option>Pending</option>
-              <option>Closed</option>
-            </Form.Control>
+            <select
+              className='form-control'
+              onChange={this.handleOnChange}
+              name='status'>
+              <option value=''>Select</option>
+              <option value='new'>New</option>
+              <option value='open'>Open</option>
+              <option value='pending'>Pending</option>
+              <option value='closed'>Closed</option>
+            </select>
           </Form.Group>
           <div className='form-lead-contact-title'>
             <h3>Contact Information</h3>
@@ -121,4 +136,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { leadFormInput })(LeadForm);
+export default connect(mapStateToProps, { leadFormInput, leadSubmit })(
+  LeadForm
+);

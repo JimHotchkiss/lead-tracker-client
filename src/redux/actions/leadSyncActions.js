@@ -5,9 +5,9 @@ export const leadFormInput = (leadData) => {
   };
 };
 
-//   export const userSubmit = (formData) => {
-//     return {
-//       type: "USER_SUBMIT",
-//       formData,
-//     };
-//   };
+export const leadSubmit = (formData) => {
+  return {
+    type: "LEAD_SUBMIT",
+    formData,
+  };
+};
