@@ -5,7 +5,8 @@ export const leadSubmitSucess = (lead) => {
   return { type: "LEAD_SUBMIT", lead };
 };
 
-export const leadSubmit = (formData, props) => {
+export const leadSubmit = (leadData, props) => {
+  console.log(leadData);
   return (dispatch) => {
     return fetch(`${API_URL}/leads`, {
       credentials: "include",
@@ -13,7 +14,7 @@ export const leadSubmit = (formData, props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ lead: formData }),
+      body: JSON.stringify({ lead: leadData }),
     })
       .then((response) => response.json())
       .then((lead) => {

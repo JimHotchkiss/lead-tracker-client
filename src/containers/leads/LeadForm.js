@@ -3,7 +3,6 @@ import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { leadFormInput } from "../../redux/actions/leadSyncActions";
 import { leadSubmit } from "../../redux/actions/leadAsyncActions";
-
 import "./leadForm.css";
 
 class LeadForm extends Component {
@@ -20,9 +19,8 @@ class LeadForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.props.leadFormData);
-    const formData = this.props.leadData;
-    this.props.leadSubmit(formData, this.props);
+    const leadData = this.props.leadFormData;
+    this.props.leadSubmit(leadData, this.props);
   };
   render() {
     const {
@@ -130,7 +128,6 @@ class LeadForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     leadFormData: state.leadInput,
   };

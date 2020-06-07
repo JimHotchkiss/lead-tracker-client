@@ -64,6 +64,7 @@ export const setCurrentUser = (user) => {
 
 // User Login
 export const userSubmit = (formData, props) => {
+  console.log(formData);
   return (dispatch) => {
     return fetch(`${API_URL}/login`, {
       credentials: "include",
