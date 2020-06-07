@@ -24,7 +24,7 @@ class LeadForm extends Component {
   };
   render() {
     const {
-      lead_description,
+      description,
       contact_name,
       email,
       phone_number,
@@ -53,8 +53,8 @@ class LeadForm extends Component {
             <Form.Label>Lead Description</Form.Label>
             <Form.Control
               onChange={this.handleOnChange}
-              value={lead_description}
-              name='lead_description'
+              value={description}
+              name='description'
               as='textarea'
               rows='3'
             />

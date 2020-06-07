@@ -1,6 +1,6 @@
 const initialState = {
   product: "",
-  lead_description: "",
+  description: "",
   urgency: "",
   status: "",
   contact_name: "",
