@@ -6,7 +6,6 @@ import "./login.css";
 
 const Login = (props) => {
   const handleOnChange = (e) => {
-    console.log(e.target);
     const { name, value } = e.target;
     const formData = { ...props.userData, [name]: value };
     props.userInput(formData);
