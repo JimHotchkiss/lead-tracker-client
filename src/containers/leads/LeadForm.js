@@ -13,7 +13,12 @@ class LeadForm extends Component {
   }
   handleOnChange = (e) => {
     const { name, value } = e.target;
-    const leadData = { ...this.props.leadFormData, [name]: value };
+    console.log(this.props.leadFormData);
+    const leadData = {
+      ...this.props.leadFormData,
+      [name]: value,
+    };
+
     this.props.leadFormInput(leadData);
   };
 
@@ -23,11 +28,12 @@ class LeadForm extends Component {
     this.props.leadSubmit(leadData, this.props);
   };
   render() {
+    // added = {} for 'undefined'
     const {
       description,
-      contact_name,
-      email,
-      phone_number,
+      contact_attributes: { contact_name } = {},
+      contact_attributes: { email } = {},
+      contact_attributes: { phone_number } = {},
     } = this.props.leadFormInput;
     return (
       <div className='lead-form-div'>
@@ -130,6 +136,7 @@ class LeadForm extends Component {
 const mapStateToProps = (state) => {
   return {
     leadFormData: state.leadInput,
+    contact: state.leadInput.contact_attributes,
   };
 };
 
