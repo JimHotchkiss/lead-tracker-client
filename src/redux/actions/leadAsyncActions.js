@@ -6,7 +6,6 @@ export const leadSubmitSucess = (lead) => {
 };
 
 export const leadSubmit = (leadData, props) => {
-  console.log(leadData);
   return (dispatch) => {
     return fetch(`${API_URL}/leads`, {
       credentials: "include",

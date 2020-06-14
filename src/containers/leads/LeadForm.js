@@ -13,7 +13,6 @@ class LeadForm extends Component {
   }
   handleOnChange = (e) => {
     const { name, value } = e.target;
-    console.log(this.props.leadFormData);
     const leadData = {
       ...this.props.leadFormData,
       [name]: value,
@@ -31,9 +30,12 @@ class LeadForm extends Component {
     // added = {} for 'undefined'
     const {
       description,
-      contact_attributes: { contact_name } = {},
-      contact_attributes: { email } = {},
-      contact_attributes: { phone_number } = {},
+      contact_name,
+      email,
+      phone_number,
+      // contact_attributes: { contact_name } = {},
+      // contact_attributes: { email } = {},
+      // contact_attributes: { phone_number } = {},
     } = this.props.leadFormInput;
     return (
       <div className='lead-form-div'>
