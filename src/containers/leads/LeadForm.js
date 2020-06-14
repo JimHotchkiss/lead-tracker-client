@@ -51,10 +51,10 @@ class LeadForm extends Component {
               name='product'
               onChange={this.handleOnChange}>
               <option value=''>Select</option>
-              <option value='camera'>Camera</option>
-              <option value='monitor'>Monitor</option>
-              <option value='digital_capture'>Digital Capture</option>
-              <option value='insufflator'>Insufflator</option>
+              <option value='Camera'>Camera</option>
+              <option value='Monitor'>Monitor</option>
+              <option value='Digital Capture'>Digital Capture</option>
+              <option value='Insufflator'>Insufflator</option>
             </select>
           </Form.Group>
           <Form.Group controlId='exampleForm.ControlTextarea1'>
@@ -75,9 +75,9 @@ class LeadForm extends Component {
               onChange={this.handleOnChange}
               name='urgency'>
               <option value=''>Select</option>
-              <option value='low'>Low</option>
-              <option value='medium'>Medium</option>
-              <option value='high'>High</option>
+              <option value='Low'>Low</option>
+              <option value='Medium'>Medium</option>
+              <option value='High'>High</option>
             </select>
           </Form.Group>
           <Form.Group controlId='exampleForm.ControlSelect1'>
@@ -87,10 +87,10 @@ class LeadForm extends Component {
               onChange={this.handleOnChange}
               name='status'>
               <option value=''>Select</option>
-              <option value='new'>New</option>
-              <option value='open'>Open</option>
-              <option value='pending'>Pending</option>
-              <option value='closed'>Closed</option>
+              <option value='New'>New</option>
+              <option value='Open'>Open</option>
+              <option value='Pending'>Pending</option>
+              <option value='Closed'>Closed</option>
             </select>
           </Form.Group>
           <div className='form-lead-contact-title'>

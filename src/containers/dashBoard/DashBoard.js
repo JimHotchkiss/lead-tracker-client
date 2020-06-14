@@ -4,7 +4,6 @@ import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 import Products from "../../components/products/Products";
 import BarGraphComponent from "../../components/barGraphComponent/BarGraphComponent";
 import TableComponent from "../../components/tableComponent/TableComponent";
-import { Route } from "react-router-dom";
 import "./dashBoard.css";
 class DashBoard extends Component {
   componentDidMount() {
@@ -56,12 +55,15 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.leads);
   return {
     currentUser: state.currentUser,
     leads: state.leads.map((lead) => {
       return {
         ...lead,
-        contact: state.contacts.find((a) => a.id === lead.contact_id),
+        contact: state.contacts.find(
+          (contact) => contact.id === lead.contact_id
+        ),
       };
     }),
     cameras: state.leads.filter((lead) => lead.product === "Camera"),
