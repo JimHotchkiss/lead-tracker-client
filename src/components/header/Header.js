@@ -11,17 +11,21 @@ class Header extends Component {
   };
   render() {
     const { currentUser } = this.props;
+    console.log(currentUser);
     return (
       <div className='nav-bar-div'>
-        <div className='logContainer'>
-          <NavLink to='/login' style={{ textDecoration: "none" }}>
-            <div
-              onClick={this.handleLogOut}
-              id='login-img'
-              className='loginImgDiv'></div>
-            <p>User logout</p>
-          </NavLink>
-        </div>
+        {currentUser !== null ? (
+          <div className='logContainer'>
+            <NavLink to='/login' style={{ textDecoration: "none" }}>
+              <div
+                onClick={this.handleLogOut}
+                id='login-img'
+                className='loginImgDiv'></div>
+              <p>User logout</p>
+            </NavLink>
+          </div>
+        ) : null}
+
         <div className='dashBoardLink'>
           <NavLink exact to='/' style={{ textDecoration: "none" }}>
             <div className='dashBoardImgDiv'></div>

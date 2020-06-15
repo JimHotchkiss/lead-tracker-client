@@ -2,7 +2,7 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const leadSubmitSucess = (lead) => {
-  return { type: "LEAD_SUBMIT", lead };
+  return { type: "SET_LEAD", lead };
 };
 
 export const getLeadsSuccess = (leads) => {
@@ -13,30 +13,30 @@ export const routeToDashBoard = (props) => {
   props.history.push("/");
 };
 
-export const getLeads = (props) => {
-  console.log("here");
-  return (dispatch) => {
-    return fetch(`${API_URL}/leads`, {
-      credentials: "include",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // body: JSON.stringify({ lead: leadData }),
-    })
-      .then((response) => response.json())
-      .then((leads) => {
-        if (leads.error) {
-          alert(leads.error);
-        } else {
-          // remember you may need attributes
-          console.log(leads);
-          dispatch(getLeadsSuccess(leads));
-          routeToDashBoard(props);
-        }
-      });
-  };
-};
+// export const getLeads = (props) => {
+//   console.log("here");
+//   return (dispatch) => {
+//     return fetch(`${API_URL}/leads`, {
+//       credentials: "include",
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       // body: JSON.stringify({ lead: leadData }),
+//     })
+//       .then((response) => response.json())
+//       .then((leads) => {
+//         if (leads.error) {
+//           alert(leads.error);
+//         } else {
+//           // remember you may need attributes
+//           console.log(leads);
+//           dispatch(getLeadsSuccess(leads));
+//           routeToDashBoard(props);
+//         }
+//       });
+//   };
+// };
 
 export const leadSubmit = (leadData, props) => {
   return (dispatch) => {
@@ -56,7 +56,7 @@ export const leadSubmit = (leadData, props) => {
           // Still need LeadSubmit Reducer
           dispatch(leadSubmitSucess(lead));
           // This isn't working not sure if this is the best way to handle it
-          getLeads(props);
+          // getLeads(props);
           routeToDashBoard(props);
         }
       });

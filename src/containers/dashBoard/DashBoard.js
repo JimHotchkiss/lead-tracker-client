@@ -7,12 +7,9 @@ import TableComponent from "../../components/tableComponent/TableComponent";
 import "./dashBoard.css";
 class DashBoard extends Component {
   componentDidMount() {
-    const { currentUser } = this.props;
-    if (currentUser === null) {
-      this.props.getCurrentUser().catch((error) => {
-        alert("Loading failure" + error);
-      });
-    }
+    this.props.getCurrentUser().catch((error) => {
+      alert("Loading failure" + error);
+    });
   }
 
   render() {
@@ -25,6 +22,7 @@ class DashBoard extends Component {
     const { statusOpen } = this.props;
     const { statusPending } = this.props;
     const { statusClosed } = this.props;
+    console.log(this.props.lead);
     return (
       <div className='dashboard-container-div'>
         <div className='products-component-div'>
@@ -55,9 +53,9 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.leads);
   return {
     currentUser: state.currentUser,
+    lead: state.lead,
     leads: state.leads.map((lead) => {
       return {
         ...lead,

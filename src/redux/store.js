@@ -5,12 +5,14 @@ import currentUser from "./reducers/currentUser";
 import leads from "./reducers/leadsReducer";
 import contacts from "./reducers/contactsReducer";
 import leadInput from "./reducers/leadFormReducer";
+import lead from "./reducers/leadSubmitReducer";
 const manageReducers = combineReducers({
   userInput: userInput,
   currentUser: currentUser,
   leads: leads,
   contacts: contacts,
   leadInput: leadInput,
+  lead: lead,
 });
 
 const store = createStore(
