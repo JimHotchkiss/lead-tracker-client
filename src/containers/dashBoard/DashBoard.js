@@ -12,6 +12,23 @@ class DashBoard extends Component {
     });
   }
 
+  showContact() {
+    console.log("show contact");
+  }
+
+  truncateString(str, num) {
+    if (str.length <= num) {
+      return str;
+    }
+    return str.slice(0, num) + "...";
+  }
+
+  convertTime(dateTime) {
+    let dateString = dateTime;
+    let newDateString = new Date(dateString);
+    return newDateString.toLocaleDateString();
+  }
+
   render() {
     const { leads } = this.props;
     const { cameras } = this.props;
@@ -43,6 +60,9 @@ class DashBoard extends Component {
               insufflators={insufflators}
               leads={leads}
               contacts={contacts}
+              showContact={this.showContact}
+              truncateString={this.truncateString}
+              convertTime={this.convertTime}
             />
           </div>
           <div className='graph-component-div'>

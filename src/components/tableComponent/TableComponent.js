@@ -2,29 +2,12 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import "./tableComponent.css";
 const TableComponent = (props) => {
-  console.log(props.contacts);
-  const truncateString = (str, num) => {
-    if (str.length <= num) {
-      return str;
-    }
-    return str.slice(0, num) + "...";
-  };
-
-  const convertTime = (dateTime) => {
-    let dateString = dateTime;
-    let newDateString = new Date(dateString);
-    return newDateString.toLocaleDateString();
-  };
-
   const contactEmail = (contactId) => {
-    console.log(contactId);
     const contact_email = props.contacts.find(
       (contact) => contact.id === contactId
     );
     if (contact_email) {
       return contact_email.email;
-    } else {
-      console.log("wtf");
     }
   };
 
@@ -46,9 +29,13 @@ const TableComponent = (props) => {
                 {index + 1}. Show|Edit
               </a>
             </td>
-            <td>{truncateString(camera.description, 30)}</td>
-            <td>{contactEmail(camera.contact_id)}</td>
-            <td>{convertTime(camera.created_at)}</td>
+            <td>{props.truncateString(camera.description, 30)}</td>
+            <td>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {contactEmail(camera.contact_id)}
+              </a>
+            </td>
+            <td>{props.convertTime(camera.created_at)}</td>
           </tr>
         </tbody>
       ))}
@@ -73,9 +60,13 @@ const TableComponent = (props) => {
                 {index + 1}. Show|Edit
               </a>
             </td>
-            <td>{truncateString(monitor.description, 30)}</td>
-            <td>{contactEmail(monitor.contact_id)}</td>
-            <td>{convertTime(monitor.created_at)}</td>
+            <td>{props.truncateString(monitor.description, 30)}</td>
+            <td>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {contactEmail(monitor.contact_id)}
+              </a>
+            </td>
+            <td>{props.convertTime(monitor.created_at)}</td>
           </tr>
         </tbody>
       ))}
@@ -100,9 +91,13 @@ const TableComponent = (props) => {
                 {index + 1}. Show|Edit
               </a>
             </td>
-            <td>{truncateString(insufflator.description, 30)}</td>
-            <td>{contactEmail(insufflator.contact_id)}</td>
-            <td>{convertTime(insufflator.created_at)}</td>
+            <td>{props.truncateString(insufflator.description, 30)}</td>
+            <td>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {contactEmail(insufflator.contact_id)}
+              </a>
+            </td>
+            <td>{props.convertTime(insufflator.created_at)}</td>
           </tr>
         </tbody>
       ))}
@@ -127,9 +122,13 @@ const TableComponent = (props) => {
                 {index + 1}. Show|Edit
               </a>
             </td>
-            <td>{truncateString(digital_capture.description, 30)}</td>
-            <td>{contactEmail(digital_capture.contact_id)}</td>
-            <td>{convertTime(digital_capture.created_at)}</td>
+            <td>{props.truncateString(digital_capture.description, 30)}</td>
+            <td>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {contactEmail(digital_capture.contact_id)}
+              </a>
+            </td>
+            <td>{props.convertTime(digital_capture.created_at)}</td>
           </tr>
         </tbody>
       ))}
@@ -144,8 +143,8 @@ const TableComponent = (props) => {
       <div>
         {cameraTable}
         {monitorTable}
-        {insufflatorTable}
         {digitalCaptureTable}
+        {insufflatorTable}
       </div>
     </div>
   );
