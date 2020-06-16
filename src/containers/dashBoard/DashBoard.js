@@ -22,6 +22,7 @@ class DashBoard extends Component {
     const { statusOpen } = this.props;
     const { statusPending } = this.props;
     const { statusClosed } = this.props;
+    const { contacts } = this.props;
     return (
       <div className='dashboard-container-div'>
         <div className='products-component-div'>
@@ -41,6 +42,7 @@ class DashBoard extends Component {
               digital_captures={digital_captures}
               insufflators={insufflators}
               leads={leads}
+              contacts={contacts}
             />
           </div>
           <div className='graph-component-div'>
@@ -69,6 +71,7 @@ const mapStateToProps = (state) => {
         ),
       };
     }),
+    contacts: state.contacts,
     cameras: state.leads.filter((lead) => lead.product === "Camera"),
     monitors: state.leads.filter((lead) => lead.product === "Monitor"),
     digital_captures: state.leads.filter(

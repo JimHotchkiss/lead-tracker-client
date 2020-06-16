@@ -2,6 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import "./tableComponent.css";
 const TableComponent = (props) => {
+  console.log(props.contacts);
   const truncateString = (str, num) => {
     if (str.length <= num) {
       return str;
@@ -10,12 +11,23 @@ const TableComponent = (props) => {
   };
 
   const convertTime = (dateTime) => {
-    console.log(dateTime);
     let dateString = dateTime;
     let newDateString = new Date(dateString);
-
-    return newDateString.toString();
+    return newDateString.toLocaleDateString();
   };
+
+  const contactEmail = (contactId) => {
+    console.log(contactId);
+    const contact_email = props.contacts.find(
+      (contact) => contact.id === contactId
+    );
+    if (contact_email) {
+      return contact_email.email;
+    } else {
+      console.log("wtf");
+    }
+  };
+
   const cameraTable = (
     <Table striped bordered hover size='sm' variant='dark' responsive='sm'>
       <thead>
@@ -30,10 +42,12 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!'>{index + 1}</a>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {index + 1}. Show|Edit
+              </a>
             </td>
             <td>{truncateString(camera.description, 30)}</td>
-            <td>{camera.contact_id}</td>
+            <td>{contactEmail(camera.contact_id)}</td>
             <td>{convertTime(camera.created_at)}</td>
           </tr>
         </tbody>
@@ -55,10 +69,12 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!'>{index + 1}</a>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {index + 1}. Show|Edit
+              </a>
             </td>
             <td>{truncateString(monitor.description, 30)}</td>
-            <td>{monitor.contact_id}</td>
+            <td>{contactEmail(monitor.contact_id)}</td>
             <td>{convertTime(monitor.created_at)}</td>
           </tr>
         </tbody>
@@ -80,10 +96,12 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!'>{index + 1}</a>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {index + 1}. Show|Edit
+              </a>
             </td>
             <td>{truncateString(insufflator.description, 30)}</td>
-            <td>{insufflator.contact_id}</td>
+            <td>{contactEmail(insufflator.contact_id)}</td>
             <td>{convertTime(insufflator.created_at)}</td>
           </tr>
         </tbody>
@@ -105,10 +123,12 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!'>{index + 1}</a>
+              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+                {index + 1}. Show|Edit
+              </a>
             </td>
             <td>{truncateString(digital_capture.description, 30)}</td>
-            <td>{digital_capture.contact_id}</td>
+            <td>{contactEmail(digital_capture.contact_id)}</td>
             <td>{convertTime(digital_capture.created_at)}</td>
           </tr>
         </tbody>
@@ -123,7 +143,6 @@ const TableComponent = (props) => {
       </div>
       <div>
         {cameraTable}
-
         {monitorTable}
         {insufflatorTable}
         {digitalCaptureTable}
