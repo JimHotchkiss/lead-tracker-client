@@ -22,7 +22,6 @@ class DashBoard extends Component {
     const { statusOpen } = this.props;
     const { statusPending } = this.props;
     const { statusClosed } = this.props;
-    console.log(this.props.lead);
     return (
       <div className='dashboard-container-div'>
         <div className='products-component-div'>
@@ -36,7 +35,13 @@ class DashBoard extends Component {
         </div>
         <div className='table-graph-div'>
           <div className='table-component-div'>
-            <TableComponent leads={leads} />
+            <TableComponent
+              cameras={cameras}
+              monitors={monitors}
+              digital_captures={digital_captures}
+              insufflators={insufflators}
+              leads={leads}
+            />
           </div>
           <div className='graph-component-div'>
             <BarGraphComponent

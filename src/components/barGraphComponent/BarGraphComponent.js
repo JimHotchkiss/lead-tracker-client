@@ -35,7 +35,7 @@ const BarGraphComponent = (props) => {
             xAxes: [
               {
                 ticks: {
-                  suggestedMin: min - 1,
+                  suggestedMin: 0,
                   suggestedMax: max + 0.5,
                 },
               },
