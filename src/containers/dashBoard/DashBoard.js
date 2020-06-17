@@ -15,12 +15,12 @@ class DashBoard extends Component {
     });
   }
 
-  showContact = (event) => {
+  handleShowContact = (event) => {
     const contactData = event.target.dataset.id;
     this.props.showContactAction(contactData, this.props);
   };
 
-  showLead = (event) => {
+  handleShowLead = (event) => {
     const leadData = event.target.dataset.id;
     this.props.showLeadAction(leadData, this.props);
   };
@@ -69,8 +69,8 @@ class DashBoard extends Component {
               insufflators={insufflators}
               leads={leads}
               contacts={contacts}
-              showContact={this.showContact}
-              showLead={this.showLead}
+              handleShowContact={this.handleShowContact}
+              handleShowLead={this.handleShowLead}
               truncateString={this.truncateString}
               convertTime={this.convertTime}
             />

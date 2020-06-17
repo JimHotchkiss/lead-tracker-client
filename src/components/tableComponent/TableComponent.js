@@ -26,7 +26,7 @@ const TableComponent = (props) => {
           <tr>
             <td>
               <a
-                onClick={props.showLead}
+                onClick={props.handleShowLead}
                 data-id={camera.id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
@@ -36,7 +36,7 @@ const TableComponent = (props) => {
             <td>{props.truncateString(camera.description, 30)}</td>
             <td>
               <a
-                onClick={props.showContact}
+                onClick={props.handleShowContact}
                 data-id={camera.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
@@ -65,7 +65,7 @@ const TableComponent = (props) => {
           <tr>
             <td>
               <a
-                onClick={props.showLead}
+                onClick={props.handleShowLead}
                 data-id={monitor.id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
@@ -75,7 +75,7 @@ const TableComponent = (props) => {
             <td>{props.truncateString(monitor.description, 30)}</td>
             <td>
               <a
-                onClick={props.showContact}
+                onClick={props.handleShowContact}
                 data-id={monitor.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
@@ -104,7 +104,7 @@ const TableComponent = (props) => {
           <tr>
             <td>
               <a
-                onClick={props.showLead}
+                onClick={props.handleShowLead}
                 data-id={insufflator.id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
@@ -114,7 +114,7 @@ const TableComponent = (props) => {
             <td>{props.truncateString(insufflator.description, 30)}</td>
             <td>
               <a
-                onClick={props.showContact}
+                onClick={props.handleShowContact}
                 data-id={insufflator.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
