@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { userLogOut } from "../../redux/actions/userAsyncActions";
+import { userLogOut } from "../../../redux/actions/userAsyncActions";
 
 import "./header.css";
 
@@ -11,7 +11,6 @@ class Header extends Component {
   };
   render() {
     const { currentUser } = this.props;
-    console.log(currentUser);
     return (
       <div className='nav-bar-div'>
         {currentUser !== null ? (

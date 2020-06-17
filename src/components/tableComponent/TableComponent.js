@@ -2,6 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import "./tableComponent.css";
 const TableComponent = (props) => {
+  console.log(props);
   const contactEmail = (contactId) => {
     const contact_email = props.contacts.find(
       (contact) => contact.id === contactId
@@ -25,13 +26,20 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showLead}
+                data-id={camera.id}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
               </a>
             </td>
             <td>{props.truncateString(camera.description, 30)}</td>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showContact}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(camera.contact_id)}
               </a>
             </td>
@@ -56,13 +64,20 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showLead}
+                data-id={monitor.id}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
               </a>
             </td>
             <td>{props.truncateString(monitor.description, 30)}</td>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showContact}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(monitor.contact_id)}
               </a>
             </td>
@@ -87,13 +102,20 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showLead}
+                data-id={insufflator.id}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
               </a>
             </td>
             <td>{props.truncateString(insufflator.description, 30)}</td>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showContact}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(insufflator.contact_id)}
               </a>
             </td>
@@ -118,13 +140,20 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showLead}
+                data-id={digital_capture.id}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
               </a>
             </td>
             <td>{props.truncateString(digital_capture.description, 30)}</td>
             <td>
-              <a href='#!' style={{ textDecoration: "none", color: "#03a9f4" }}>
+              <a
+                onClick={props.showContact}
+                href='#!'
+                style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(digital_capture.contact_id)}
               </a>
             </td>
@@ -141,9 +170,9 @@ const TableComponent = (props) => {
         <h3>Leads Table</h3>
       </div>
       <div>
+        {digitalCaptureTable}
         {cameraTable}
         {monitorTable}
-        {digitalCaptureTable}
         {insufflatorTable}
       </div>
     </div>

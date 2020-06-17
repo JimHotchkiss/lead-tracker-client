@@ -16,6 +16,10 @@ class DashBoard extends Component {
     console.log("show contact");
   }
 
+  showLead(event) {
+    console.log(event.target.dataset.id);
+  }
+
   truncateString(str, num) {
     if (str.length <= num) {
       return str;
@@ -61,6 +65,7 @@ class DashBoard extends Component {
               leads={leads}
               contacts={contacts}
               showContact={this.showContact}
+              showLead={this.showLead}
               truncateString={this.truncateString}
               convertTime={this.convertTime}
             />
