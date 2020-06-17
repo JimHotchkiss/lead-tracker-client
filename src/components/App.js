@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "./header/Header";
+import Header from "./common/header/Header";
 import Login from "./login/Login";
 import Users from "./users/Users";
 import DashBoard from "../containers/dashBoard/DashBoard";
