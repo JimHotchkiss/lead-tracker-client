@@ -2,7 +2,6 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 import "./tableComponent.css";
 const TableComponent = (props) => {
-  console.log(props);
   const contactEmail = (contactId) => {
     const contact_email = props.contacts.find(
       (contact) => contact.id === contactId
@@ -38,6 +37,7 @@ const TableComponent = (props) => {
             <td>
               <a
                 onClick={props.showContact}
+                data-id={camera.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(camera.contact_id)}
@@ -76,6 +76,7 @@ const TableComponent = (props) => {
             <td>
               <a
                 onClick={props.showContact}
+                data-id={monitor.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(monitor.contact_id)}
@@ -114,6 +115,7 @@ const TableComponent = (props) => {
             <td>
               <a
                 onClick={props.showContact}
+                data-id={insufflator.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(insufflator.contact_id)}
@@ -152,6 +154,7 @@ const TableComponent = (props) => {
             <td>
               <a
                 onClick={props.showContact}
+                data-id={digital_capture.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(digital_capture.contact_id)}

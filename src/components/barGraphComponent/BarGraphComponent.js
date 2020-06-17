@@ -7,7 +7,6 @@ const BarGraphComponent = (props) => {
   const limits = Object.keys(obj).map(function (key) {
     return obj[key].length;
   });
-  const min = Math.min.apply(null, limits);
   const max = Math.max.apply(null, limits);
   const data = {
     labels: ["New", "Open", "Pending", "Closed"],

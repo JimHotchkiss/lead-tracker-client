@@ -4,6 +4,8 @@ import { getCurrentUser } from "../../redux/actions/userAsyncActions";
 import Products from "../../components/products/Products";
 import BarGraphComponent from "../../components/barGraphComponent/BarGraphComponent";
 import TableComponent from "../../components/tableComponent/TableComponent";
+import { showLeadAction } from "../../redux/actions/showLeadAsyncAction";
+
 import "./dashBoard.css";
 class DashBoard extends Component {
   componentDidMount() {
@@ -12,13 +14,14 @@ class DashBoard extends Component {
     });
   }
 
-  showContact() {
-    console.log("show contact");
+  showContact(event) {
+    // console.log("show contact id", event.target.dataset.id);
   }
 
-  showLead(event) {
-    console.log(event.target.dataset.id);
-  }
+  showLead = (event) => {
+    const leadData = event.target.dataset.id;
+    this.props.showLeadAction(leadData, this.prop);
+  };
 
   truncateString(str, num) {
     if (str.length <= num) {
@@ -111,4 +114,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getCurrentUser })(DashBoard);
+export default connect(mapStateToProps, { getCurrentUser, showLeadAction })(
+  DashBoard
+);

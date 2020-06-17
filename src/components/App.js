@@ -9,7 +9,6 @@ import { Switch, Route } from "react-router-dom";
 import "./app.css";
 class App extends Component {
   render() {
-    const { currentUser } = this.props;
     return (
       <div className='app-container'>
         <div>
