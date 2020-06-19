@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ShowLeadComponent from "../../components/show/ShowLeadComponent";
 class ShowLead extends Component {
+  hanleConvertTime(dateTime) {
+    let dateString = dateTime;
+    let newDateString = new Date(dateString);
+    return newDateString.toLocaleDateString();
+  }
   render() {
-    console.log(this.props);
     return (
       <div className='show-lead-div'>
         <ShowLeadComponent
           lead={this.props.showLead}
           contact={this.props.contact}
+          convertTime={this.hanleConvertTime}
         />
       </div>
     );
