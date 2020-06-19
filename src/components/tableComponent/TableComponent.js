@@ -114,7 +114,7 @@ const TableComponent = (props) => {
             <td>{props.truncateString(insufflator.description, 30)}</td>
             <td>
               <a
-                onClick={props.handleShowContact}
+                onClick={props.handleShowLead}
                 data-id={insufflator.contact_id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
@@ -143,7 +143,7 @@ const TableComponent = (props) => {
           <tr>
             <td>
               <a
-                onClick={props.showLead}
+                onClick={props.handleShowLead}
                 data-id={digital_capture.id}
                 href='#!'
                 style={{ textDecoration: "none", color: "#03a9f4" }}>

@@ -4,7 +4,12 @@ export const showLeadSuccess = (lead) => {
   return { type: "SHOW_LEAD", lead };
 };
 
+export const routeToShowLead = (props, lead) => {
+  props.history.push(`/leads/${lead.id}/show`);
+};
+
 export const showLeadAction = (leadData, props) => {
+  console.log(leadData);
   return (dispatch) => {
     console.log(leadData, props);
     dispatch({ type: "START_ADDING_LEAD" });
@@ -15,6 +20,7 @@ export const showLeadAction = (leadData, props) => {
           alert(lead.error);
         } else {
           dispatch(showLeadSuccess(lead));
+          routeToShowLead(props, lead);
         }
       });
   };
