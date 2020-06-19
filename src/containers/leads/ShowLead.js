@@ -16,12 +16,9 @@ class ShowLead extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.showLead.contact_id);
   return {
     showLead: state.showLead,
-    contact: state.contacts.find(
-      (contact) => contact.id === state.showLead.contact_id
-    ),
+    contact: state.showLeadContact,
   };
 };
 

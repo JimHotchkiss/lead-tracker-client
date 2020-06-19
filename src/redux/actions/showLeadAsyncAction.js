@@ -5,13 +5,15 @@ export const showLeadSuccess = (lead) => {
 };
 
 export const routeToShowLead = (props, lead) => {
-  props.history.push(`/leads/${lead.id}/show`);
+  props.history.push(`/leads/${lead.data.attributes.id}/show`);
+};
+
+export const showLeadContactSuccess = (leadContact) => {
+  return { type: "SHOW_LEAD_CONTACT", leadContact };
 };
 
 export const showLeadAction = (leadData, props) => {
-  console.log(leadData);
   return (dispatch) => {
-    console.log(leadData, props);
     dispatch({ type: "START_ADDING_LEAD" });
     fetch(`${API_URL}/leads/${leadData}`)
       .then((response) => response.json())
@@ -19,7 +21,8 @@ export const showLeadAction = (leadData, props) => {
         if (lead.error) {
           alert(lead.error);
         } else {
-          dispatch(showLeadSuccess(lead));
+          dispatch(showLeadSuccess(lead.data.attributes));
+          dispatch(showLeadContactSuccess(lead.data.attributes.contact));
           routeToShowLead(props, lead);
         }
       });

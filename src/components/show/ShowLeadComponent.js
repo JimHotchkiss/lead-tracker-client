@@ -1,6 +1,6 @@
 import React from "react";
 const ShowLeadComponent = (props) => {
-  console.log(props.contact);
+  console.log(props);
   return (
     <div className='show-lead-component'>
       <div className='product-div'>
@@ -16,10 +16,13 @@ const ShowLeadComponent = (props) => {
         <p className='urgency-text'>{props.lead.urgency}</p>
       </div>
       <div className='contact-name-div'>
-        <p className='contact-name-text'>Name</p>
+        <p className='contact-name-text'>{props.contact.contact_name}</p>
       </div>
       <div className='contact-email-div'>
-        <p className='contact-email-text'>email</p>
+        <p className='contact-email-text'>{props.contact.email}</p>
+      </div>
+      <div className='contact-number-div'>
+        <p className='contact-number-text'>{props.contact.phone_number}</p>
       </div>
     </div>
   );
