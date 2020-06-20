@@ -13,6 +13,11 @@ export const routeToDashBoard = (props) => {
   props.history.push("/");
 };
 
+export const routeToDashBoardFromDelete = (props, message) => {
+  props.history.push("/");
+  alert(message.message);
+};
+
 export const leadSubmit = (leadData, props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/leads`, {
@@ -32,5 +37,19 @@ export const leadSubmit = (leadData, props) => {
           routeToDashBoard(props);
         }
       });
+  };
+};
+
+export const testFunction = (props) => {
+  console.log(props);
+};
+
+export const leadDelete = (data, props) => {
+  return (dispatch) => {
+    return fetch(`${API_URL}/leads/${data}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((message) => routeToDashBoardFromDelete(props, message));
   };
 };

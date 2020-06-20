@@ -1,3 +1,13 @@
-.delete-button-div {
-  margin: auto;
+.delete-lead-button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  background: #262626;
+  color: #fff;
+  outline: none;
+}
+
+.delete-lead-button:hover {
+  background: #acd5dc;
+  color: #262626;
+  outline: none;
 }

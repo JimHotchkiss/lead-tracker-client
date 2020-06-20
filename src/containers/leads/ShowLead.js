@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ShowLeadComponent from "../../components/show/ShowLeadComponent";
 import DeleteButton from "../../components/deleteButton/DeleteButton";
+import { leadDelete } from "../../redux/actions/leadAsyncActions";
+import "./showLeadContainer.css";
 class ShowLead extends Component {
   hanleConvertTime(dateTime) {
     let dateString = dateTime;
@@ -10,7 +12,9 @@ class ShowLead extends Component {
   }
 
   handleDelete = (e) => {
-    console.log(e);
+    e.preventDefault();
+    const data = e.target.dataset.id;
+    this.props.leadDelete(data, this.props);
   };
   render() {
     return (
@@ -20,7 +24,12 @@ class ShowLead extends Component {
           contact={this.props.contact}
           convertTime={this.hanleConvertTime}
         />
-        <DeleteButton handleDelete={this.handleDelete} />
+        <div className='delete-button-component'>
+          <DeleteButton
+            leadId={this.props.showLead && this.props.showLead.id}
+            handleDelete={this.handleDelete}
+          />
+        </div>
       </div>
     );
   }
@@ -33,4 +42,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ShowLead);
+export default connect(mapStateToProps, { leadDelete })(ShowLead);
