@@ -1,4 +1,4 @@
-.show-lead-component {
+.show-lead-div {
   max-width: 50%;
   margin: auto;
   margin-top: 80px;
@@ -9,6 +9,14 @@
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.show-lead-component:hover {
+.show-lead-div:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.show-lead-component p {
+  padding-left: 12px;
+}
+
+.lead-id-div h3 {
+  text-align: center;
 }

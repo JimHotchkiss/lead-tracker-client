@@ -1,9 +1,12 @@
 import React from "react";
 import "./showLead.css";
 const ShowLeadComponent = (props) => {
-  console.log(props);
   return (
     <div className='show-lead-component'>
+      <div className='lead-id-div'>
+        <h3 className='lead-id-text'>Lead {props.lead.id}</h3>
+      </div>
+
       <div className='lead-created-title-div'>
         <h3 className='lead-created-title-text'>Date Created</h3>
       </div>
