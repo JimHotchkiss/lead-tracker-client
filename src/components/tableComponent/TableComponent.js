@@ -1,6 +1,8 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "./tableComponent.css";
+import { Link } from "react-router-dom";
+
 const TableComponent = (props) => {
   const contactEmail = (contactId) => {
     const contact_email = props.contacts.find(
@@ -25,13 +27,13 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a
+              <Link
                 onClick={props.handleShowLead}
                 data-id={camera.id}
-                href='#!'
+                to={`/leads/${camera.id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
-              </a>
+              </Link>
             </td>
             <td>{props.truncateString(camera.description, 30)}</td>
             <td>
@@ -64,13 +66,13 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a
+              <Link
                 onClick={props.handleShowLead}
                 data-id={monitor.id}
-                href='#!'
+                to={`/leads/${monitor.id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
-              </a>
+              </Link>
             </td>
             <td>{props.truncateString(monitor.description, 30)}</td>
             <td>
@@ -103,13 +105,13 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a
+              <Link
                 onClick={props.handleShowLead}
                 data-id={insufflator.id}
-                href='#!'
+                to={`/leads/${insufflator.id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
-              </a>
+              </Link>
             </td>
             <td>{props.truncateString(insufflator.description, 30)}</td>
             <td>
@@ -142,13 +144,13 @@ const TableComponent = (props) => {
         <tbody key={Math.random()}>
           <tr>
             <td>
-              <a
+              <Link
                 onClick={props.handleShowLead}
                 data-id={digital_capture.id}
-                href='#!'
+                to={`/leads/${digital_capture.id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {index + 1}. Show|Edit
-              </a>
+              </Link>
             </td>
             <td>{props.truncateString(digital_capture.description, 30)}</td>
             <td>

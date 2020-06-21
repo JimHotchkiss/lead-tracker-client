@@ -40,10 +40,6 @@ export const leadSubmit = (leadData, props) => {
   };
 };
 
-export const testFunction = (props) => {
-  console.log(props);
-};
-
 export const leadDelete = (data, props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/leads/${data}`, {

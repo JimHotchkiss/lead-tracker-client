@@ -11,6 +11,7 @@ import "./dashBoard.css";
 class DashBoard extends Component {
   componentDidMount() {
     this.props.getCurrentUser().catch((error) => {
+      this.props.history.push("/login");
       alert("Loading failure" + error);
     });
   }
