@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ShowLeadComponent from "../../components/show/ShowLeadComponent";
 import DeleteButton from "../../components/deleteButton/DeleteButton";
+import EditButton from "../../components/editButton/EditButton";
 import { leadDelete } from "../../redux/actions/leadAsyncActions";
 import "./showLeadContainer.css";
 class ShowLead extends Component {
@@ -24,11 +25,20 @@ class ShowLead extends Component {
           contact={this.props.contact}
           convertTime={this.hanleConvertTime}
         />
-        <div className='delete-button-component'>
-          <DeleteButton
-            leadId={this.props.showLead && this.props.showLead.id}
-            handleDelete={this.handleDelete}
-          />
+        <div className='buttons-div'>
+          <div className='delete-button-component'>
+            <DeleteButton
+              leadId={this.props.showLead && this.props.showLead.id}
+              handleDelete={this.handleDelete}
+            />
+          </div>
+          <div className='edit-button-component'>
+            <EditButton
+              leadId={this.props.showLead && this.props.showLead.id}
+              // leadId={this.props.showLead && this.props.showLead.id}
+              // handleDelete={this.handleDelete}
+            />
+          </div>
         </div>
       </div>
     );

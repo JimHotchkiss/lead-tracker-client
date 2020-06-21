@@ -20,3 +20,8 @@
 .lead-id-div h3 {
   text-align: center;
 }
+
+.buttons-div {
+  display: flex;
+  justify-content: space-evenly;
+}

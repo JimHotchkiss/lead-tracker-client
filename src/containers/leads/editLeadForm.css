@@ -1,0 +1,21 @@
+.edit-lead-form-div {
+  max-width: 700px;
+  padding: 40px 40px;
+  margin: 3% auto;
+  color: #000;
+  background-color: #eff7f6;
+}
+
+.edit-form-lead-contact-title {
+  padding-top: 16px;
+}
+
+.edit-lead-form-div {
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.edit-lead-form-div:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}

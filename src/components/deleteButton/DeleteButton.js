@@ -3,7 +3,6 @@ import React from "react";
 import "./deleteButton.css";
 
 const DeleteButton = (props) => {
-  console.log(props);
   return (
     <div className='delete-button-div'>
       {" "}

@@ -4,10 +4,6 @@ export const showLeadSuccess = (lead) => {
   return { type: "SHOW_LEAD", lead };
 };
 
-export const routeToShowLead = (props, lead) => {
-  props.history.push(`/leads/${lead.data.attributes.id}/show`);
-};
-
 export const showLeadContactSuccess = (leadContact) => {
   return { type: "SHOW_LEAD_CONTACT", leadContact };
 };
@@ -23,7 +19,6 @@ export const showLeadAction = (leadData, props) => {
         } else {
           dispatch(showLeadSuccess(lead.data.attributes));
           dispatch(showLeadContactSuccess(lead.data.attributes.contact));
-          routeToShowLead(props, lead);
         }
       });
   };
