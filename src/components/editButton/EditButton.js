@@ -2,10 +2,9 @@ import React from "react";
 import "./editButton.css";
 import { Link } from "react-router-dom";
 
-const EditButton = (props) => {
-  console.log(props);
+const EditButton = ({ leadId, lead }) => {
   return (
-    <Link to={`/leads/${props.leadId}/edit`}>
+    <Link to={`/leads/${leadId}/edit`} lead={lead}>
       <div className='edit-button-div'>
         <button
           // data-id={props.leadId}

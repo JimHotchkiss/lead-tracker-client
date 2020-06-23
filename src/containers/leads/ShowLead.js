@@ -35,6 +35,7 @@ class ShowLead extends Component {
           <div className='edit-button-component'>
             <EditButton
               leadId={this.props.showLead && this.props.showLead.id}
+              lead={this.props.showLead}
               // leadId={this.props.showLead && this.props.showLead.id}
               // handleDelete={this.handleDelete}
             />

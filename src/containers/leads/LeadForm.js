@@ -6,11 +6,11 @@ import { leadSubmit } from "../../redux/actions/leadAsyncActions";
 import "./leadForm.css";
 
 class LeadForm extends Component {
-  constructor(props) {
-    super(props);
-    this.handleOnChange = this.handleOnChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.handleOnChange = this.handleOnChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  // }
   handleOnChange = (e) => {
     const { name, value } = e.target;
     const leadData = {
