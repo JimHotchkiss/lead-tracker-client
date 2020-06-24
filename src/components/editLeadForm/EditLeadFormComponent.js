@@ -34,7 +34,7 @@ const EditLeadFormComponent = (props) => {
           <Form.Label>Lead Description</Form.Label>
           <Form.Control
             onChange={props.handleOnChange}
-            value={props.description}
+            value={props.editFormInput}
             name='description'
             as='textarea'
             rows='3'

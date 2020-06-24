@@ -7,6 +7,7 @@ import "./editLeadForm.css";
 
 class EditLeadForm extends Component {
   handleOnChange = (e) => {
+    console.log(this.props.editFormInput);
     const { name, value } = e.target;
     const editLeadFormData = {
       ...this.props.editFormInput,
@@ -25,6 +26,7 @@ class EditLeadForm extends Component {
     return (
       <div className='edit-lead-container-div'>
         <EditLeadFormComponent
+          editFormInput={this.props.editFormInput}
           lead={this.props.description}
           handleOnChange={this.handleOnChange}
         />
