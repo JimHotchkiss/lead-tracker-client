@@ -3,7 +3,7 @@ import Header from "./common/header/Header";
 import Login from "./login/Login";
 import DashBoard from "../containers/dashBoard/DashBoard";
 import LeadForm from "../containers/leads/LeadForm";
-import EditLeadForm from "../containers/leads/EditLeadForm";
+import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer";
 import ShowLead from "../containers/leads/ShowLead";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path='/' component={DashBoard} />
             <Route path='/login' component={Login} />
             <Route path='/leads/new' component={LeadForm} />
-            <Route path='/leads/:id/edit' component={EditLeadForm} />
+            <Route path='/leads/:id/edit' component={EditLeadFormContainer} />
             <Route path='/leads/:id/show' component={ShowLead} />
           </Switch>
         </div>
