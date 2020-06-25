@@ -1,17 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { populateEditForm } from "../../redux/actions/populateEditAction";
 import "./editLeadFormComponent.css";
 
-const EditLeadFormComponent = (props) => {
-  useEffect(() => {
-    console.log(props.lead.description);
-    if (props.lead && props.lead.description) {
-      const editFormData = props.lead.description;
-      props.populateEditForm(editFormData);
-    }
-  });
+const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
+  console.log(lead.product);
   return (
     <div className='edit-lead-form-component-div'>
       <Form>
@@ -21,20 +14,28 @@ const EditLeadFormComponent = (props) => {
         <Form.Group controlId='exampleForm.ControlSelect1'>
           <Form.Label>Product</Form.Label>
           <select
-            onChange={props.handleOnChange}
+            onChange={handleOnChange}
             className='form-control'
             name='product'>
-            <option value='Camera'>Camera</option>
-            <option value='Monitor'>Monitor</option>
-            <option value='Digital Capture'>Digital Capture</option>
-            <option value='Insufflator'>Insufflator</option>
+            {lead.product === "Camera" ? (
+              <option value='Camera'>Camera</option>
+            ) : null}
+            {lead.product === "Monitor" ? (
+              <option value='Monitor'>Monitor</option>
+            ) : null}
+            {lead.product === "Digital Capture" ? (
+              <option value='Digital Capture'>Digital Capture</option>
+            ) : null}
+            {lead.product === "Insufflator" ? (
+              <option value='Digital Capture'>Insufflator</option>
+            ) : null}
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlTextarea1'>
           <Form.Label>Lead Description</Form.Label>
           <Form.Control
-            onChange={props.handleOnChange}
-            value={props.editFormInput}
+            onChange={handleOnChange}
+            value={lead.description}
             name='description'
             as='textarea'
             rows='3'
@@ -45,20 +46,33 @@ const EditLeadFormComponent = (props) => {
           <Form.Label>Urgency</Form.Label>
 
           <select
-            onChange={props.handleOnChange}
+            onChange={handleOnChange}
             className='form-control'
             name='urgency'>
-            <option value='Low'>Low</option>
-            <option value='Medium'>Medium</option>
-            <option value='High'>High</option>
+            {lead.urgency === "Low" ? <option value='Low'>Low</option> : null}
+            {lead.urgency === "Medium" ? (
+              <option value='Medium'>Medium</option>
+            ) : null}
+            {lead.urgency === "High" ? (
+              <option value='High'>High</option>
+            ) : null}
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlSelect1'>
           <Form.Label>Status</Form.Label>
           <select
-            onChange={props.handleOnChange}
+            onChange={handleOnChange}
             className='form-control'
             name='status'>
+            {lead.status === "New" ? <option value='New'>New</option> : null}
+            {lead.status === "Open" ? <option value='Open'>Open</option> : null}
+            {lead.status === "Pending" ? (
+              <option value='Pending'>Pending</option>
+            ) : null}
+            {lead.status === "Closed" ? (
+              <option value='Closed'>Closed</option>
+            ) : null}
+
             <option value='New'>New</option>
             <option value='Open'>Open</option>
             <option value='Pending'>Pending</option>
@@ -71,8 +85,8 @@ const EditLeadFormComponent = (props) => {
         <Form.Group controlId='formGroupEmail'>
           <Form.Label>Name</Form.Label>
           <Form.Control
-            //   value={contact_name}
-            onChange={props.handleOnChange}
+            value={contact.contact_name}
+            onChange={handleOnChange}
             name='contact_name'
             type='name'
             placeholder='Name'
@@ -81,8 +95,8 @@ const EditLeadFormComponent = (props) => {
         <Form.Group controlId='formGroupEmail'>
           <Form.Label>Email</Form.Label>
           <Form.Control
-            //   value={email}
-            onChange={props.handleOnChange}
+            value={contact.email}
+            onChange={handleOnChange}
             name='email'
             type='email'
             placeholder='Email'
@@ -91,8 +105,8 @@ const EditLeadFormComponent = (props) => {
         <Form.Group controlId='formGroupPassword'>
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
-            //   value={phone_number}
-            onChange={props.handleOnChange}
+            value={contact.phone_number}
+            onChange={handleOnChange}
             name='phone_number'
             type='phone_number'
             placeholder='Phone'
@@ -112,6 +126,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { populateEditForm })(
-  EditLeadFormComponent
-);
+export default connect(mapStateToProps)(EditLeadFormComponent);

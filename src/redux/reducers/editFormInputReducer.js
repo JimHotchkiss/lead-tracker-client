@@ -1,21 +1,18 @@
 const initialState = {
-  // product: "",
+  product: "",
   description: "",
-  // urgency: "",
-  // status: "",
-  // contact_name: "",
-  // email: "",
-  // phone_number: "",
+  urgency: "",
+  status: "",
+  contact_name: "",
+  email: "",
+  phone_number: "",
 };
 
 // Synchronized request
-export default function editFormReducer(state = initialState, action) {
-  console.log(action.editLeadFormData);
+export default function editFormInputReducer(state = initialState, action) {
   switch (action.type) {
-    case "EDIT_FORM_INPUT":
-      return action.editLeadFormData;
-    //   case "CLEAR_FORM_INPUT":
-    //     return initialState;
+    case "POPULATE_EDIT_FORM":
+      return action.editFormData;
     default:
       return state;
   }

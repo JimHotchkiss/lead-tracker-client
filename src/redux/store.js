@@ -9,7 +9,7 @@ import lead from "./reducers/leadSubmitReducer";
 import showLead from "./reducers/showLeadReducer";
 import showLeadContact from "./reducers/showLeadContactReducer";
 import showContact from "./reducers/showContactReducer";
-import editFormInput from "./reducers/editFormInputReducer";
+import editFormReducer from "./reducers/editFormInputReducer";
 
 const manageReducers = combineReducers({
   userInput: userInput,
@@ -21,7 +21,7 @@ const manageReducers = combineReducers({
   showLead: showLead,
   showLeadContact: showLeadContact,
   showContact: showContact,
-  editFormInput: editFormInput,
+  editFormInput: editFormReducer,
 });
 
 const store = createStore(
