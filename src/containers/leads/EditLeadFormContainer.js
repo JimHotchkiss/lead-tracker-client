@@ -20,7 +20,7 @@ class EditLeadForm extends Component {
       ...this.props.editFormInput,
       [name]: value,
     };
-    this.props.editFormInputAction(editLeadFormData);
+    // this.props.editFormInputAction(editLeadFormData);
   };
 
   // handleSubmit = (e) => {
