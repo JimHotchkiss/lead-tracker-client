@@ -8,7 +8,6 @@ import "./leadForm.css";
 class LeadForm extends Component {
   handleOnChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     const leadData = {
       ...this.props.leadFormData,
       [name]: value,

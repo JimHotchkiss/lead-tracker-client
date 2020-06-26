@@ -1,6 +1,8 @@
 export const leadFormInput = (leadData) => {
+  console.log(leadData);
   return {
     type: "LEAD_FORM_INPUT",
+
     leadData,
   };
 };

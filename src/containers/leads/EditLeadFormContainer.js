@@ -13,15 +13,6 @@ class EditLeadForm extends Component {
       this.props.populateEditForm(editLeadData, editContactData);
     }
   }
-  handleOnChange = (e) => {
-    console.log(this.props.editFormInput);
-    const { name, value } = e.target;
-    const editLeadFormData = {
-      ...this.props.editFormInput,
-      [name]: value,
-    };
-    // this.props.editFormInputAction(editLeadFormData);
-  };
 
   // handleSubmit = (e) => {
   //   e.preventDefault();
@@ -29,7 +20,6 @@ class EditLeadForm extends Component {
   //   this.props.leadSubmit(leadData, this.props);
   // };
   render() {
-    // console.log(this.props.editLeadFormData)
     return (
       <div className='edit-lead-container-div'>
         <EditLeadFormComponent
@@ -46,6 +36,7 @@ class EditLeadForm extends Component {
 const mapStateToProps = (state) => {
   return {
     editFormInput: state.editFormInput,
+    leadFormData: state.leadInput,
     showLead: state.showLead,
     contact: state.showLeadContact,
     description: state.showLead,

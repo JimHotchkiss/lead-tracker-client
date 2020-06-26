@@ -1,10 +1,31 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
+import { leadFormInput } from "../../redux/actions/leadSyncActions";
+
 import "./editLeadFormComponent.css";
 
-const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
-  console.log(lead.product);
+const EditLeadFormComponent = (props) => {
+  console.log(props.leadFormData);
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    const leadData = {
+      ...props.leadFormData,
+      [name]: value,
+    };
+    props.leadFormInput(leadData);
+  };
+
+  const {
+    product,
+    description,
+    urgency,
+    status,
+    contact_name,
+    email,
+    phone_number,
+  } = props.leadFormData;
+  console.log(product);
   return (
     <div className='edit-lead-form-component-div'>
       <Form>
@@ -17,25 +38,38 @@ const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
             onChange={handleOnChange}
             className='form-control'
             name='product'>
-            {lead.product === "Camera" ? (
-              <option value='Camera'>Camera</option>
+            {product === "Camera" ? (
+              <option value={product}>Camera</option>
             ) : null}
-            {lead.product === "Monitor" ? (
-              <option value='Monitor'>Monitor</option>
+            {product === "Monitor" ? (
+              <option value={product}>Monitor</option>
             ) : null}
-            {lead.product === "Digital Capture" ? (
-              <option value='Digital Capture'>Digital Capture</option>
+            {product === "Digital Capture" ? (
+              <option value={product}>Digital Capture</option>
             ) : null}
-            {lead.product === "Insufflator" ? (
-              <option value='Digital Capture'>Insufflator</option>
+            {product === "Insufflator" ? (
+              <option value={product}>Insufflator</option>
             ) : null}
+
+            {product === "Camera" ? null : (
+              <option value={product}>Camera</option>
+            )}
+            {product === "Monitor" ? null : (
+              <option value={product}>Monitor</option>
+            )}
+            {product === "Digital Capture" ? null : (
+              <option value={product}>Digital Capture</option>
+            )}
+            {product === "Insufflator" ? null : (
+              <option value={product}>Insufflator</option>
+            )}
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlTextarea1'>
           <Form.Label>Lead Description</Form.Label>
           <Form.Control
             onChange={handleOnChange}
-            value={lead.description}
+            value={description}
             name='description'
             as='textarea'
             rows='3'
@@ -49,13 +83,16 @@ const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
             onChange={handleOnChange}
             className='form-control'
             name='urgency'>
-            {lead.urgency === "Low" ? <option value='Low'>Low</option> : null}
-            {lead.urgency === "Medium" ? (
-              <option value='Medium'>Medium</option>
+            {urgency === "Low" ? <option value={urgency}>Low</option> : null}
+            {urgency === "Medium" ? (
+              <option value={urgency}>Medium</option>
             ) : null}
-            {lead.urgency === "High" ? (
-              <option value='High'>High</option>
-            ) : null}
+            {urgency === "High" ? <option value={urgency}>High</option> : null}
+            {urgency === "Low" ? null : <option value={urgency}>Low</option>}
+            {urgency === "Medium" ? null : (
+              <option value={urgency}>Medium</option>
+            )}
+            {urgency === "High" ? null : <option value={urgency}>High</option>}
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlSelect1'>
@@ -64,19 +101,22 @@ const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
             onChange={handleOnChange}
             className='form-control'
             name='status'>
-            {lead.status === "New" ? <option value='New'>New</option> : null}
-            {lead.status === "Open" ? <option value='Open'>Open</option> : null}
-            {lead.status === "Pending" ? (
+            {status === "New" ? <option value={status}>New</option> : null}
+            {status === "Open" ? <option value={status}>Open</option> : null}
+            {status === "Pending" ? (
               <option value='Pending'>Pending</option>
             ) : null}
-            {lead.status === "Closed" ? (
-              <option value='Closed'>Closed</option>
+            {status === "Closed" ? (
+              <option value={status}>Closed</option>
             ) : null}
-
-            <option value='New'>New</option>
-            <option value='Open'>Open</option>
-            <option value='Pending'>Pending</option>
-            <option value='Closed'>Closed</option>
+            {status === "New" ? null : <option value={status}>New</option>}
+            {status === "Open" ? null : <option value={status}>Open</option>}
+            {status === "Pending" ? null : (
+              <option value='Pending'>Pending</option>
+            )}
+            {status === "Closed" ? null : (
+              <option value='Closed'>Closed</option>
+            )}
           </select>
         </Form.Group>
         <div className='form-lead-contact-title'>
@@ -85,7 +125,7 @@ const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
         <Form.Group controlId='formGroupEmail'>
           <Form.Label>Name</Form.Label>
           <Form.Control
-            value={contact.contact_name}
+            value={contact_name}
             onChange={handleOnChange}
             name='contact_name'
             type='name'
@@ -95,7 +135,7 @@ const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
         <Form.Group controlId='formGroupEmail'>
           <Form.Label>Email</Form.Label>
           <Form.Control
-            value={contact.email}
+            value={email}
             onChange={handleOnChange}
             name='email'
             type='email'
@@ -105,7 +145,7 @@ const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
         <Form.Group controlId='formGroupPassword'>
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
-            value={contact.phone_number}
+            value={phone_number}
             onChange={handleOnChange}
             name='phone_number'
             type='phone_number'
@@ -123,7 +163,10 @@ const EditLeadFormComponent = ({ lead, contact, handleOnChange }) => {
 const mapStateToProps = (state) => {
   return {
     showLead: state.showLead,
+    leadFormData: state.leadInput,
   };
 };
 
-export default connect(mapStateToProps)(EditLeadFormComponent);
+export default connect(mapStateToProps, { leadFormInput })(
+  EditLeadFormComponent
+);
