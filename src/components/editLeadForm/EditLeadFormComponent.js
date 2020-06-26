@@ -6,7 +6,6 @@ import { leadFormInput } from "../../redux/actions/leadSyncActions";
 import "./editLeadFormComponent.css";
 
 const EditLeadFormComponent = (props) => {
-  console.log(props.leadFormData);
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     const leadData = {
@@ -112,10 +111,10 @@ const EditLeadFormComponent = (props) => {
             {status === "New" ? null : <option value={status}>New</option>}
             {status === "Open" ? null : <option value={status}>Open</option>}
             {status === "Pending" ? null : (
-              <option value='Pending'>Pending</option>
+              <option value={status}>Pending</option>
             )}
             {status === "Closed" ? null : (
-              <option value='Closed'>Closed</option>
+              <option value={status}>Closed</option>
             )}
           </select>
         </Form.Group>
