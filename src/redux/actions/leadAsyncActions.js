@@ -45,6 +45,30 @@ export const leadSubmit = (leadData, props) => {
   };
 };
 
+export const submitEditForm = (editLeadData, props) => {
+  console.log(editLeadData);
+  return (dispatch) => {
+    return fetch(`${API_URL}/leads/${editLeadData.productId}`, {
+      credentials: "include",
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lead: editLeadData }),
+    })
+      .then((response) => response.json())
+      .then((updatedLead) => {
+        if (updatedLead.error) {
+          alert(updatedLead.error);
+        } else {
+          dispatch(leadSubmitSucess(updatedLead));
+          dispatch(clearLeadForm());
+          routeToDashBoard(props);
+        }
+      });
+  };
+};
+
 export const leadDelete = (data, props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/leads/${data}`, {

@@ -7,10 +7,12 @@ import "./editLeadFormComponent.css";
 const EditLeadFormComponent = (props) => {
   const handleOnChange = (e) => {
     const { name, value } = e.target;
+    console.log("name:", name, "value:", value);
     const leadData = {
       ...props.leadFormData,
       [name]: value,
     };
+    console.log(leadData);
     props.leadFormInput(leadData);
   };
   const {
@@ -22,10 +24,9 @@ const EditLeadFormComponent = (props) => {
     email,
     phone_number,
   } = props.leadFormData;
-  console.log(product);
   return (
     <div className='edit-lead-form-component-div'>
-      <Form>
+      <Form onSubmit={props.handleSubmit}>
         <div className='edit-lead-form-title'>
           <h3>Edit Lead Information</h3>
         </div>
@@ -35,10 +36,10 @@ const EditLeadFormComponent = (props) => {
             onChange={handleOnChange}
             className='form-control'
             name='product'>
-            <option value={product}>Camera</option>
-            <option value={product}>Monitor</option>
-            <option value={product}>Digital Capture</option>
-            <option value={product}>Insufflator</option>
+            <option value='Camera'>Camera</option>
+            <option value='Monitor'>Monitor</option>
+            <option value='Digital Capture'>Digital Capture</option>
+            <option value='Insufflator'>Insufflator</option>
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlTextarea1'>
@@ -59,16 +60,16 @@ const EditLeadFormComponent = (props) => {
             onChange={handleOnChange}
             className='form-control'
             name='urgency'>
-            {urgency === "Low" ? <option value={urgency}>Low</option> : null}
+            {urgency === "Low" ? <option value='Low'>Low</option> : null}
             {urgency === "Medium" ? (
-              <option value={urgency}>Medium</option>
+              <option value='Medium'>Medium</option>
             ) : null}
-            {urgency === "High" ? <option value={urgency}>High</option> : null}
-            {urgency === "Low" ? null : <option value={urgency}>Low</option>}
+            {urgency === "High" ? <option value='High'>High</option> : null}
+            {urgency === "Low" ? null : <option value='Low'>Low</option>}
             {urgency === "Medium" ? null : (
-              <option value={urgency}>Medium</option>
+              <option value='Medium'>Medium</option>
             )}
-            {urgency === "High" ? null : <option value={urgency}>High</option>}
+            {urgency === "High" ? null : <option value='High'>High</option>}
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlSelect1'>
@@ -77,21 +78,21 @@ const EditLeadFormComponent = (props) => {
             onChange={handleOnChange}
             className='form-control'
             name='status'>
-            {status === "New" ? <option value={status}>New</option> : null}
-            {status === "Open" ? <option value={status}>Open</option> : null}
+            {status === "New" ? <option value='New'>New</option> : null}
+            {status === "Open" ? <option value='Open'>Open</option> : null}
             {status === "Pending" ? (
               <option value='Pending'>Pending</option>
             ) : null}
             {status === "Closed" ? (
-              <option value={status}>Closed</option>
+              <option value='Closed'>Closed</option>
             ) : null}
-            {status === "New" ? null : <option value={status}>New</option>}
-            {status === "Open" ? null : <option value={status}>Open</option>}
+            {status === "New" ? null : <option value='New'>New</option>}
+            {status === "Open" ? null : <option value='Open'>Open</option>}
             {status === "Pending" ? null : (
-              <option value={status}>Pending</option>
+              <option value='Pending'>Pending</option>
             )}
             {status === "Closed" ? null : (
-              <option value={status}>Closed</option>
+              <option value='Closed'>Closed</option>
             )}
           </select>
         </Form.Group>

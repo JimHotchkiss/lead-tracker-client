@@ -14,7 +14,6 @@ class LeadForm extends Component {
       this.props.clearLeadForm();
     }
     console.log(this.props.leadFormData);
-    // clearFormInput()
   }
   handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -22,7 +21,7 @@ class LeadForm extends Component {
       ...this.props.leadFormData,
       [name]: value,
     };
-
+    console.log(leadData);
     this.props.leadFormInput(leadData);
   };
 

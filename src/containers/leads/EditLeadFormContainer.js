@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import EditLeadFormComponent from "../../components/editLeadForm/EditLeadFormComponent";
+import { submitEditForm } from "../../redux/actions/leadAsyncActions";
 import { populateEditForm } from "../../redux/actions/populateEditAction";
 
 import "./editLeadForm.css";
@@ -14,11 +15,12 @@ class EditLeadForm extends Component {
     }
   }
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const leadData = this.props.leadFormData;
-  //   this.props.leadSubmit(leadData, this.props);
-  // };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.props.leadFormData);
+    const editLeadData = this.props.leadFormData;
+    this.props.submitEditForm(editLeadData, this.props);
+  };
   render() {
     return (
       <div className='edit-lead-container-div'>
@@ -26,7 +28,7 @@ class EditLeadForm extends Component {
           editFormInput={this.props.editFormInput}
           lead={this.props.showLead}
           contact={this.props.showLeadContact}
-          handleOnChange={this.handleOnChange}
+          handleSubmit={this.handleSubmit}
         />
       </div>
     );
@@ -46,4 +48,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   populateEditForm,
+  submitEditForm,
 })(EditLeadForm);
