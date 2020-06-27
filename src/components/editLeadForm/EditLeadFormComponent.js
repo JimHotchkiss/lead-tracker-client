@@ -97,7 +97,7 @@ const EditLeadFormComponent = (props) => {
           </select>
         </Form.Group>
         <div className='form-lead-contact-title'>
-          <h3>Contact Information</h3>
+          <h3>Edit Contact Information</h3>
         </div>
         <Form.Group controlId='formGroupEmail'>
           <Form.Label>Name</Form.Label>
