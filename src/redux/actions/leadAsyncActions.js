@@ -18,6 +18,10 @@ export const routeToDashBoardFromDelete = (props, message) => {
   alert(message.message);
 };
 
+export const clearLeadForm = () => {
+  return { type: "CLEAR_FORM_INPUT" };
+};
+
 export const leadSubmit = (leadData, props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/leads`, {
@@ -34,6 +38,7 @@ export const leadSubmit = (leadData, props) => {
           alert(lead.error);
         } else {
           dispatch(leadSubmitSucess(lead));
+          dispatch(clearLeadForm());
           routeToDashBoard(props);
         }
       });

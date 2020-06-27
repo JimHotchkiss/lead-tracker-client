@@ -2,10 +2,20 @@ import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { leadFormInput } from "../../redux/actions/leadSyncActions";
-import { leadSubmit } from "../../redux/actions/leadAsyncActions";
+import {
+  leadSubmit,
+  clearLeadForm,
+} from "../../redux/actions/leadAsyncActions";
 import "./leadForm.css";
 
 class LeadForm extends Component {
+  componentDidMount() {
+    if (this.props.leadFormData.description !== "") {
+      this.props.clearLeadForm();
+    }
+    console.log(this.props.leadFormData);
+    // clearFormInput()
+  }
   handleOnChange = (e) => {
     const { name, value } = e.target;
     const leadData = {
@@ -138,6 +148,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { leadFormInput, leadSubmit })(
-  LeadForm
-);
+export default connect(mapStateToProps, {
+  leadFormInput,
+  leadSubmit,
+  clearLeadForm,
+})(LeadForm);
