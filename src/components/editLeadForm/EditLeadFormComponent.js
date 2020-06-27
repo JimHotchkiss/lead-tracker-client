@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { leadFormInput } from "../../redux/actions/leadSyncActions";
 
 import "./editLeadFormComponent.css";
-
 const EditLeadFormComponent = (props) => {
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -14,7 +13,6 @@ const EditLeadFormComponent = (props) => {
     };
     props.leadFormInput(leadData);
   };
-
   const {
     product,
     description,
@@ -37,31 +35,10 @@ const EditLeadFormComponent = (props) => {
             onChange={handleOnChange}
             className='form-control'
             name='product'>
-            {product === "Camera" ? (
-              <option value={product}>Camera</option>
-            ) : null}
-            {product === "Monitor" ? (
-              <option value={product}>Monitor</option>
-            ) : null}
-            {product === "Digital Capture" ? (
-              <option value={product}>Digital Capture</option>
-            ) : null}
-            {product === "Insufflator" ? (
-              <option value={product}>Insufflator</option>
-            ) : null}
-
-            {product === "Camera" ? null : (
-              <option value={product}>Camera</option>
-            )}
-            {product === "Monitor" ? null : (
-              <option value={product}>Monitor</option>
-            )}
-            {product === "Digital Capture" ? null : (
-              <option value={product}>Digital Capture</option>
-            )}
-            {product === "Insufflator" ? null : (
-              <option value={product}>Insufflator</option>
-            )}
+            <option value={product}>Camera</option>
+            <option value={product}>Monitor</option>
+            <option value={product}>Digital Capture</option>
+            <option value={product}>Insufflator</option>
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlTextarea1'>
