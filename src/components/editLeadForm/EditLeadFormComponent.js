@@ -12,9 +12,97 @@ const EditLeadFormComponent = (props) => {
       ...props.leadFormData,
       [name]: value,
     };
-    console.log(leadData);
     props.leadFormInput(leadData);
   };
+  // Product Select
+  const cameraSelect = (
+    <>
+      <option value='Camera'>Camera</option>
+      <option value='Monitor'>Monitor</option>
+      <option value='Digital Capture'>Digital Capture</option>
+      <option value='Insufflator'>Insufflator</option>
+    </>
+  );
+  const monitorSelect = (
+    <>
+      <option value='Monitor'>Monitor</option>
+      <option value='Camera'>Camera</option>
+      <option value='Digital Capture'>Digital Capture</option>
+      <option value='Insufflator'>Insufflator</option>
+    </>
+  );
+  const digitalCaptureSelect = (
+    <>
+      <option value='Digital Capture'>Digital Capture</option>
+      <option value='Monitor'>Monitor</option>
+      <option value='Camera'>Camera</option>
+      <option value='Insufflator'>Insufflator</option>
+    </>
+  );
+  const insufflatorSelect = (
+    <>
+      <option value='Insufflator'>Insufflator</option>
+      <option value='Digital Capture'>Digital Capture</option>
+      <option value='Monitor'>Monitor</option>
+      <option value='Camera'>Camera</option>
+    </>
+  );
+
+  // Urgency Select
+  const lowSelect = (
+    <>
+      <option value='Low'>Low</option>
+      <option value='Medium'>Medium</option>
+      <option value='High'>High</option>
+    </>
+  );
+  const mediumSelect = (
+    <>
+      <option value='Medium'>Medium</option>
+      <option value='Low'>Low</option>
+      <option value='High'>High</option>
+    </>
+  );
+  const highSelect = (
+    <>
+      <option value='High'>High</option>
+      <option value='Medium'>Medium</option>
+      <option value='Low'>Low</option>
+    </>
+  );
+  const newSelect = (
+    <>
+      <option value='New'>New</option>
+      <option value='Open'>Open</option>
+      <option value='Pending'>Pending</option>
+      <option value='Closed'>Closed</option>
+    </>
+  );
+  const openSelect = (
+    <>
+      <option value='Open'>Open</option>
+      <option value='New'>New</option>
+      <option value='Pending'>Pending</option>
+      <option value='Closed'>Closed</option>
+    </>
+  );
+  const pendingSelect = (
+    <>
+      <option value='Pending'>Pending</option>
+      <option value='Open'>Open</option>
+      <option value='New'>New</option>
+      <option value='Closed'>Closed</option>
+    </>
+  );
+  const closedSelect = (
+    <>
+      <option value='Closed'>Closed</option>
+      <option value='Pending'>Pending</option>
+      <option value='Open'>Open</option>
+      <option value='New'>New</option>
+    </>
+  );
+
   const {
     product,
     description,
@@ -36,17 +124,17 @@ const EditLeadFormComponent = (props) => {
             onChange={handleOnChange}
             className='form-control'
             name='product'>
-            <option value='Camera'>Camera</option>
-            <option value='Monitor'>Monitor</option>
-            <option value='Digital Capture'>Digital Capture</option>
-            <option value='Insufflator'>Insufflator</option>
+            {product === "Camera" ? cameraSelect : null}
+            {product === "Monitor" ? monitorSelect : null}
+            {product === "Digital Capture" ? digitalCaptureSelect : null}
+            {product === "Insufflator" ? insufflatorSelect : null}
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlTextarea1'>
           <Form.Label>Lead Description</Form.Label>
           <Form.Control
             onChange={handleOnChange}
-            value={description}
+            value={description ? description : " "}
             name='description'
             as='textarea'
             rows='3'
@@ -60,16 +148,9 @@ const EditLeadFormComponent = (props) => {
             onChange={handleOnChange}
             className='form-control'
             name='urgency'>
-            {urgency === "Low" ? <option value='Low'>Low</option> : null}
-            {urgency === "Medium" ? (
-              <option value='Medium'>Medium</option>
-            ) : null}
-            {urgency === "High" ? <option value='High'>High</option> : null}
-            {urgency === "Low" ? null : <option value='Low'>Low</option>}
-            {urgency === "Medium" ? null : (
-              <option value='Medium'>Medium</option>
-            )}
-            {urgency === "High" ? null : <option value='High'>High</option>}
+            {urgency === "Low" ? lowSelect : null}
+            {urgency === "Medium" ? mediumSelect : null}
+            {urgency === "High" ? highSelect : null}
           </select>
         </Form.Group>
         <Form.Group controlId='exampleForm.ControlSelect1'>
@@ -78,22 +159,10 @@ const EditLeadFormComponent = (props) => {
             onChange={handleOnChange}
             className='form-control'
             name='status'>
-            {status === "New" ? <option value='New'>New</option> : null}
-            {status === "Open" ? <option value='Open'>Open</option> : null}
-            {status === "Pending" ? (
-              <option value='Pending'>Pending</option>
-            ) : null}
-            {status === "Closed" ? (
-              <option value='Closed'>Closed</option>
-            ) : null}
-            {status === "New" ? null : <option value='New'>New</option>}
-            {status === "Open" ? null : <option value='Open'>Open</option>}
-            {status === "Pending" ? null : (
-              <option value='Pending'>Pending</option>
-            )}
-            {status === "Closed" ? null : (
-              <option value='Closed'>Closed</option>
-            )}
+            {status === "New" ? newSelect : null}
+            {status === "Open" ? openSelect : null}
+            {status === "Pending" ? pendingSelect : null}
+            {status === "Closed" ? closedSelect : null}
           </select>
         </Form.Group>
         <div className='form-lead-contact-title'>
@@ -102,7 +171,7 @@ const EditLeadFormComponent = (props) => {
         <Form.Group controlId='formGroupEmail'>
           <Form.Label>Name</Form.Label>
           <Form.Control
-            value={contact_name}
+            value={contact_name ? contact_name : " "}
             onChange={handleOnChange}
             name='contact_name'
             type='name'
@@ -112,7 +181,7 @@ const EditLeadFormComponent = (props) => {
         <Form.Group controlId='formGroupEmail'>
           <Form.Label>Email</Form.Label>
           <Form.Control
-            value={email}
+            value={email ? email : " "}
             onChange={handleOnChange}
             name='email'
             type='email'
@@ -122,7 +191,7 @@ const EditLeadFormComponent = (props) => {
         <Form.Group controlId='formGroupPassword'>
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
-            value={phone_number}
+            value={phone_number ? phone_number : " "}
             onChange={handleOnChange}
             name='phone_number'
             type='phone_number'
