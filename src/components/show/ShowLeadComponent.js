@@ -41,10 +41,10 @@ const ShowLeadComponent = (props) => {
           className='urgency-text'
           style={
             props.lead.urgency === "High"
-              ? { color: "red" }
+              ? { color: "#E74C3C " }
               : props.lead.urgency === "Medium"
-              ? { color: "yellow" }
-              : { color: "green" }
+              ? { color: "#FFB600 " }
+              : { color: "#17A589" }
           }>
           {props.lead.urgency}
         </p>

@@ -32,7 +32,22 @@
   margin-top: 16px;
 }
 
-.container-div button {
+.submit-div button {
   margin-top: 16px;
   width: 100%;
+}
+
+.create-account-text-div {
+  margin-top: 0;
+  text-align: center;
+}
+.create-account-text-div p {
+  font-size: small;
+  opacity: 0.4;
+  margin: 0;
+}
+
+.create-account-button-div button {
+  width: 100%;
+  margin-top: 6px;
 }

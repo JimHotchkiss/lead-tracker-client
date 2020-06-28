@@ -65,6 +65,11 @@ const Login = (props) => {
         <div className='submit-div'>
           <button className='btn btn-primary'>Submit</button>
         </div>
+        <div className='create-account-text-div'>
+          <a href='#!'>
+            <p className='create-account-text-tag'>or create account</p>
+          </a>
+        </div>
       </form>
     </div>
   );
