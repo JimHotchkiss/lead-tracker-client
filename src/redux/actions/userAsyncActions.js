@@ -11,6 +11,11 @@ export const getContactsSuccess = (contacts) => {
   return { type: "SET_CONTACTS", contacts };
 };
 
+export const clearLeadsSuccess = () => {
+  console.log("clear leads");
+  return { type: "CLEAR_LEADS" };
+};
+
 // Get Current User
 export const getCurrentUser = () => {
   return (dispatch) => {
@@ -42,7 +47,9 @@ export const userLogOutSuccess = () => {
 
 export const userLogOut = () => {
   return (dispatch) => {
+    console.log("userLogOut");
     dispatch(userLogOutSuccess());
+    dispatch(clearLeadsSuccess());
     return fetch(`${API_URL}/logout`, {
       credentials: "include",
       method: "DELETE",

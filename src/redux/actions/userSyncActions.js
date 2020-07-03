@@ -4,10 +4,3 @@ export const userInput = (formData) => {
     formData,
   };
 };
-
-export const userSubmit = (formData) => {
-  return {
-    type: "USER_SUBMIT",
-    formData,
-  };
-};
