@@ -32,10 +32,12 @@ class Header extends Component {
           </NavLink>{" "}
         </div>
         <div className='add-lead-div'>
-          <NavLink to='/leads/new' style={{ textDecoration: "none" }}>
-            <div className='add-lead-img-div'></div>
-            <p>Add lead</p>
-          </NavLink>{" "}
+          {currentUser !== null ? (
+            <NavLink to='/leads/new' style={{ textDecoration: "none" }}>
+              <div className='add-lead-img-div'></div>
+              <p>Add lead</p>
+            </NavLink>
+          ) : null}
         </div>
       </div>
     );

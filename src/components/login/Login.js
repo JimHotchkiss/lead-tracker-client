@@ -64,7 +64,7 @@ const Login = (props) => {
           />
         </div>
         <div className='submit-div'>
-          <button className='btn btn-primary'>Submit</button>
+          <button className='btn btn-primary'>Login</button>
         </div>
         <div className='or-text-div'>
           <p>or</p>
