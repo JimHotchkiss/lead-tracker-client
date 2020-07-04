@@ -51,3 +51,12 @@
   width: 100%;
   margin-top: 6px;
 }
+
+.or-text-div {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.or-text-div p {
+  margin: 0;
+}

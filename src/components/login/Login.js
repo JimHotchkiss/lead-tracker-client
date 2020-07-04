@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { userInput } from "../../redux/actions/userSyncActions";
 import { userSubmit } from "../../redux/actions/userAsyncActions";
@@ -65,10 +66,13 @@ const Login = (props) => {
         <div className='submit-div'>
           <button className='btn btn-primary'>Submit</button>
         </div>
+        <div className='or-text-div'>
+          <p>or</p>
+        </div>
         <div className='create-account-text-div'>
-          <a href='#!'>
-            <p className='create-account-text-tag'>or create account</p>
-          </a>
+          <NavLink to='/users/new' style={{ textDecoration: "none" }}>
+            <p>Create User</p>
+          </NavLink>{" "}
         </div>
       </form>
     </div>
