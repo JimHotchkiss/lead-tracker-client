@@ -9,7 +9,8 @@ const initialState = {
 export default function createUserReducer(state = initialState, action) {
   switch (action.type) {
     case "CREATE_USER_INPUT":
-      console.log(action.createUserData);
+      return action.createUserData;
+    case "CREATE_USER":
       return action.createUserData;
     case "CLEAR_USER_INPUT":
       return initialState;

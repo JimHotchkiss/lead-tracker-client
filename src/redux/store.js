@@ -7,7 +7,8 @@ import contacts from "./reducers/contactsReducer";
 import leadInput from "./reducers/leadFormReducer";
 import lead from "./reducers/leadSubmitReducer";
 import showLead from "./reducers/showLeadReducer";
-import createUserInput from "./reducers/createUserInputReducer";
+import createUserInput from "./reducers/createUserReducer";
+import createUser from "./reducers/createUserReducer";
 import showLeadContact from "./reducers/showLeadContactReducer";
 import showContact from "./reducers/showContactReducer";
 
@@ -15,6 +16,7 @@ const manageReducers = combineReducers({
   userInput: userInput,
   createUserInput: createUserInput,
   currentUser: currentUser,
+  createUser: createUser,
   leads: leads,
   contacts: contacts,
   leadInput: leadInput,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createUserInput } from "../../redux/actions/userSyncActions";
+import { createUserSubmit } from "../../redux/actions/userAsyncActions";
 import { connect } from "react-redux";
 import "./usercreate.css";
 // import { setCurrentUser } from "../../redux/actions/userAsyncActions";
@@ -16,19 +17,16 @@ const UserCreate = (props) => {
 
   const handleSubmit = (e) => {
     // Prevent normal behavior(reload page)
+    e.preventDefault();
+    const createUserFormData = props.createUserData;
     if (
       props.createUserData.password !== props.createUserData.confirm_password
     ) {
       setCheckPassword(true);
       setError("Passwords don't match.");
-    } else {
-      setCheckPassword(false);
-      console.log(props.createUserData);
     }
-    console.log(props.createUserData);
-    e.preventDefault();
-    const createUserData = props.createUserData;
-    // props.userCreateSubmit(createUserData, props);
+    setCheckPassword(false);
+    props.createUserSubmit(createUserFormData, props);
   };
 
   const { username, email, password, confirm_password } = props;
@@ -103,4 +101,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { createUserInput })(UserCreate);
+export default connect(mapStateToProps, { createUserInput, createUserSubmit })(
+  UserCreate
+);

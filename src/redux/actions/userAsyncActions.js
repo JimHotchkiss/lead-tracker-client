@@ -92,3 +92,28 @@ export const userSubmit = (formData, props) => {
       });
   };
 };
+
+// Create User
+export const createUserSubmit = (createUserFormData, props) => {
+  console.log(createUserFormData);
+  return (dispatch) => {
+    return fetch(`${API_URL}/users`, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user: createUserFormData }),
+    })
+      .then((response) => response.json())
+      .then((user) => {
+        if (user.error) {
+          alert(user.error);
+        } else {
+          console.log(user.data);
+          // dispatch(userSubmitSucess(user.data.attributes));
+          // routeToDashBoard(props);
+        }
+      });
+  };
+};
