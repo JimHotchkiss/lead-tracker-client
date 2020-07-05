@@ -1,35 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { createUserInput } from "../../redux/actions/userSyncActions";
 import { connect } from "react-redux";
-// import { getCurrentUser } from "../../redux/actions/userAsyncActions";
+import "./usercreate.css";
+// import { setCurrentUser } from "../../redux/actions/userAsyncActions";
 
 const UserCreate = (props) => {
+  const [error, setError] = useState("");
+  const [checkPassword, setCheckPassword] = useState(false);
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    const createUserData = { ...props.createUserData, [name]: value };
+    props.createUserInput(createUserData);
+  };
+
+  const handleSubmit = (e) => {
+    // Prevent normal behavior(reload page)
+    if (
+      props.createUserData.password !== props.createUserData.confirm_password
+    ) {
+      setCheckPassword(true);
+      setError("Passwords don't match.");
+    } else {
+      setCheckPassword(false);
+      console.log(props.createUserData);
+    }
+    console.log(props.createUserData);
+    e.preventDefault();
+    const createUserData = props.createUserData;
+    // props.userCreateSubmit(createUserData, props);
+  };
+
+  const { username, email, password, confirm_password } = props;
   return (
     <div className='container-div'>
       <div className='title-div'>
         <h3>Create User</h3>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className='userName-label'>
           <label>Username:</label>
         </div>
         <div className='userName-input'>
           <input
-            // value={username}
+            value={username}
             name='username'
             placeholder='Create username'
             type='text'
-            // onChange={handleOnChange}
+            onChange={handleOnChange}
           />
         </div>
         <div className='email-label'>
           <label>Email:</label>
           <div className='email-input'>
             <input
-              // value={email}
+              value={email}
               name='email'
               placeholder='Enter your email'
               type='text'
-              // onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
         </div>
@@ -38,24 +67,26 @@ const UserCreate = (props) => {
         </div>
         <div className='password-input'>
           <input
-            // value={password}
+            value={password}
             name='password'
-            placeholder='Create password'
+            placeholder='Create Password'
             type='password'
-            // onChange={handleOnChange}
+            onChange={handleOnChange}
           />
+          <p className='password-error-text'>{checkPassword ? error : null}</p>
         </div>
         <div className='confirm-password-label'>
           <label>Confirm Password:</label>
         </div>
-        <div className='password-input'>
+        <div className='confirm-password-input'>
           <input
-            // value={password}
-            name='password'
+            value={confirm_password}
+            name='confirm_password'
             placeholder='Confirm password'
             type='password'
-            // onChange={handleOnChange}
+            onChange={handleOnChange}
           />
+          <p className='password-error-text'>{checkPassword ? error : null}</p>
         </div>
         <div className='submit-div'>
           <button className='btn btn-primary'>Create User</button>
@@ -66,7 +97,10 @@ const UserCreate = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { user: state.currentUser };
+  return {
+    user: state.currentUser,
+    createUserData: state.createUserInput,
+  };
 };
 
-export default connect(mapStateToProps)(UserCreate);
+export default connect(mapStateToProps, { createUserInput })(UserCreate);

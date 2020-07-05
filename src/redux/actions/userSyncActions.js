@@ -4,3 +4,10 @@ export const userInput = (formData) => {
     formData,
   };
 };
+
+export const createUserInput = (createUserData) => {
+  return {
+    type: "CREATE_USER_INPUT",
+    createUserData,
+  };
+};
