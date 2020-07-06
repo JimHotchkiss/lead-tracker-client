@@ -14,7 +14,7 @@
   width: 40px;
   height: 40px;
   margin-left: 16px;
-  margin-top: 32px;
+  margin-top: 24px;
   margin-bottom: 4px;
   background: transparent url("./img/user-white.png") 0% 0% no-repeat
     padding-box;
@@ -46,6 +46,21 @@
   background: transparent url("./img/dashboard.png") 0% 0% no-repeat padding-box;
   background-size: 40px;
   opacity: 1;
+}
+
+.user-profile-img-div {
+  width: 40px;
+  height: 40px;
+  margin-left: 18px;
+  margin-top: 24px;
+  background: transparent url("./img/user-profile.png") 0% 0% no-repeat
+    padding-box;
+  background-size: 40px;
+  opacity: 1;
+}
+
+.user-profile-div p {
+  color: #fff;
 }
 
 .add-lead-img-div {

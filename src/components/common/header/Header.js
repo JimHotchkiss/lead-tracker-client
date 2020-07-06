@@ -13,6 +13,31 @@ class Header extends Component {
     const { currentUser } = this.props;
     return (
       <div className='nav-bar-div'>
+        <div className='dashBoardLink'>
+          <NavLink exact to='/' style={{ textDecoration: "none" }}>
+            <div className='dashBoardImgDiv'></div>
+            <p>Dashboard</p>
+          </NavLink>{" "}
+        </div>
+
+        <div className='user-profile-div'>
+          {currentUser !== null ? (
+            <NavLink to='/leads/:id' style={{ textDecoration: "none" }}>
+              <div className='user-profile-img-div'></div>
+              <p>User Profile</p>
+            </NavLink>
+          ) : null}
+        </div>
+
+        <div className='add-lead-div'>
+          {currentUser !== null ? (
+            <NavLink to='/leads/new' style={{ textDecoration: "none" }}>
+              <div className='add-lead-img-div'></div>
+              <p>Add lead</p>
+            </NavLink>
+          ) : null}
+        </div>
+
         {currentUser !== null ? (
           <div className='logContainer'>
             <NavLink to='/login' style={{ textDecoration: "none" }}>
@@ -24,21 +49,6 @@ class Header extends Component {
             </NavLink>
           </div>
         ) : null}
-
-        <div className='dashBoardLink'>
-          <NavLink exact to='/' style={{ textDecoration: "none" }}>
-            <div className='dashBoardImgDiv'></div>
-            <p>Dashboard</p>
-          </NavLink>{" "}
-        </div>
-        <div className='add-lead-div'>
-          {currentUser !== null ? (
-            <NavLink to='/leads/new' style={{ textDecoration: "none" }}>
-              <div className='add-lead-img-div'></div>
-              <p>Add lead</p>
-            </NavLink>
-          ) : null}
-        </div>
       </div>
     );
   }

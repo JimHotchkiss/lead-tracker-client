@@ -16,6 +16,10 @@ export const clearLeadsSuccess = () => {
   return { type: "CLEAR_LEADS" };
 };
 
+export const clearCreateUserInput = () => {
+  return { type: "CLEAR_USER_INPUT" };
+};
+
 // Get Current User
 export const getCurrentUser = () => {
   return (dispatch) => {
@@ -61,8 +65,13 @@ export const userSubmitSucess = (user) => {
   return { type: "USER_LOGIN", user };
 };
 
-export const routeToDashBoard = (props) => {
-  props.history.push("/");
+export const createUserSubmitSucess = (user) => {
+  return { type: "CREATE_USER", user };
+};
+
+export const routeToDashBoard = (props, user) => {
+  console.log(user.data.id);
+  props.history.push(`/users/${user.data.id}`);
 };
 
 export const setCurrentUser = (user) => {
@@ -110,9 +119,10 @@ export const createUserSubmit = (createUserFormData, props) => {
         if (user.error) {
           alert(user.error);
         } else {
-          console.log(user.data);
-          // dispatch(userSubmitSucess(user.data.attributes));
-          // routeToDashBoard(props);
+          console.log(user);
+          dispatch(createUserSubmitSucess(user));
+          dispatch(clearCreateUserInput());
+          routeToDashBoard(props, user);
         }
       });
   };

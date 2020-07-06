@@ -24,9 +24,10 @@ const UserCreate = (props) => {
     ) {
       setCheckPassword(true);
       setError("Passwords don't match.");
+    } else {
+      setCheckPassword(false);
+      props.createUserSubmit(createUserFormData, props);
     }
-    setCheckPassword(false);
-    props.createUserSubmit(createUserFormData, props);
   };
 
   const { username, email, password, confirm_password } = props;

@@ -11,7 +11,7 @@ export default function createUserReducer(state = initialState, action) {
     case "CREATE_USER_INPUT":
       return action.createUserData;
     case "CREATE_USER":
-      return action.createUserData;
+      return action.user;
     case "CLEAR_USER_INPUT":
       return initialState;
     default:
