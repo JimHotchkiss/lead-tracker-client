@@ -32,6 +32,7 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
+        console.log(user);
         if (user.error) {
           dispatch(getCurrentUserSuccess(user.data.attributes));
           dispatch(getLeadsSuccess(user.data.attributes.leads));
@@ -70,8 +71,10 @@ export const createUserSubmitSucess = (user) => {
 };
 
 export const routeToDashBoard = (props, user) => {
-  console.log(user.data.id);
-  props.history.push(`/users/${user.data.id}`);
+  props.history.push(`/`);
+  // if (user.data) {
+  //   props.history.push(`/users/${user.data.id}`);
+  // }
 };
 
 export const setCurrentUser = (user) => {
@@ -119,7 +122,6 @@ export const createUserSubmit = (createUserFormData, props) => {
         if (user.error) {
           alert(user.error);
         } else {
-          console.log(user);
           dispatch(createUserSubmitSucess(user));
           dispatch(clearCreateUserInput());
           routeToDashBoard(props, user);
