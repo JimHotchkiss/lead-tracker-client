@@ -28,3 +28,10 @@
 .table-component-div {
   padding: 12px 18px 18px 18px;
 }
+@media only screen and (max-width: 1600px) {
+  .table-graph-div {
+    height: 750px;
+    width: 825px;
+    padding: 24px;
+  }
+}

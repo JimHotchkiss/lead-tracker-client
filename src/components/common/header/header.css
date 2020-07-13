@@ -85,3 +85,54 @@
 .dashBoardLink p {
   color: #fff;
 }
+
+@media only screen and (max-width: 1600px) {
+  .nav-bar-div {
+    width: 95px;
+    padding: 8px;
+    margin: 0px;
+  }
+  .add-lead-img-div {
+    width: 30px;
+    height: 30px;
+    margin-left: 24px;
+    background-size: 30px;
+  }
+
+  .add-lead-div p {
+    font-size: 14px;
+    margin-left: 9px;
+  }
+
+  .user-profile-img-div {
+    width: 30px;
+    height: 30px;
+    margin-left: 24px;
+    background-size: 30px;
+  }
+
+  .user-profile-div p {
+    font-size: 14px;
+  }
+
+  .loginImgDiv {
+    width: 30px;
+    height: 30px;
+    margin-left: 24px;
+    background-size: 30px;
+  }
+  .logContainer p {
+    font-size: 14px;
+  }
+
+  .dashBoardImgDiv {
+    width: 30px;
+    height: 30px;
+    background-size: 30px;
+    margin-left: 24px;
+  }
+  .dashBoardLink p {
+    font-size: 14px;
+    margin-left: 4px;
+  }
+}
