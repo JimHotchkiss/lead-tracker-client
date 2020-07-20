@@ -27,7 +27,7 @@ const BarGraphComponent = (props) => {
     <div className='horizontal-bar-div'>
       <HorizontalBar
         data={data}
-        width={10}
+        width={1200}
         height={350}
         options={{
           scales: {
@@ -40,7 +40,7 @@ const BarGraphComponent = (props) => {
               },
             ],
           },
-          maintainAspectRatio: false,
+          // maintainAspectRatio: false,
           title: {
             display: true,
             text: "Status Of Leads",
