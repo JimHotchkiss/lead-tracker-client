@@ -1,6 +1,7 @@
 .show-lead-div {
-  overflow: hidden;
   max-width: 50%;
+  height: 740px;
+  overflow-y: scroll;
   margin: auto;
   margin-top: 25px;
   background: #eff7f6;

@@ -1,5 +1,7 @@
 .lead-form-div {
+  overflow-y: scroll;
   max-width: 700px;
+  height: 740px;
   padding: 40px 40px;
   margin: 3% auto;
   color: #000;
