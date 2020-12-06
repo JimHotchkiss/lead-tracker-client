@@ -95,3 +95,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
             placeholder="Enter your password"
             handleChange={this.onChangeHandler}
           />{" "} _/}
+
+    REACT_APP_API_URL=http://localhost:3000/api/v1
