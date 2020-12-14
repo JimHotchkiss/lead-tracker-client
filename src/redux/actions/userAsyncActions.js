@@ -1,24 +1,24 @@
 // Asynchronized request
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL
 
 export const getCurrentUserSuccess = (user) => {
-  return { type: "CURRENT_USER", user };
-};
+  return { type: "CURRENT_USER", user }
+}
 export const getLeadsSuccess = (leads) => {
-  return { type: "SET_LEADS", leads };
-};
+  return { type: "SET_LEADS", leads }
+}
 export const getContactsSuccess = (contacts) => {
-  return { type: "SET_CONTACTS", contacts };
-};
+  return { type: "SET_CONTACTS", contacts }
+}
 
 export const clearLeadsSuccess = () => {
-  console.log("clear leads");
-  return { type: "CLEAR_LEADS" };
-};
+  console.log("clear leads")
+  return { type: "CLEAR_LEADS" }
+}
 
 export const clearCreateUserInput = () => {
-  return { type: "CLEAR_USER_INPUT" };
-};
+  return { type: "CLEAR_USER_INPUT" }
+}
 
 // Get Current User
 export const getCurrentUser = () => {
@@ -32,58 +32,55 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log(user);
         if (user.error) {
-          dispatch(getCurrentUserSuccess(user.data.attributes));
-          dispatch(getLeadsSuccess(user.data.attributes.leads));
-          dispatch(getContactsSuccess(user.data.attributes.contacts));
+          dispatch(getCurrentUserSuccess(user.data.attributes))
+          dispatch(getLeadsSuccess(user.data.attributes.leads))
+          dispatch(getContactsSuccess(user.data.attributes.contacts))
         } else {
-          dispatch(getCurrentUserSuccess(user.data.attributes));
-          dispatch(getLeadsSuccess(user.data.attributes.leads));
-          dispatch(getContactsSuccess(user.data.attributes.contacts));
+          dispatch(getCurrentUserSuccess(user.data.attributes))
+          dispatch(getLeadsSuccess(user.data.attributes.leads))
+          dispatch(getContactsSuccess(user.data.attributes.contacts))
         }
-      });
-  };
-};
+      })
+  }
+}
 
 export const userLogOutSuccess = () => {
-  return { type: "USER_LOGOUT" };
-};
+  return { type: "USER_LOGOUT" }
+}
 
 export const userLogOut = () => {
   return (dispatch) => {
-    console.log("userLogOut");
-    dispatch(userLogOutSuccess());
-    dispatch(clearLeadsSuccess());
+    dispatch(userLogOutSuccess())
+    dispatch(clearLeadsSuccess())
     return fetch(`${API_URL}/logout`, {
       credentials: "include",
       method: "DELETE",
-    });
-  };
-};
+    })
+  }
+}
 
 export const userSubmitSucess = (user) => {
-  return { type: "USER_LOGIN", user };
-};
+  return { type: "USER_LOGIN", user }
+}
 
 export const createUserSubmitSucess = (user) => {
-  return { type: "CREATE_USER", user };
-};
+  return { type: "CREATE_USER", user }
+}
 
 export const routeToDashBoard = (props, user) => {
-  props.history.push(`/`);
+  props.history.push(`/`)
   // if (user.data) {
   //   props.history.push(`/users/${user.data.id}`);
   // }
-};
+}
 
 export const setCurrentUser = (user) => {
-  return { type: "CURRENT_USER", user };
-};
+  return { type: "CURRENT_USER", user }
+}
 
 // User Login
 export const userSubmit = (formData, props) => {
-  console.log(formData);
   return (dispatch) => {
     return fetch(`${API_URL}/login`, {
       credentials: "include",
@@ -96,18 +93,17 @@ export const userSubmit = (formData, props) => {
       .then((response) => response.json())
       .then((user) => {
         if (user.error) {
-          alert(user.error);
+          alert(user.error)
         } else {
-          dispatch(userSubmitSucess(user.data.attributes));
-          routeToDashBoard(props);
+          dispatch(userSubmitSucess(user.data.attributes))
+          routeToDashBoard(props)
         }
-      });
-  };
-};
+      })
+  }
+}
 
 // Create User
 export const createUserSubmit = (createUserFormData, props) => {
-  console.log(createUserFormData);
   return (dispatch) => {
     return fetch(`${API_URL}/users`, {
       credentials: "include",
@@ -120,12 +116,12 @@ export const createUserSubmit = (createUserFormData, props) => {
       .then((response) => response.json())
       .then((user) => {
         if (user.error) {
-          alert(user.error);
+          alert(user.error)
         } else {
-          dispatch(createUserSubmitSucess(user));
-          dispatch(clearCreateUserInput());
-          routeToDashBoard(props, user);
+          dispatch(createUserSubmitSucess(user))
+          dispatch(clearCreateUserInput())
+          routeToDashBoard(props, user)
         }
-      });
-  };
-};
+      })
+  }
+}

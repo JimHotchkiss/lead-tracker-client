@@ -97,3 +97,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
           />{" "} _/}
 
     REACT_APP_API_URL=http://localhost:3000/api/v1
+REACT_APP_API_URL=https://lead-tracker-api.herokuapp.com/api/v1
