@@ -1,25 +1,25 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import { userInput } from "../../redux/actions/userSyncActions";
-import { userSubmit } from "../../redux/actions/userAsyncActions";
-import "./login.css";
+import React from "react"
+import { NavLink } from "react-router-dom"
+import { connect } from "react-redux"
+import { userInput } from "../../redux/actions/userSyncActions"
+import { userSubmit } from "../../redux/actions/userAsyncActions"
+import "./login.css"
 
 const Login = (props) => {
   const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    const formData = { ...props.userData, [name]: value };
-    props.userInput(formData);
-  };
+    const { name, value } = e.target
+    const formData = { ...props.userData, [name]: value }
+    props.userInput(formData)
+  }
 
   const handleSubmit = (e) => {
     // Prevent normal behavior(reload page)
-    e.preventDefault();
-    const formData = props.userData;
-    props.userSubmit(formData, props);
-  };
+    e.preventDefault()
+    const formData = props.userData
+    props.userSubmit(formData, props)
+  }
 
-  const { username, email, password } = props.userInput;
+  const { username, email, password } = props.userInput
 
   return (
     <div className='container-div'>
@@ -76,15 +76,15 @@ const Login = (props) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
     userData: state.userInput,
     user: state.user,
     currentUser: state.currentUser,
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, { userInput, userSubmit })(Login);
+export default connect(mapStateToProps, { userInput, userSubmit })(Login)

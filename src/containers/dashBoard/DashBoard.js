@@ -1,55 +1,55 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getCurrentUser } from "../../redux/actions/userAsyncActions";
-import Products from "../../components/products/Products";
-import BarGraphComponent from "../../components/barGraphComponent/BarGraphComponent";
-import TableComponent from "../../components/tableComponent/TableComponent";
-import { showLeadAction } from "../../redux/actions/showLeadAsyncAction";
-import { showContactAction } from "../../redux/actions/showContactAsyncAction";
-
-import "./dashBoard.css";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { getCurrentUser } from "../../redux/actions/userAsyncActions"
+import Products from "../../components/products/Products"
+import BarGraphComponent from "../../components/barGraphComponent/BarGraphComponent"
+import TableComponent from "../../components/tableComponent/TableComponent"
+import { showLeadAction } from "../../redux/actions/showLeadAsyncAction"
+import { showContactAction } from "../../redux/actions/showContactAsyncAction"
+import "./dashBoard.css"
 class DashBoard extends Component {
   componentDidMount() {
+    console.log(this.props)
     this.props.getCurrentUser().catch((error) => {
-      this.props.history.push("/login");
-      alert("An error has occured: " + error);
-    });
+      this.props.history.push("/login")
+      alert("An error has occured: " + error)
+    })
   }
 
   handleShowContact = (event) => {
-    const contactData = event.target.dataset.id;
-    this.props.showContactAction(contactData, this.props);
-  };
+    const contactData = event.target.dataset.id
+    this.props.showContactAction(contactData, this.props)
+  }
 
   handleShowLead = (event) => {
-    const leadData = event.target.dataset.id;
-    this.props.showLeadAction(leadData, this.props);
-  };
+    const leadData = event.target.dataset.id
+    this.props.showLeadAction(leadData, this.props)
+  }
 
   truncateString(str, num) {
     if (str.length <= num) {
-      return str;
+      return str
     }
-    return str.slice(0, num) + "...";
+    return str.slice(0, num) + "..."
   }
 
   convertTime(dateTime) {
-    let dateString = dateTime;
-    let newDateString = new Date(dateString);
-    return newDateString.toLocaleDateString();
+    let dateString = dateTime
+    let newDateString = new Date(dateString)
+    return newDateString.toLocaleDateString()
   }
 
   render() {
-    const { leads } = this.props;
-    const { cameras } = this.props;
-    const { monitors } = this.props;
-    const { digital_captures } = this.props;
-    const { insufflators } = this.props;
-    const { statusNew } = this.props;
-    const { statusOpen } = this.props;
-    const { statusPending } = this.props;
-    const { statusClosed } = this.props;
-    const { contacts } = this.props;
+    const { leads } = this.props
+    const { cameras } = this.props
+    const { monitors } = this.props
+    const { digital_captures } = this.props
+    const { insufflators } = this.props
+    const { statusNew } = this.props
+    const { statusOpen } = this.props
+    const { statusPending } = this.props
+    const { statusClosed } = this.props
+    const { contacts } = this.props
     return (
       <div className='dashboard-container-div'>
         <div className='products-component-div'>
@@ -86,7 +86,7 @@ class DashBoard extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -100,7 +100,7 @@ const mapStateToProps = (state) => {
         contact: state.contacts.find(
           (contact) => contact.id === lead.contact_id
         ),
-      };
+      }
     }),
     contacts: state.contacts,
     cameras: state.leads.filter((lead) => lead.product === "Camera"),
@@ -114,11 +114,11 @@ const mapStateToProps = (state) => {
     statusPending: state.leads.filter((lead) => lead.status === "Pending"),
     statusClosed: state.leads.filter((lead) => lead.status === "Closed"),
     user: state.user,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, {
   getCurrentUser,
   showLeadAction,
   showContactAction,
-})(DashBoard);
+})(DashBoard)

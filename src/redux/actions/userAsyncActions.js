@@ -24,7 +24,7 @@ export const clearCreateUserInput = () => {
 export const getCurrentUser = () => {
   return (dispatch) => {
     return fetch(`${API_URL}/current_user`, {
-      credentials: "include",
+      // credentials: "include",
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -54,13 +54,14 @@ export const userLogOut = () => {
     dispatch(userLogOutSuccess())
     dispatch(clearLeadsSuccess())
     return fetch(`${API_URL}/logout`, {
-      credentials: "include",
+      // credentials: "include",
       method: "DELETE",
     })
   }
 }
 
 export const userSubmitSucess = (user) => {
+  console.log(user)
   return { type: "USER_LOGIN", user }
 }
 
@@ -81,9 +82,10 @@ export const setCurrentUser = (user) => {
 
 // User Login
 export const userSubmit = (formData, props) => {
+  console.log(formData)
   return (dispatch) => {
     return fetch(`${API_URL}/login`, {
-      credentials: "include",
+      // credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -95,7 +97,8 @@ export const userSubmit = (formData, props) => {
         if (user.error) {
           alert(user.error)
         } else {
-          dispatch(userSubmitSucess(user.data.attributes))
+          console.log(user.data)
+          // dispatch(userSubmitSucess(user.data.attributes))
           routeToDashBoard(props)
         }
       })
@@ -106,7 +109,7 @@ export const userSubmit = (formData, props) => {
 export const createUserSubmit = (createUserFormData, props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/users`, {
-      credentials: "include",
+      // credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
