@@ -1,10 +1,10 @@
 export default (state = null, action) => {
   switch (action.type) {
     case "USER_LOGIN":
-      return action.user;
+      return action.user
     case "USER_LOGOUT":
-      return null;
+      return null
     default:
-      return state;
+      return state
   }
-};
+}

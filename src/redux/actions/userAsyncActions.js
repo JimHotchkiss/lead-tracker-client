@@ -32,11 +32,13 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
+        console.log(user)
         if (user.error) {
           dispatch(getCurrentUserSuccess(user.data.attributes))
           dispatch(getLeadsSuccess(user.data.attributes.leads))
           dispatch(getContactsSuccess(user.data.attributes.contacts))
         } else {
+          console.log(user)
           dispatch(getCurrentUserSuccess(user.data.attributes))
           dispatch(getLeadsSuccess(user.data.attributes.leads))
           dispatch(getContactsSuccess(user.data.attributes.contacts))
@@ -61,7 +63,6 @@ export const userLogOut = () => {
 }
 
 export const userSubmitSucess = (user) => {
-  console.log(user)
   return { type: "USER_LOGIN", user }
 }
 
@@ -97,8 +98,7 @@ export const userSubmit = (formData, props) => {
         if (user.error) {
           alert(user.error)
         } else {
-          console.log(user.data)
-          // dispatch(userSubmitSucess(user.data.attributes))
+          dispatch(userSubmitSucess(user.data.attributes))
           routeToDashBoard(props)
         }
       })
