@@ -8,5 +8,10 @@
       # It wasn't making to the reducer, userSubmit, because userSubmit was not defined in the Store
       # !!!! The user is NOT remaining logged in. It's not keeping the sessions key.
         - Need to watch the Learn.co Globetrotter login video.
- 
-      # Note - Clear user input
+# Article - "User Authentication in React via Rails API"
+
+# Current_user is not working - 2/24/2021
+  * I'm going to try and work around current_user, for the time being, to try and get the header to render the icons.
+# Okay, I'm using userLogin to render the data. However, the current_user is not persisting on the backend. 
+  * Article - "User Authentication in React via Rails API"
+  * Globetrotter video

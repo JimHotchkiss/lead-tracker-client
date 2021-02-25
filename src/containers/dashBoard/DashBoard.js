@@ -92,28 +92,37 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.userLogin)
   return {
     currentUser: state.currentUser,
     lead: state.lead,
-    leads: state.leads.map((lead) => {
+    leads: state.userLogin.leads.map((lead) => {
       return {
         ...lead,
-        contact: state.contacts.find(
+        contact: state.userLogin.contacts.find(
           (contact) => contact.id === lead.contact_id
         ),
       }
     }),
-    contacts: state.contacts,
-    cameras: state.leads.filter((lead) => lead.product === "Camera"),
-    monitors: state.leads.filter((lead) => lead.product === "Monitor"),
-    digital_captures: state.leads.filter(
+    contacts: state.userLogin.contacts,
+    cameras: state.userLogin.leads.filter((lead) => lead.product === "Camera"),
+    monitors: state.userLogin.leads.filter(
+      (lead) => lead.product === "Monitor"
+    ),
+    digital_captures: state.userLogin.leads.filter(
       (lead) => lead.product === "Digital Capture"
     ),
-    insufflators: state.leads.filter((lead) => lead.product === "Insufflator"),
-    statusNew: state.leads.filter((lead) => lead.status === "New"),
-    statusOpen: state.leads.filter((lead) => lead.status === "Open"),
-    statusPending: state.leads.filter((lead) => lead.status === "Pending"),
-    statusClosed: state.leads.filter((lead) => lead.status === "Closed"),
+    insufflators: state.userLogin.leads.filter(
+      (lead) => lead.product === "Insufflator"
+    ),
+    statusNew: state.userLogin.leads.filter((lead) => lead.status === "New"),
+    statusOpen: state.userLogin.leads.filter((lead) => lead.status === "Open"),
+    statusPending: state.userLogin.leads.filter(
+      (lead) => lead.status === "Pending"
+    ),
+    statusClosed: state.userLogin.leads.filter(
+      (lead) => lead.status === "Closed"
+    ),
     user: state.user,
   }
 }
