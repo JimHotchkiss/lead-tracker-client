@@ -8,13 +8,13 @@ import { showLeadAction } from "../../redux/actions/showLeadAsyncAction"
 import { showContactAction } from "../../redux/actions/showContactAsyncAction"
 import "./dashBoard.css"
 class DashBoard extends Component {
-  // componentDidMount() {
-  //   console.log(this.props)
-  //   this.props.getCurrentUser().catch((error) => {
-  //     this.props.history.push("/login")
-  //     alert("An error has occured: " + error)
-  //   })
-  // }
+  componentDidMount() {
+    console.log("component did mount")
+    this.props.getCurrentUser().catch((error) => {
+      this.props.history.push("/login")
+      alert("An error has occured: " + error)
+    })
+  }
 
   handleShowContact = (event) => {
     const contactData = event.target.dataset.id
@@ -92,7 +92,6 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.userLogin)
   return {
     currentUser: state.currentUser,
     lead: state.lead,

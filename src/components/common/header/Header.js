@@ -10,7 +10,6 @@ class Header extends Component {
     this.props.userLogOut()
   }
   render() {
-    console.log(this.props)
     // const { currentUser } = this.props
     const { userLogin } = this.props
     return (
@@ -57,7 +56,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     // currentUser: state.currentUser,
     // Going to use userLogin instead of currentUser, for the time being

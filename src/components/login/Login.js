@@ -2,7 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import { userInput } from "../../redux/actions/userSyncActions"
-import { userSubmit } from "../../redux/actions/userAsyncActions"
+import { userLogin } from "../../redux/actions/userAsyncActions"
 import "./login.css"
 
 const Login = (props) => {
@@ -16,7 +16,7 @@ const Login = (props) => {
     // Prevent normal behavior(reload page)
     e.preventDefault()
     const formData = props.userData
-    props.userSubmit(formData, props)
+    props.userLogin(formData, props)
   }
 
   const { username, email, password } = props.userInput
@@ -87,4 +87,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { userInput, userSubmit })(Login)
+export default connect(mapStateToProps, { userInput, userLogin })(Login)

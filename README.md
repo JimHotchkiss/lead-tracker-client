@@ -15,3 +15,22 @@
 # Okay, I'm using userLogin to render the data. However, the current_user is not persisting on the backend. 
   * Article - "User Authentication in React via Rails API"
   * Globetrotter video
+# For login Authentication
+  * config/application.rb 
+    - config.middleware.use ActionDispatch::Cookies
+      config.middleware.use ActionDispatch::Session::CookieStore, key: '_cookie_name'
+  * config/intializers/cor.rb
+    - Rails.application.config.middleware.insert_before 0, Rack::Cors do
+        allow do
+          origins 'http://localhost:3000'
+          resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          credentials: true
+        end
+      end
+  * On the client side, in the fetch request 
+    - credentials: "include"
+
+# Redux flow -> Define it in Store -> define the action (this)
+  

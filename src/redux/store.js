@@ -12,7 +12,7 @@ import createUser from "./reducers/createUserReducer"
 import showLeadContact from "./reducers/showLeadContactReducer"
 import showContact from "./reducers/showContactReducer"
 // User login
-import userLogin from "./reducers/userSubmit"
+import userLogin from "./reducers/userLogin"
 
 const manageReducers = combineReducers({
   // User Login
