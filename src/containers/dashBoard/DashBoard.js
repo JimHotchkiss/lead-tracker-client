@@ -11,8 +11,9 @@ class DashBoard extends Component {
   componentDidMount() {
     console.log("component did mount")
     this.props.getCurrentUser().catch((error) => {
+      console.log(error)
       this.props.history.push("/login")
-      alert("An error has occured: " + error)
+      // alert("An error has occured: " + error)
     })
   }
 
@@ -40,7 +41,6 @@ class DashBoard extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { leads } = this.props
     const { cameras } = this.props
     const { monitors } = this.props
@@ -95,33 +95,25 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
     lead: state.lead,
-    leads: state.userLogin.leads.map((lead) => {
+    leads: state.leads.map((lead) => {
       return {
         ...lead,
-        contact: state.userLogin.contacts.find(
+        contact: state.contacts.find(
           (contact) => contact.id === lead.contact_id
         ),
       }
     }),
-    contacts: state.userLogin.contacts,
-    cameras: state.userLogin.leads.filter((lead) => lead.product === "Camera"),
-    monitors: state.userLogin.leads.filter(
-      (lead) => lead.product === "Monitor"
-    ),
-    digital_captures: state.userLogin.leads.filter(
+    contacts: state.contacts,
+    cameras: state.leads.filter((lead) => lead.product === "Camera"),
+    monitors: state.leads.filter((lead) => lead.product === "Monitor"),
+    digital_captures: state.leads.filter(
       (lead) => lead.product === "Digital Capture"
     ),
-    insufflators: state.userLogin.leads.filter(
-      (lead) => lead.product === "Insufflator"
-    ),
-    statusNew: state.userLogin.leads.filter((lead) => lead.status === "New"),
-    statusOpen: state.userLogin.leads.filter((lead) => lead.status === "Open"),
-    statusPending: state.userLogin.leads.filter(
-      (lead) => lead.status === "Pending"
-    ),
-    statusClosed: state.userLogin.leads.filter(
-      (lead) => lead.status === "Closed"
-    ),
+    insufflators: state.leads.filter((lead) => lead.product === "Insufflator"),
+    statusNew: state.leads.filter((lead) => lead.status === "New"),
+    statusOpen: state.leads.filter((lead) => lead.status === "Open"),
+    statusPending: state.leads.filter((lead) => lead.status === "Pending"),
+    statusClosed: state.leads.filter((lead) => lead.status === "Closed"),
     user: state.user,
   }
 }

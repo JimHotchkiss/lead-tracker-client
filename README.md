@@ -1,21 +1,15 @@
-# Login fix - 2/23/21
-  [] Find out where the login process is failing
-    * The Login page is taking the user input, and passing it to the UserSubmit action
-    * The UserSubmit is making a fetch request, and successfully returning the data from the api
-    * Then the userSubmitSuccess is called, and is reached successfully
-    * A type: USER_LOGIN is sent to the reducer
-      # However, it never makes it to the reducer.
-      # It wasn't making to the reducer, userSubmit, because userSubmit was not defined in the Store
-      # !!!! The user is NOT remaining logged in. It's not keeping the sessions key.
-        - Need to watch the Learn.co Globetrotter login video.
-# Article - "User Authentication in React via Rails API"
+# THINGS TO FIX OR IMPROVE 
+  * Dashboard - componentDidUnmount() lifecyle (maybe)
+  * Take the methods that are being called on the client side, like text truncation and unit conversions, and put them on the backend
+  * Create User Profile feature
 
 # Current_user is not working - 2/24/2021
   * I'm going to try and work around current_user, for the time being, to try and get the header to render the icons.
 # Okay, I'm using userLogin to render the data. However, the current_user is not persisting on the backend. 
   * Article - "User Authentication in React via Rails API"
   * Globetrotter video
-# For login Authentication
+
+# For login Authentication - Enabling cookies
   * config/application.rb 
     - config.middleware.use ActionDispatch::Cookies
       config.middleware.use ActionDispatch::Session::CookieStore, key: '_cookie_name'
@@ -32,5 +26,30 @@
   * On the client side, in the fetch request 
     - credentials: "include"
 
-# Redux flow -> Define it in Store -> define the action (this)
+# 2/27/2021
+ * Redux - Review
+  - 'Single source of truth'
+  - Redux stores all of the necessary data in our application in a Javascript object seperate from our components. 
+  - This data is stored in one place and with some configuration ('mapTo' methods), we can read it as props in regular React components.
+  - We update the data by sending an 'action', which is a set of strict instructions we create that Redux will use to update the data 
+    * action = {
+      type: 'ADD_INTEREST',
+      newInterest: {
+        name: 'hockey',
+        type: 'sport'
+      }
+    }
+    * In this 'action' example, we define a 'type' (what it will be doing), then we pass it a 'payload' (the data that will be added)
+    * Any time we update the state in Redux, we must create an action first. This action is just a plain old Javascript object
+    * This action objects, once connected, can be used by any other component to update the state
+  - To change state, we need to create an action, that holds information (a Javascript object), that instructs the to update that state. The action combined with the previous state, produces an updated state.
+  - All of Redux is just plain old Javascript, it is the pattern, the way the information flows, that makes Redux so useful
+
+
+
+
+
+
+
+
   

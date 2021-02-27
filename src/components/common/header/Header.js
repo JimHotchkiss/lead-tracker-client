@@ -10,8 +10,8 @@ class Header extends Component {
     this.props.userLogOut()
   }
   render() {
-    // const { currentUser } = this.props
-    const { userLogin } = this.props
+    const { currentUser } = this.props
+    // const { userLogin } = this.props
     return (
       <div className='nav-bar-div'>
         <div className='dashBoardLink'>
@@ -22,7 +22,7 @@ class Header extends Component {
         </div>
 
         <div className='user-profile-div'>
-          {userLogin !== null ? (
+          {currentUser !== null ? (
             <NavLink to='/leads/:id' style={{ textDecoration: "none" }}>
               <div className='user-profile-img-div'></div>
               <p>User Profile</p>
@@ -31,7 +31,7 @@ class Header extends Component {
         </div>
 
         <div className='add-lead-div'>
-          {userLogin !== null ? (
+          {currentUser !== null ? (
             <NavLink to='/leads/new' style={{ textDecoration: "none" }}>
               <div className='add-lead-img-div'></div>
               <p>Add lead</p>
@@ -39,7 +39,7 @@ class Header extends Component {
           ) : null}
         </div>
 
-        {userLogin !== null ? (
+        {currentUser !== null ? (
           <div className='logContainer'>
             <NavLink to='/login' style={{ textDecoration: "none" }}>
               <div
@@ -57,9 +57,9 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    // currentUser: state.currentUser,
+    currentUser: state.currentUser,
     // Going to use userLogin instead of currentUser, for the time being
-    user: state.userLogin,
+    // user: state.userLogin,
   }
 }
 

@@ -35,9 +35,9 @@ export const getCurrentUser = () => {
         console.log(user)
         if (user.error) {
           console.log(user.error)
-          dispatch(getCurrentUserSuccess(user.data.attributes))
-          dispatch(getLeadsSuccess(user.data.attributes.leads))
-          dispatch(getContactsSuccess(user.data.attributes.contacts))
+          // dispatch(getCurrentUserSuccess(user.data.attributes))
+          // dispatch(getLeadsSuccess(user.data.attributes.leads))
+          // dispatch(getContactsSuccess(user.data.attributes.contacts))
         } else {
           console.log(user)
           dispatch(getCurrentUserSuccess(user.data.attributes))
@@ -53,6 +53,7 @@ export const userLogOutSuccess = () => {
 }
 
 export const userLogOut = () => {
+  console.log("logout")
   return (dispatch) => {
     dispatch(userLogOutSuccess())
     dispatch(clearLeadsSuccess())
@@ -60,10 +61,13 @@ export const userLogOut = () => {
       // credentials: "include",
       method: "DELETE",
     })
+    // .then((response) => response.json())
+    // .then((data) => console.log(data))
   }
 }
 
 export const userSubmitSucess = (user) => {
+  console.log(user)
   return { type: "USER_LOGIN", user }
 }
 
