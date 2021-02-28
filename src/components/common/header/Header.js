@@ -11,7 +11,6 @@ class Header extends Component {
   }
   render() {
     const { currentUser } = this.props
-    // const { userLogin } = this.props
     return (
       <div className='nav-bar-div'>
         <div className='dashBoardLink'>
@@ -47,6 +46,18 @@ class Header extends Component {
                 id='login-img'
                 className='loginImgDiv'></div>
               <p>User logout</p>
+            </NavLink>
+          </div>
+        ) : null}
+
+        {currentUser !== null ? (
+          <div className='blog-div'>
+            <NavLink to='/blog' style={{ textDecoration: "none" }}>
+              <div
+                // onClick={this.handleLogOut}
+                id='blog-img'
+                className='blog-img'></div>
+              <p>Blog</p>
             </NavLink>
           </div>
         ) : null}

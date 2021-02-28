@@ -1,15 +1,11 @@
 # THINGS TO FIX OR IMPROVE 
   * Dashboard - componentDidUnmount() lifecyle (maybe)
   * Take the methods that are being called on the client side, like text truncation and unit conversions, and put them on the backend
-  * Create User Profile feature
-  * Doesn't seem like it's properly logging out
-  * Blog post button on the header
+  [] Create User Profile feature
+  [X] Doesn't seem like it's properly logging out
+  [] Blog post button on the header
+  * May be more userful, in the leads table, to replace contact with lead status(?)
 
-# Current_user is not working - 2/24/2021
-  * I'm going to try and work around current_user, for the time being, to try and get the header to render the icons.
-# Okay, I'm using userLogin to render the data. However, the current_user is not persisting on the backend. 
-  * Article - "User Authentication in React via Rails API"
-  * Globetrotter video
 
 # For login Authentication - Enabling cookies
   * config/application.rb 
@@ -47,8 +43,58 @@
   - To change state, we need to create an action, that holds information (a Javascript object), that instructs the to update that state. The action combined with the previous state, produces an updated state.
   - All of Redux is just plain old Javascript, it is the pattern, the way the information flows, that makes Redux so useful
 
+# 2/28/2021
+  * Redux - review continued
+    - Pure functions 
+    - Redux flow
+    - State and actions are just Javascript object
+      * let state = { count: 0}
+      * let action = { type: 'INCREASE_COUNT' }
+    - To update the state, we can simply write a function that takes in the previous state and the action, and based on the action type, update the state accordingly.
+      * It is customary, however, instead of using 'if' and 'else if' statements, to use switch statements. 
+        - function changeState(state, action) {
+          switch (action.type) {
+            case 'INCREASE_COUNT':
+              return { count: state.count + 1 }
+            default:
+              return state;
+          }
+        }
+      * Note - we always include a default that returns state. This way regardless of the switch statement, we will never return null or undefined
+    - That is the Redux in a nut shell 
+      * Action -> Function -> Update State
+        - This function, however, has a name: Reducer
+      * Action -> Reducer -> Update State
+    - Reducers are pure functions 
+      * Pure functions are only determine by their input values
+      * Pure functions have no side effects. By this we mean pure functions do not have any effect outside of the function. They only return a value. 
+        - Quick example (impure function):
+          * let x = 5
+            const add = fucntion(){
+              x += 1 
+              return x
+            }
+          * This function mutates x, and if we keep inputting 1, we'll keep getting a different output. 
+        - Conversely (pure function)
+          * const add = function(value){
+            return value + 1
+          }
+          * This function, if we input 1, lets say, will ALWAYS return 6
+      - Summary 
+        * We hold our applications state in a plain Javascript object
+        * To change our state, we create an action, which is a plain Javascript object with a key type.
+        * And pass this action to a reducer function that uses switch statements.
+        * Our reducer is a pure function, and does NOT mutate the current state, but rather creates a new state object. 
+  * Note - spread operator example
+    - let dog = {id: 1, name: 'scooby', color: 'brown', age: 4 }
+    - let olderDog = {...dog, age: dog.age + 1}
+      * This would read, 'Return a new object that contains all the key/value pairs from 'dog', and copied over with age key overwritten with a new value'
+# Dispatch
 
-
+# 2/28/2021
+  [X] Add blog icon to header
+  [] Add this to router
+      
 
 
 

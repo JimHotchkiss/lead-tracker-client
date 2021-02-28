@@ -7,6 +7,7 @@ import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer"
 import ShowLead from "../containers/leads/ShowLead"
 import UserCreate from "./users/UserCreate"
 import UserProfile from "./users/UserProfile"
+import Blog from "../components/blog/Blog"
 import { connect } from "react-redux"
 import { Switch, Route } from "react-router-dom"
 import "./app.css"
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path='/leads/:id/show' component={ShowLead} />
             <Route path='/users/new' component={UserCreate} />
             <Route path='/users/:id' component={UserProfile} />
+            <Route path='/blog' component={Blog} />
           </Switch>
         </div>
       </div>
