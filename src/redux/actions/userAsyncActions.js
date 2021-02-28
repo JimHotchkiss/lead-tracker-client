@@ -4,6 +4,11 @@ const API_URL = process.env.REACT_APP_API_URL
 export const getCurrentUserSuccess = (user) => {
   return { type: "CURRENT_USER", user }
 }
+
+export const clearCurrentUser = () => {
+  return { type: "CLEAR_CURRENT_USER" }
+}
+
 export const getLeadsSuccess = (leads) => {
   return { type: "SET_LEADS", leads }
 }
@@ -11,8 +16,11 @@ export const getContactsSuccess = (contacts) => {
   return { type: "SET_CONTACTS", contacts }
 }
 
+export const clearContactsSuccess = (contacts) => {
+  return { type: "CLEAR_CONTACTS", contacts }
+}
+
 export const clearLeadsSuccess = () => {
-  console.log("clear leads")
   return { type: "CLEAR_LEADS" }
 }
 
@@ -21,7 +29,7 @@ export const clearCreateUserInput = () => {
 }
 
 // Get Current User
-export const getCurrentUser = () => {
+export const getCurrentUser = (props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/current_user`, {
       credentials: "include",
@@ -32,12 +40,8 @@ export const getCurrentUser = () => {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log(user)
         if (user.error) {
-          console.log(user.error)
-          // dispatch(getCurrentUserSuccess(user.data.attributes))
-          // dispatch(getLeadsSuccess(user.data.attributes.leads))
-          // dispatch(getContactsSuccess(user.data.attributes.contacts))
+          console.log(this.props.history)
         } else {
           console.log(user)
           dispatch(getCurrentUserSuccess(user.data.attributes))
@@ -53,21 +57,19 @@ export const userLogOutSuccess = () => {
 }
 
 export const userLogOut = () => {
-  console.log("logout")
   return (dispatch) => {
     dispatch(userLogOutSuccess())
+    dispatch(clearCurrentUser())
     dispatch(clearLeadsSuccess())
+    dispatch(clearContactsSuccess())
     return fetch(`${API_URL}/logout`, {
-      // credentials: "include",
+      credentials: "include",
       method: "DELETE",
     })
-    // .then((response) => response.json())
-    // .then((data) => console.log(data))
   }
 }
 
 export const userSubmitSucess = (user) => {
-  console.log(user)
   return { type: "USER_LOGIN", user }
 }
 

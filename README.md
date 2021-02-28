@@ -2,6 +2,8 @@
   * Dashboard - componentDidUnmount() lifecyle (maybe)
   * Take the methods that are being called on the client side, like text truncation and unit conversions, and put them on the backend
   * Create User Profile feature
+  * Doesn't seem like it's properly logging out
+  * Blog post button on the header
 
 # Current_user is not working - 2/24/2021
   * I'm going to try and work around current_user, for the time being, to try and get the header to render the icons.

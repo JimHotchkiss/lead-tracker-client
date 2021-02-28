@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import Header from "./common/header/Header";
-import Login from "./login/Login";
-import DashBoard from "../containers/dashBoard/DashBoard";
-import LeadForm from "../containers/leads/LeadForm";
-import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer";
-import ShowLead from "../containers/leads/ShowLead";
-import UserCreate from "./users/UserCreate";
-import UserProfile from "./users/UserProfile";
-import { connect } from "react-redux";
-import { Switch, Route } from "react-router-dom";
-import "./app.css";
+import React, { Component } from "react"
+import Header from "./common/header/Header"
+import Login from "./login/Login"
+import DashBoard from "../containers/dashBoard/DashBoard"
+import LeadForm from "../containers/leads/LeadForm"
+import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer"
+import ShowLead from "../containers/leads/ShowLead"
+import UserCreate from "./users/UserCreate"
+import UserProfile from "./users/UserProfile"
+import { connect } from "react-redux"
+import { Switch, Route } from "react-router-dom"
+import "./app.css"
 class App extends Component {
   render() {
     return (
@@ -29,12 +29,12 @@ class App extends Component {
           </Switch>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
-  return { currentUser: state.currentUser };
-};
+  return { currentUser: state.currentUser }
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App)

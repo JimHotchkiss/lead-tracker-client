@@ -9,11 +9,9 @@ import { showContactAction } from "../../redux/actions/showContactAsyncAction"
 import "./dashBoard.css"
 class DashBoard extends Component {
   componentDidMount() {
-    console.log("component did mount")
-    this.props.getCurrentUser().catch((error) => {
-      console.log(error)
+    this.props.getCurrentUser(this.props).catch((error) => {
+      alert("Please, login")
       this.props.history.push("/login")
-      // alert("An error has occured: " + error)
     })
   }
 

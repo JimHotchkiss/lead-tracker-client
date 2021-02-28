@@ -1,10 +1,10 @@
 export default (state = [], action) => {
   switch (action.type) {
     case "SET_LEADS":
-      return action.leads;
+      return action.leads
     case "CLEAR_LEADS":
-      return state;
+      return []
     default:
-      return state;
+      return state
   }
-};
+}
