@@ -6,7 +6,8 @@
   max-width: 700px;
   padding-top: 50px;
   padding-bottom: 70px;
-  margin: 15% auto;
+  margin: 0 auto;
+  margin-top: 10%;
   color: #000;
   background-color: #eff7f6;
 }

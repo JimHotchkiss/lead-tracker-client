@@ -50,17 +50,17 @@ class Header extends Component {
           </div>
         ) : null}
 
-        {currentUser !== null ? (
-          <div className='blog-div'>
-            <NavLink to='/blog' style={{ textDecoration: "none" }}>
-              <div
-                // onClick={this.handleLogOut}
-                id='blog-img'
-                className='blog-img'></div>
-              <p>Blog</p>
-            </NavLink>
-          </div>
-        ) : null}
+        <div className='blog-div'>
+          <NavLink to='/blog' style={{ textDecoration: "none" }}>
+            <div
+              style={
+                currentUser ? { marginTop: "280px" } : { marginTop: "541px" }
+              }
+              id='blog-img'
+              className='blog-img'></div>
+            <p>Blog</p>
+          </NavLink>
+        </div>
       </div>
     )
   }
@@ -69,8 +69,6 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
-    // Going to use userLogin instead of currentUser, for the time being
-    // user: state.userLogin,
   }
 }
 
