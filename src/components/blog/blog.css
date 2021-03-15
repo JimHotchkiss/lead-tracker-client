@@ -3,7 +3,39 @@
     display: flex;
     width: 100%;
     margin: 0 auto;
-    background: #282c34;
+}
+
+.title-component {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.title-div {
+  margin: 0 auto;
+}
+
+.name-div {
+  margin: 0 auto;
+}
+
+.name-text {
+  font-weight: 200;
+  margin-top: 16px;
+
+}
+
+.profile-div {
+  margin: 0 auto;
+  max-width: 1500px;
+}
+
+
+.profile-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+
 }
 .App-logo {
     margin-top: 6px;

@@ -40,7 +40,7 @@
     * In this 'action' example, we define a 'type' (what it will be doing), then we pass it a 'payload' (the data that will be added)
     * Any time we update the state in Redux, we must create an action first. This action is just a plain old Javascript object
     * This action objects, once connected, can be used by any other component to update the state
-  - To change state, we need to create an action, that holds information (a Javascript object), that instructs the to update that state. The action combined with the previous state, produces an updated state.
+  - To change state, we need to create an action, that holds information (a Javascript object), that instructs to update that state. The action combined with the previous state, produces an updated state.
   - All of Redux is just plain old Javascript, it is the pattern, the way the information flows, that makes Redux so useful
 
 # 2/28/2021
@@ -66,7 +66,7 @@
         - This function, however, has a name: Reducer
       * Action -> Reducer -> Update State
     - Reducers are pure functions 
-      * Pure functions are only determine by their input values
+      * Pure functions are only determined by their input values
       * Pure functions have no side effects. By this we mean pure functions do not have any effect outside of the function. They only return a value. 
         - Quick example (impure function):
           * let x = 5
@@ -79,7 +79,7 @@
           * const add = function(value){
             return value + 1
           }
-          * This function, if we input 1, lets say, will ALWAYS return 6
+          * This function, if we input 5, lets say, will ALWAYS return 6
       - Summary 
         * We hold our applications state in a plain Javascript object
         * To change our state, we create an action, which is a plain Javascript object with a key type.
@@ -89,11 +89,25 @@
     - let dog = {id: 1, name: 'scooby', color: 'brown', age: 4 }
     - let olderDog = {...dog, age: dog.age + 1}
       * This would read, 'Return a new object that contains all the key/value pairs from 'dog', and copied over with age key overwritten with a new value'
-# Dispatch
+# 3/2/2021
+  * Redux review - continued
+    - Dispatch 
+      * In our Redux flow, we Action --> Reducer --> Update State
+        - We know our action is an object, which contains key/value pair of an action description and a payload.
+        - However, how do we call the action
+        - We create a function called Dispatch 
+          * function dispatch(action) {
+            state = changeState(stata, action)
+            render()
+          }
+            - This dispatch() function takes in an action, calls for a change to the state, by calling the reducer, and passing to that reducer the state and the action to be preformed. Then we call the render() function that simply renders the changes to the DOM.
+    - Dispatch - initial action
+      *
+
 
 # 2/28/2021
   [X] Add blog icon to header
-  [] Add this to router
+  [X] Add this to router
       
 
 
