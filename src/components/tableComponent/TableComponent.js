@@ -1,17 +1,17 @@
-import React from "react";
-import Table from "react-bootstrap/Table";
-import "./tableComponent.css";
-import { Link } from "react-router-dom";
+import React from "react"
+import Table from "react-bootstrap/Table"
+import "./tableComponent.css"
+import { Link } from "react-router-dom"
 
 const TableComponent = (props) => {
   const contactEmail = (contactId) => {
     const contact_email = props.contacts.find(
       (contact) => contact.id === contactId
-    );
+    )
     if (contact_email) {
-      return contact_email.email;
+      return contact_email.email
     }
-  };
+  }
 
   const cameraTable = (
     <Table striped bordered hover size='sm' variant='dark' responsive='sm'>
@@ -50,7 +50,7 @@ const TableComponent = (props) => {
         </tbody>
       ))}
     </Table>
-  );
+  )
 
   const monitorTable = (
     <Table striped bordered hover size='sm' variant='dark' responsive='sm'>
@@ -89,7 +89,7 @@ const TableComponent = (props) => {
         </tbody>
       ))}
     </Table>
-  );
+  )
 
   const insufflatorTable = (
     <Table striped bordered hover size='sm' variant='dark' responsive='sm'>
@@ -128,7 +128,7 @@ const TableComponent = (props) => {
         </tbody>
       ))}
     </Table>
-  );
+  )
 
   const digitalCaptureTable = (
     <Table striped bordered hover size='sm' variant='dark' responsive='sm'>
@@ -154,20 +154,20 @@ const TableComponent = (props) => {
             </td>
             <td>{props.truncateString(digital_capture.description, 30)}</td>
             <td>
-              <a
+              <Link
                 onClick={props.showContact}
                 data-id={digital_capture.contact_id}
-                href='#!'
+                to={`/contacts/${digital_capture.id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(digital_capture.contact_id)}
-              </a>
+              </Link>
             </td>
             <td>{props.convertTime(digital_capture.created_at)}</td>
           </tr>
         </tbody>
       ))}
     </Table>
-  );
+  )
 
   return (
     <div className='table-component-div'>
@@ -181,7 +181,7 @@ const TableComponent = (props) => {
         {insufflatorTable}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TableComponent;
+export default TableComponent

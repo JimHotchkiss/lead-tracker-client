@@ -5,6 +5,7 @@ import DashBoard from "../containers/dashBoard/DashBoard"
 import LeadForm from "../containers/leads/LeadForm"
 import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer"
 import ShowLead from "../containers/leads/ShowLead"
+import ShowContact from "../containers/contacts/ShowContact"
 import UserCreate from "./users/UserCreate"
 import UserProfile from "./users/UserProfile"
 import Blog from "../components/blog/Blog"
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path='/leads/new' component={LeadForm} />
             <Route path='/leads/:id/edit' component={EditLeadFormContainer} />
             <Route path='/leads/:id/show' component={ShowLead} />
+            <Route path='/contacts/:id/show' component={ShowContact} />
             <Route path='/users/new' component={UserCreate} />
             <Route path='/users/:id' component={UserProfile} />
             <Route path='/blog' component={Blog} />
