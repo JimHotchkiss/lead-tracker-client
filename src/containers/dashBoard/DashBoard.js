@@ -10,9 +10,13 @@ import "./dashBoard.css"
 class DashBoard extends Component {
   componentDidMount() {
     this.props.getCurrentUser(this.props).catch((error) => {
-      alert("Please, login")
+      alert("You'll need to login:", error)
       this.props.history.push("/login")
     })
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.currentUser)
   }
 
   handleShowContact = (event) => {
@@ -91,6 +95,7 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.currentUser)
   return {
     currentUser: state.currentUser,
     lead: state.lead,

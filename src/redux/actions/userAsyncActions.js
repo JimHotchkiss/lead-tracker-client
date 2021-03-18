@@ -30,6 +30,7 @@ export const clearCreateUserInput = () => {
 
 // Get Current User
 export const getCurrentUser = (props) => {
+  console.log(props)
   return (dispatch) => {
     return fetch(`${API_URL}/current_user`, {
       credentials: "include",
@@ -41,7 +42,7 @@ export const getCurrentUser = (props) => {
       .then((response) => response.json())
       .then((user) => {
         if (user.error) {
-          alert(user.error)
+          dispatch(routeToLogin())
         } else {
           dispatch(getCurrentUserSuccess(user.data.attributes))
           dispatch(getLeadsSuccess(user.data.attributes.leads))
@@ -76,8 +77,12 @@ export const createUserSubmitSucess = (user) => {
   return { type: "CREATE_USER", user }
 }
 
-export const routeToDashBoard = (props, user) => {
+export const routeToDashBoard = (props) => {
   props.history.push(`/`)
+}
+
+export const routeToLogin = (props) => {
+  props.history.push(`/login`)
 }
 
 export const setCurrentUser = (user) => {
@@ -101,6 +106,9 @@ export const userLogin = (formData, props) => {
           alert(user.error)
         } else {
           dispatch(userSubmitSucess(user.data.attributes))
+          dispatch(setCurrentUser(user.data.attributes))
+          dispatch(getLeadsSuccess(user.data.attributes.leads))
+          dispatch(getContactsSuccess(user.data.attributes.contacts))
           dispatch(clearCreateUserInput())
           routeToDashBoard(props)
         }
@@ -124,10 +132,13 @@ export const createUserSubmit = (createUserFormData, props) => {
         if (user.error) {
           alert(user.error)
         } else {
-          dispatch(getCurrentUser())
+          console.log(user.data.attributes)
+          dispatch(getCurrentUser(user.data.attributes))
           dispatch(createUserSubmitSucess(user))
+          dispatch(getLeadsSuccess(user.data.attributes.leads))
+          dispatch(getContactsSuccess(user.data.attributes.contacts))
           dispatch(clearCreateUserInput())
-          routeToDashBoard(props, user)
+          routeToDashBoard(props)
         }
       })
   }

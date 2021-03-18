@@ -6,7 +6,7 @@ export const showContactSuccess = (contact) => {
 
 export const showContactAction = (contactData, props) => {
   return (dispatch) => {
-    dispatch({ type: "START_ADDING_LEAD" })
+    // dispatch({ type: "START_ADDING_LEAD" })
     fetch(`${API_URL}/contacts/${contactData}`)
       .then((response) => response.json())
       .then((contact) => {
