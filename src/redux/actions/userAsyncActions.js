@@ -41,9 +41,8 @@ export const getCurrentUser = (props) => {
       .then((response) => response.json())
       .then((user) => {
         if (user.error) {
-          console.log(this.props.history)
+          alert(user.error)
         } else {
-          console.log(user)
           dispatch(getCurrentUserSuccess(user.data.attributes))
           dispatch(getLeadsSuccess(user.data.attributes.leads))
           dispatch(getContactsSuccess(user.data.attributes.contacts))
@@ -79,9 +78,6 @@ export const createUserSubmitSucess = (user) => {
 
 export const routeToDashBoard = (props, user) => {
   props.history.push(`/`)
-  // if (user.data) {
-  //   props.history.push(`/users/${user.data.id}`);
-  // }
 }
 
 export const setCurrentUser = (user) => {
@@ -90,7 +86,6 @@ export const setCurrentUser = (user) => {
 
 // User Login
 export const userLogin = (formData, props) => {
-  console.log(formData)
   return (dispatch) => {
     return fetch(`${API_URL}/login`, {
       credentials: "include",
@@ -105,7 +100,6 @@ export const userLogin = (formData, props) => {
         if (user.error) {
           alert(user.error)
         } else {
-          // dispatch(getCurrentUser())
           dispatch(userSubmitSucess(user.data.attributes))
           dispatch(clearCreateUserInput())
           routeToDashBoard(props)
@@ -118,7 +112,7 @@ export const userLogin = (formData, props) => {
 export const createUserSubmit = (createUserFormData, props) => {
   return (dispatch) => {
     return fetch(`${API_URL}/users`, {
-      // credentials: "include",
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -130,6 +124,7 @@ export const createUserSubmit = (createUserFormData, props) => {
         if (user.error) {
           alert(user.error)
         } else {
+          dispatch(getCurrentUser())
           dispatch(createUserSubmitSucess(user))
           dispatch(clearCreateUserInput())
           routeToDashBoard(props, user)

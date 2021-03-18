@@ -37,13 +37,14 @@ const TableComponent = (props) => {
             </td>
             <td>{props.truncateString(camera.description, 30)}</td>
             <td>
-              <a
+              <Link
                 onClick={props.handleShowContact}
                 data-id={camera.contact_id}
-                href='#!'
+                // to={`/contacts/${lead.contact_id/show`}}
+                to={`/contacts/${camera.contact_id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(camera.contact_id)}
-              </a>
+              </Link>
             </td>
             <td>{props.convertTime(camera.created_at)}</td>
           </tr>
@@ -76,13 +77,13 @@ const TableComponent = (props) => {
             </td>
             <td>{props.truncateString(monitor.description, 30)}</td>
             <td>
-              <a
+              <Link
                 onClick={props.handleShowContact}
                 data-id={monitor.contact_id}
-                href='#!'
+                to={`/contacts/${monitor.contact_id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(monitor.contact_id)}
-              </a>
+              </Link>
             </td>
             <td>{props.convertTime(monitor.created_at)}</td>
           </tr>
@@ -115,13 +116,13 @@ const TableComponent = (props) => {
             </td>
             <td>{props.truncateString(insufflator.description, 30)}</td>
             <td>
-              <a
-                onClick={props.handleShowLead}
+              <Link
+                onClick={props.handleShowContact}
                 data-id={insufflator.contact_id}
-                href='#!'
+                to={`/contacts/${insufflator.contact_id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(insufflator.contact_id)}
-              </a>
+              </Link>
             </td>
             <td>{props.convertTime(insufflator.created_at)}</td>
           </tr>
@@ -155,9 +156,9 @@ const TableComponent = (props) => {
             <td>{props.truncateString(digital_capture.description, 30)}</td>
             <td>
               <Link
-                onClick={props.showContact}
+                onClick={props.handleShowContact}
                 data-id={digital_capture.contact_id}
-                to={`/contacts/${digital_capture.id}/show`}
+                to={`/contacts/${digital_capture.contact_id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(digital_capture.contact_id)}
               </Link>

@@ -16,8 +16,9 @@ class DashBoard extends Component {
   }
 
   handleShowContact = (event) => {
+    console.log(event.target.dataset.id)
     const contactData = event.target.dataset.id
-    this.props.showContactAction(contactData, this.props)
+    this.props.showContactAction(contactData)
   }
 
   handleShowLead = (event) => {

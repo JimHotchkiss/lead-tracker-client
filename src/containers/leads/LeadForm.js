@@ -1,47 +1,40 @@
-import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
-import { connect } from "react-redux";
-import { leadFormInput } from "../../redux/actions/leadSyncActions";
-import {
-  leadSubmit,
-  clearLeadForm,
-} from "../../redux/actions/leadAsyncActions";
-import "./leadForm.css";
+import React, { Component } from "react"
+import { Form, Button } from "react-bootstrap"
+import { connect } from "react-redux"
+import { leadFormInput } from "../../redux/actions/leadSyncActions"
+import { leadSubmit, clearLeadForm } from "../../redux/actions/leadAsyncActions"
+import "./leadForm.css"
 
 class LeadForm extends Component {
   componentDidMount() {
     if (this.props.leadFormData.description !== "") {
-      this.props.clearLeadForm();
+      this.props.clearLeadForm()
     }
-    console.log(this.props.leadFormData);
+    console.log(this.props.leadFormData)
   }
   handleOnChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     const leadData = {
       ...this.props.leadFormData,
       [name]: value,
-    };
-    console.log(leadData);
-    this.props.leadFormInput(leadData);
-  };
+    }
+    console.log(leadData)
+    this.props.leadFormInput(leadData)
+  }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    const leadData = this.props.leadFormData;
-    this.props.leadSubmit(leadData, this.props);
-  };
+    e.preventDefault()
+    const leadData = this.props.leadFormData
+    this.props.leadSubmit(leadData, this.props)
+  }
   render() {
-    // added = {} for 'undefined'
     const {
       description,
       contact_name,
       email,
       phone_number,
-      // contact_attributes: { contact_name } = {},
-      // contact_attributes: { email } = {},
-      // contact_attributes: { phone_number } = {},
-    } = this.props.leadFormData;
-    console.log(description);
+    } = this.props.leadFormData
+    console.log(description)
     return (
       <div className='lead-form-div'>
         <Form onSubmit={this.handleSubmit}>
@@ -136,7 +129,7 @@ class LeadForm extends Component {
           </Button>
         </Form>
       </div>
-    );
+    )
   }
 }
 
@@ -144,11 +137,11 @@ const mapStateToProps = (state) => {
   return {
     leadFormData: state.leadInput,
     contact: state.leadInput.contact_attributes,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, {
   leadFormInput,
   leadSubmit,
   clearLeadForm,
-})(LeadForm);
+})(LeadForm)
