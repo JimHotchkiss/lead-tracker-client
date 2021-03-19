@@ -2,10 +2,18 @@ import React, { Component } from "react"
 import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import { userLogOut } from "../../../redux/actions/userAsyncActions"
+import { getCurrentUser } from "../../../redux/actions/userAsyncActions"
 
 import "./header.css"
 
 class Header extends Component {
+  componentDidMount() {
+    this.props.getCurrentUser(this.props).catch((error) => {
+      alert("You'll need to login:", error)
+      this.props.history.push("/login")
+    })
+  }
+
   handleLogOut = (e) => {
     this.props.userLogOut()
   }
@@ -72,4 +80,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { userLogOut })(Header)
+export default connect(mapStateToProps, { userLogOut, getCurrentUser })(Header)

@@ -15,10 +15,6 @@ class DashBoard extends Component {
     })
   }
 
-  componentDidUpdate() {
-    console.log(this.props.currentUser)
-  }
-
   handleShowContact = (event) => {
     console.log(event.target.dataset.id)
     const contactData = event.target.dataset.id
@@ -38,6 +34,7 @@ class DashBoard extends Component {
   }
 
   convertTime(dateTime) {
+    console.log(dateTime)
     let dateString = dateTime
     let newDateString = new Date(dateString)
     return newDateString.toLocaleDateString()
@@ -95,7 +92,6 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.currentUser)
   return {
     currentUser: state.currentUser,
     lead: state.lead,

@@ -3,18 +3,18 @@ const initialState = {
   email: "",
   password: "",
   confirm_password: "",
-};
+}
 
 // Synchronized request
 export default function createUserReducer(state = initialState, action) {
   switch (action.type) {
     case "CREATE_USER_INPUT":
-      return action.createUserData;
+      return action.createUserData
     case "CREATE_USER":
-      return action.user;
+      return action.user
     case "CLEAR_USER_INPUT":
-      return initialState;
+      return initialState
     default:
-      return state;
+      return state
   }
 }

@@ -30,7 +30,6 @@ export const clearCreateUserInput = () => {
 
 // Get Current User
 export const getCurrentUser = (props) => {
-  console.log(props)
   return (dispatch) => {
     return fetch(`${API_URL}/current_user`, {
       credentials: "include",
@@ -49,6 +48,7 @@ export const getCurrentUser = (props) => {
           dispatch(getContactsSuccess(user.data.attributes.contacts))
         }
       })
+      .catch((error) => console.log(error))
   }
 }
 
@@ -89,9 +89,14 @@ export const setCurrentUser = (user) => {
   return { type: "CURRENT_USER", user }
 }
 
+export const loadingUserLogin = () => {
+  return { type: "LOADING_USER" }
+}
+
 // User Login
 export const userLogin = (formData, props) => {
   return (dispatch) => {
+    dispatch(loadingUserLogin())
     return fetch(`${API_URL}/login`, {
       credentials: "include",
       method: "POST",
@@ -113,6 +118,7 @@ export const userLogin = (formData, props) => {
           routeToDashBoard(props)
         }
       })
+      .catch((error) => console.log(error))
   }
 }
 
@@ -141,5 +147,6 @@ export const createUserSubmit = (createUserFormData, props) => {
           routeToDashBoard(props)
         }
       })
+      .catch((error) => console.log(error))
   }
 }
