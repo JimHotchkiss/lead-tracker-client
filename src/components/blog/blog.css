@@ -32,8 +32,8 @@
 
 
 .profile-image {
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
 
 }
@@ -41,6 +41,23 @@
     margin-top: 6px;
     height: 10vmin;
     pointer-events: none;
+  }
+
+  .blog-body {
+    max-height: 400px;
+    overflow-x: hidden;
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 8px;
+  }
+
+  .content-title {
+    padding-top: 16px;
+  }
+
+  .content-text {
+    font-weight: 300;
+    color: #000;
   }
 
   @media (prefers-reduced-motion: no-preference) {

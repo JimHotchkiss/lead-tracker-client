@@ -58,7 +58,7 @@ class Header extends Component {
           </div>
         ) : null}
 
-        <div className='blog-div'>
+        <div className='header-blog-div'>
           <NavLink to='/blog' style={{ textDecoration: "none" }}>
             <div
               style={
