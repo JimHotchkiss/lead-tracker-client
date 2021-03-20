@@ -41,7 +41,7 @@ export const getCurrentUser = (props) => {
       .then((response) => response.json())
       .then((user) => {
         if (user.error) {
-          dispatch(routeToLogin())
+          routeToLogin(props)
         } else {
           dispatch(getCurrentUserSuccess(user.data.attributes))
           dispatch(getLeadsSuccess(user.data.attributes.leads))
@@ -82,7 +82,10 @@ export const routeToDashBoard = (props) => {
 }
 
 export const routeToLogin = (props) => {
-  props.history.push(`/login`)
+  if (props.history) {
+    console.log(props.history)
+    props.history.push(`/login`)
+  }
 }
 
 export const setCurrentUser = (user) => {

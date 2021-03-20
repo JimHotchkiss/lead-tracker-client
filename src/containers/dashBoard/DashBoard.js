@@ -34,7 +34,6 @@ class DashBoard extends Component {
   }
 
   convertTime(dateTime) {
-    console.log(dateTime)
     let dateString = dateTime
     let newDateString = new Date(dateString)
     return newDateString.toLocaleDateString()

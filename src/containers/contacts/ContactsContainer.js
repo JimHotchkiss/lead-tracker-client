@@ -9,6 +9,7 @@ export class ContactsContainer extends Component {
     return newDateString.toLocaleDateString()
   }
   render() {
+    console.log(this.props.contact)
     const {
       id,
       contact_name,
