@@ -11,19 +11,24 @@ function ShowContactComponent({
 }) {
   return (
     <div className='contact-show-container'>
-      <div className='contact-title'>
-        <h3>Customer since </h3>
-        <h3 className='contact-date'>{convertTime(created_at)}</h3>{" "}
+      <div className='contact-title-div'>
+        <h1 className='contact-title-text'>Contact Information</h1>
       </div>
-      <div className='contact-name'>
-        <h3 className='contact-name-text'>{name}</h3>
+      <div className='contact'>
+        <h3 className='contact-title'>Customer since </h3>
+        <h3 className='contact-text'>{convertTime(created_at)}</h3>{" "}
       </div>
-      <div className='contact-email'>
-        <h3 className='contact-email-text'>{email}</h3>
+      <div className='contact'>
+        <h3 className='contact-title'> Contact Name:</h3>
+        <h3 className='contact-text'>{name}</h3>
       </div>
-      <div className='contact-phone'>
-        {console.log(phone)}
-        <h3 className='contact-phone-text'>{phone}</h3>
+      <div className='contact'>
+        <h3 className='contact-title'>Contact Email</h3>
+        <h3 className='contact-text'>{email}</h3>
+      </div>
+      <div className='contact'>
+        <h3 className='contact-title'>Contact Phone</h3>
+        <h3 className='contact-text'>{phone}</h3>
       </div>
     </div>
   )

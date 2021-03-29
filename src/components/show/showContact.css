@@ -1,9 +1,10 @@
 .contact-show-container {
     max-width: 50%;
-    height: 640px;
+    height: 340px;
     overflow-y: scroll;
+    align-items: center;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 125px;
     background: #eff7f6;
     padding: 32px;
     border-radius: 10px;
@@ -15,10 +16,23 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 
-  .contact-title {
+  .contact {
     display: flex;
     flex-direction: row;
+    padding: 8px 16px;
   }
+
+  .contact-text {
+    font-weight:100;
+    margin-left: 16px;
+    color: #007bff;
+  }
+
+  .contact-title-div {
+    padding: 8px 16px;
+  }
+
+
 
   .contact-date {
     font-weight:100;
