@@ -28,14 +28,14 @@ class Header extends Component {
           </NavLink>{" "}
         </div>
 
-        <div className='user-profile-div'>
+        {/* <div className='user-profile-div'>
           {currentUser !== null ? (
             <NavLink to='/leads/:id' style={{ textDecoration: "none" }}>
               <div className='user-profile-img-div'></div>
               <p>User Profile</p>
             </NavLink>
           ) : null}
-        </div>
+        </div> */}
 
         <div className='add-lead-div'>
           {currentUser !== null ? (

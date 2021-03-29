@@ -28,7 +28,7 @@ class App extends Component {
             <Route path='/leads/:id/show' component={ShowLead} />
             <Route path='/contacts/:id/show' component={ContactsContainer} />
             <Route path='/users/new' component={UserCreate} />
-            <Route path='/users/:id' component={UserProfile} />
+            {/* <Route path='/users/:id' component={UserProfile} /> */}
             <Route path='/blog' component={Blog} />
           </Switch>
         </div>
