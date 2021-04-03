@@ -30,7 +30,9 @@ export const clearCreateUserInput = () => {
 
 // Get Current User
 export const getCurrentUser = (props) => {
+  // debugger
   return (dispatch) => {
+    // debugger
     return fetch(`${API_URL}/current_user`, {
       credentials: "include",
       method: "GET",
@@ -40,9 +42,12 @@ export const getCurrentUser = (props) => {
     })
       .then((response) => response.json())
       .then((user) => {
+        // alert("getCurrentUser - .then(user)")
         if (user.error) {
+          // debugger
           routeToLogin(props)
         } else {
+          // debugger
           dispatch(getCurrentUserSuccess(user.data.attributes))
           dispatch(getLeadsSuccess(user.data.attributes.leads))
           dispatch(getContactsSuccess(user.data.attributes.contacts))
@@ -82,8 +87,9 @@ export const routeToDashBoard = (props) => {
 }
 
 export const routeToLogin = (props) => {
+  // debugger
   if (props.history) {
-    console.log(props.history)
+    // debugger
     props.history.push(`/login`)
   }
 }

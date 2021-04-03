@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import { createUserInput } from "../../redux/actions/userSyncActions";
-import { createUserSubmit } from "../../redux/actions/userAsyncActions";
-import { connect } from "react-redux";
-import "./usercreate.css";
+import React, { useState } from "react"
+import { createUserInput } from "../../redux/actions/userSyncActions"
+import { createUserSubmit } from "../../redux/actions/userAsyncActions"
+import { connect } from "react-redux"
+import "./usercreate.css"
 // import { setCurrentUser } from "../../redux/actions/userAsyncActions";
 
 const UserCreate = (props) => {
-  const [error, setError] = useState("");
-  const [checkPassword, setCheckPassword] = useState(false);
+  const [error, setError] = useState("")
+  const [checkPassword, setCheckPassword] = useState(false)
 
   const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    const createUserData = { ...props.createUserData, [name]: value };
-    props.createUserInput(createUserData);
-  };
+    const { name, value } = e.target
+    const createUserData = { ...props.createUserData, [name]: value }
+    props.createUserInput(createUserData)
+  }
 
   const handleSubmit = (e) => {
     // Prevent normal behavior(reload page)
-    e.preventDefault();
-    const createUserFormData = props.createUserData;
+    e.preventDefault()
+    const createUserFormData = props.createUserData
     if (
       props.createUserData.password !== props.createUserData.confirm_password
     ) {
-      setCheckPassword(true);
-      setError("Passwords don't match.");
+      setCheckPassword(true)
+      setError("Passwords don't match.")
     } else {
-      setCheckPassword(false);
-      props.createUserSubmit(createUserFormData, props);
+      setCheckPassword(false)
+      props.createUserSubmit(createUserFormData, props)
     }
-  };
+  }
 
-  const { username, email, password, confirm_password } = props;
+  const { username, email, password, confirm_password } = props
   return (
     <div className='container-div'>
       <div className='title-div'>
@@ -92,16 +92,16 @@ const UserCreate = (props) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
     user: state.currentUser,
     createUserData: state.createUserInput,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, { createUserInput, createUserSubmit })(
   UserCreate
-);
+)

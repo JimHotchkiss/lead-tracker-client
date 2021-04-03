@@ -7,7 +7,6 @@ import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer"
 import ShowLead from "../containers/leads/ShowLead"
 import ContactsContainer from "../containers/contacts/ContactsContainer"
 import UserCreate from "./users/UserCreate"
-import UserProfile from "./users/UserProfile"
 import Blog from "../components/blog/Blog"
 import { connect } from "react-redux"
 import { Switch, Route } from "react-router-dom"
@@ -21,6 +20,7 @@ class App extends Component {
         </div>
         <div className='components-div'>
           <Switch>
+            {/* {alert("2.) App.js")} */}
             <Route exact path='/' component={DashBoard} />
             <Route path='/login' component={Login} />
             <Route path='/leads/new' component={LeadForm} />
@@ -28,7 +28,6 @@ class App extends Component {
             <Route path='/leads/:id/show' component={ShowLead} />
             <Route path='/contacts/:id/show' component={ContactsContainer} />
             <Route path='/users/new' component={UserCreate} />
-            {/* <Route path='/users/:id' component={UserProfile} /> */}
             <Route path='/blog' component={Blog} />
           </Switch>
         </div>
