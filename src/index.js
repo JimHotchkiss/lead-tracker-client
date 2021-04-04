@@ -12,7 +12,7 @@ import { Provider } from "react-redux"
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      {/* {alert("1.) index.js")} */}
+      {alert("1.) index.js")}
       <App />
     </Router>
   </Provider>,

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Header from "./common/header/Header"
-import Login from "./login/Login"
+import Login from "../containers/login/Login"
 import DashBoard from "../containers/dashBoard/DashBoard"
 import LeadForm from "../containers/leads/LeadForm"
 import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer"
@@ -8,7 +8,6 @@ import ShowLead from "../containers/leads/ShowLead"
 import ContactsContainer from "../containers/contacts/ContactsContainer"
 import UserCreate from "./users/UserCreate"
 import Blog from "../components/blog/Blog"
-import { connect } from "react-redux"
 import { Switch, Route } from "react-router-dom"
 import "./app.css"
 class App extends Component {
@@ -20,7 +19,7 @@ class App extends Component {
         </div>
         <div className='components-div'>
           <Switch>
-            {/* {alert("2.) App.js")} */}
+            {alert("2.) App.js")}
             <Route exact path='/' component={DashBoard} />
             <Route path='/login' component={Login} />
             <Route path='/leads/new' component={LeadForm} />
@@ -35,9 +34,4 @@ class App extends Component {
     )
   }
 }
-
-const mapStateToProps = (state) => {
-  return { loggedIn: !!state.currentUser }
-}
-
-export default connect(mapStateToProps)(App)
+export default App

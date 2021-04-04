@@ -6,6 +6,7 @@ import { userLogin } from "../../redux/actions/userAsyncActions"
 import "./login.css"
 
 const Login = (props) => {
+  console.log("login.js", props)
   const handleOnChange = (e) => {
     const { name, value } = e.target
     const formData = { ...props.userData, [name]: value }

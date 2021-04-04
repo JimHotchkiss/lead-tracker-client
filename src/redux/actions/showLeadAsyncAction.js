@@ -10,7 +10,6 @@ export const showLeadContactSuccess = (leadContact) => {
 
 export const showLeadAction = (leadData, props) => {
   return (dispatch) => {
-    // dispatch({ type: "START_ADDING_LEAD" });
     fetch(`${API_URL}/leads/${leadData}`)
       .then((response) => response.json())
       .then((lead) => {

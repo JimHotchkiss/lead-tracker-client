@@ -108,6 +108,10 @@
 # 2/28/2021
   [X] Add blog icon to header
   [X] Add this to router
+
+# 3/4/2021
+  [] Moved Login.js to container - maintained state
+  [] Moved EditForm.js to container 
       
 
 

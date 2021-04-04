@@ -22,6 +22,8 @@ class DashBoard extends Component {
   }
 
   handleShowLead = (event) => {
+    alert("showlead")
+    console.log(event)
     const leadData = event.target.dataset.id
     this.props.showLeadAction(leadData, this.props)
   }

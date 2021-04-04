@@ -40,7 +40,6 @@ const TableComponent = (props) => {
               <Link
                 onClick={props.handleShowContact}
                 data-id={camera.contact_id}
-                // to={`/contacts/${lead.contact_id/show`}}
                 to={`/contacts/${camera.contact_id}/show`}
                 style={{ textDecoration: "none", color: "#03a9f4" }}>
                 {contactEmail(camera.contact_id)}

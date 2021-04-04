@@ -9,7 +9,7 @@ import "./header.css"
 class Header extends Component {
   componentDidMount() {
     console.log(this.props.history)
-    // alert("3.) Header.js")
+    alert("3.) Header.js")
     this.props.getCurrentUser(this.props).catch((error) => {
       // We don't even hit this because it is taken care in the action
       alert("You'll need to login:", error)
@@ -30,15 +30,6 @@ class Header extends Component {
             <p>Dashboard</p>
           </NavLink>{" "}
         </div>
-
-        {/* <div className='user-profile-div'>
-          {currentUser !== null ? (
-            <NavLink to='/leads/:id' style={{ textDecoration: "none" }}>
-              <div className='user-profile-img-div'></div>
-              <p>User Profile</p>
-            </NavLink>
-          ) : null}
-        </div> */}
 
         <div className='add-lead-div'>
           {currentUser !== null ? (
