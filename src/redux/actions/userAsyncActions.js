@@ -87,9 +87,7 @@ export const routeToDashBoard = (props) => {
 }
 
 export const routeToLogin = (props) => {
-  // debugger
   if (props.history) {
-    // debugger
     props.history.push(`/login`)
   }
 }
@@ -147,7 +145,6 @@ export const createUserSubmit = (createUserFormData, props) => {
         if (user.error) {
           alert(user.error)
         } else {
-          console.log(user.data.attributes)
           dispatch(getCurrentUser(user.data.attributes))
           dispatch(createUserSubmitSucess(user))
           dispatch(getLeadsSuccess(user.data.attributes.leads))

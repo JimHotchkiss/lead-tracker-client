@@ -9,7 +9,6 @@ export class ContactsContainer extends Component {
     return newDateString.toLocaleDateString()
   }
   render() {
-    console.log(this.props.contact)
     const {
       id,
       contact_name,
@@ -19,7 +18,6 @@ export class ContactsContainer extends Component {
     } = this.props.contact
     return (
       <div>
-        {console.log(created_at)}
         <ShowContactComponent
           id={id}
           name={contact_name}

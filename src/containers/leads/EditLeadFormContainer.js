@@ -17,7 +17,6 @@ class EditLeadForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.props.leadFormData)
     const editLeadData = this.props.leadFormData
     this.props.submitEditForm(editLeadData, this.props)
   }

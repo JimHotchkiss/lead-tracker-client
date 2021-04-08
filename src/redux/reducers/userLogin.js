@@ -1,7 +1,6 @@
 export default (state = { user: "", loading: false }, action) => {
   switch (action.type) {
     case "LOADING_USER":
-      console.log("loading")
       return {
         ...state,
         user: "",
@@ -14,7 +13,10 @@ export default (state = { user: "", loading: false }, action) => {
         loading: false,
       }
     case "USER_LOGOUT":
-      return null
+      return {
+        ...state,
+        user: "",
+      }
     default:
       return state
   }

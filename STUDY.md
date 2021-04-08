@@ -162,7 +162,7 @@
     - Then from, 'redux' we import 'createStore'
         * The store is a centralized object that all of our components have access to.
         * getState() - For accessing state
-        * dispatch() - For changing state via actions
+        * dispatch() - Is a function that takes in as its parameter an action (which is just a Javascript object)
         * subsribe() - For responding to state changes.
     - The createStore takes in a reducer. Usually, however, we have many reducers to manage the state of our app. So we use the redux provided method, combineReducers()
         * comgineReducers() takes in an object of key/value pairs. Each key/value representing a reducer and its represented state.
@@ -174,6 +174,9 @@
     * The returned action object is then passed as an argument to the dispatch method - this happens behind the scenes since connect recognized that we passed an object as the second argument
     * The dispatch method then invokes our reducer and passes along the action object as an argument
     * The reducer then returns a NEW version of our state which triggers any component that receives our redux state as props to re-render
+# Dispatch - Is a function that takes in as its parameter an action.
+# Action - An action is an object that has a type
+# Reducer - Is a function that sends an object (action) to the store that runs through more functions (cases) that figure out how the state will change.
 
 * How do we give components access to the redux store?
     - Wrapping the root component, in this case App.js, with the Redux provided Provider component

@@ -6,12 +6,10 @@ export const showContactSuccess = (contact) => {
 
 export const showContactAction = (contactData, props) => {
   return (dispatch) => {
-    console.log(contactData, dispatch)
     dispatch({ type: "LOADING_CONTACT" })
     fetch(`${API_URL}/contacts/${contactData}`)
       .then((response) => response.json())
       .then((contact) => {
-        console.log(contact)
         if (contact.error) {
           alert(contact.error)
         } else {

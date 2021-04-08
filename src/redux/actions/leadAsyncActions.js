@@ -1,26 +1,26 @@
 // Asynchronized request
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL
 
 export const leadSubmitSucess = (lead) => {
-  return { type: "SET_LEAD", lead };
-};
+  return { type: "SET_LEAD", lead }
+}
 
 export const getLeadsSuccess = (leads) => {
-  return { type: "SET_LEADS", leads };
-};
+  return { type: "SET_LEADS", leads }
+}
 
 export const routeToDashBoard = (props) => {
-  props.history.push("/");
-};
+  props.history.push("/")
+}
 
 export const routeToDashBoardFromDelete = (props, message) => {
-  props.history.push("/");
-  alert(message.message);
-};
+  props.history.push("/")
+  alert(message.message)
+}
 
 export const clearLeadForm = () => {
-  return { type: "CLEAR_FORM_INPUT" };
-};
+  return { type: "CLEAR_FORM_INPUT" }
+}
 
 export const leadSubmit = (leadData, props) => {
   return (dispatch) => {
@@ -35,18 +35,17 @@ export const leadSubmit = (leadData, props) => {
       .then((response) => response.json())
       .then((lead) => {
         if (lead.error) {
-          alert(lead.error);
+          alert(lead.error)
         } else {
-          dispatch(leadSubmitSucess(lead));
-          dispatch(clearLeadForm());
-          routeToDashBoard(props);
+          dispatch(leadSubmitSucess(lead))
+          dispatch(clearLeadForm())
+          routeToDashBoard(props)
         }
-      });
-  };
-};
+      })
+  }
+}
 
 export const submitEditForm = (editLeadData, props) => {
-  console.log(editLeadData);
   return (dispatch) => {
     return fetch(`${API_URL}/leads/${editLeadData.productId}`, {
       credentials: "include",
@@ -59,15 +58,15 @@ export const submitEditForm = (editLeadData, props) => {
       .then((response) => response.json())
       .then((updatedLead) => {
         if (updatedLead.error) {
-          alert(updatedLead.error);
+          alert(updatedLead.error)
         } else {
-          dispatch(leadSubmitSucess(updatedLead));
-          dispatch(clearLeadForm());
-          routeToDashBoard(props);
+          dispatch(leadSubmitSucess(updatedLead))
+          dispatch(clearLeadForm())
+          routeToDashBoard(props)
         }
-      });
-  };
-};
+      })
+  }
+}
 
 export const leadDelete = (data, props) => {
   return (dispatch) => {
@@ -75,6 +74,6 @@ export const leadDelete = (data, props) => {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then((message) => routeToDashBoardFromDelete(props, message));
-  };
-};
+      .then((message) => routeToDashBoardFromDelete(props, message))
+  }
+}

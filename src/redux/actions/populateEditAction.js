@@ -1,5 +1,4 @@
 export const populateEditForm = (editLeadData, editContactData) => {
-  console.log(editLeadData, editContactData);
   const editFormData = {
     productId: editLeadData.id,
     contactId: editContactData.id,
@@ -10,9 +9,9 @@ export const populateEditForm = (editLeadData, editContactData) => {
     contact_name: editContactData.contact_name,
     email: editContactData.email,
     phone_number: editContactData.phone_number,
-  };
+  }
   return {
     type: "POPULATE_EDIT_FORM",
     editFormData,
-  };
-};
+  }
+}

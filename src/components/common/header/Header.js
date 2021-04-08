@@ -8,12 +8,9 @@ import "./header.css"
 
 class Header extends Component {
   componentDidMount() {
-    console.log(this.props.history)
     alert("3.) Header.js")
     this.props.getCurrentUser(this.props).catch((error) => {
-      // We don't even hit this because it is taken care in the action
       alert("You'll need to login:", error)
-      this.props.history.push("/login")
     })
   }
 

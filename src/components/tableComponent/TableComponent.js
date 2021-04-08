@@ -4,6 +4,7 @@ import "./tableComponent.css"
 import { Link } from "react-router-dom"
 
 const TableComponent = (props) => {
+  console.log(props)
   const contactEmail = (contactId) => {
     const contact_email = props.contacts.find(
       (contact) => contact.id === contactId
@@ -64,6 +65,7 @@ const TableComponent = (props) => {
       </thead>
       {props.monitors.map((monitor, index) => (
         <tbody key={Math.random()}>
+          {console.log(monitor)}
           <tr>
             <td>
               <Link

@@ -10,7 +10,6 @@ class LeadForm extends Component {
     if (this.props.leadFormData.description !== "") {
       this.props.clearLeadForm()
     }
-    console.log(this.props.leadFormData)
   }
   handleOnChange = (e) => {
     const { name, value } = e.target
@@ -18,7 +17,6 @@ class LeadForm extends Component {
       ...this.props.leadFormData,
       [name]: value,
     }
-    console.log(leadData)
     this.props.leadFormInput(leadData)
   }
 
@@ -34,7 +32,6 @@ class LeadForm extends Component {
       email,
       phone_number,
     } = this.props.leadFormData
-    console.log(description)
     return (
       <div className='lead-form-div'>
         <Form onSubmit={this.handleSubmit}>

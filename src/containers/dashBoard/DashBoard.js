@@ -11,19 +11,15 @@ class DashBoard extends Component {
   componentDidMount() {
     this.props.getCurrentUser(this.props).catch((error) => {
       alert("You'll need to login:", error)
-      this.props.history.push("/login")
     })
   }
 
   handleShowContact = (event) => {
-    console.log(event.target.dataset.id)
     const contactData = event.target.dataset.id
     this.props.showContactAction(contactData)
   }
 
   handleShowLead = (event) => {
-    alert("showlead")
-    console.log(event)
     const leadData = event.target.dataset.id
     this.props.showLeadAction(leadData, this.props)
   }

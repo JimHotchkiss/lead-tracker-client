@@ -1,19 +1,18 @@
-import React from "react";
-import { Form, Button } from "react-bootstrap";
-import { connect } from "react-redux";
-import { leadFormInput } from "../../redux/actions/leadSyncActions";
+import React from "react"
+import { Form, Button } from "react-bootstrap"
+import { connect } from "react-redux"
+import { leadFormInput } from "../../redux/actions/leadSyncActions"
 
-import "./editLeadFormComponent.css";
+import "./editLeadFormComponent.css"
 const EditLeadFormComponent = (props) => {
   const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    console.log("name:", name, "value:", value);
+    const { name, value } = e.target
     const leadData = {
       ...props.leadFormData,
       [name]: value,
-    };
-    props.leadFormInput(leadData);
-  };
+    }
+    props.leadFormInput(leadData)
+  }
   // Product Select
   const cameraSelect = (
     <>
@@ -22,7 +21,7 @@ const EditLeadFormComponent = (props) => {
       <option value='Digital Capture'>Digital Capture</option>
       <option value='Insufflator'>Insufflator</option>
     </>
-  );
+  )
   const monitorSelect = (
     <>
       <option value='Monitor'>Monitor</option>
@@ -30,7 +29,7 @@ const EditLeadFormComponent = (props) => {
       <option value='Digital Capture'>Digital Capture</option>
       <option value='Insufflator'>Insufflator</option>
     </>
-  );
+  )
   const digitalCaptureSelect = (
     <>
       <option value='Digital Capture'>Digital Capture</option>
@@ -38,7 +37,7 @@ const EditLeadFormComponent = (props) => {
       <option value='Camera'>Camera</option>
       <option value='Insufflator'>Insufflator</option>
     </>
-  );
+  )
   const insufflatorSelect = (
     <>
       <option value='Insufflator'>Insufflator</option>
@@ -46,7 +45,7 @@ const EditLeadFormComponent = (props) => {
       <option value='Monitor'>Monitor</option>
       <option value='Camera'>Camera</option>
     </>
-  );
+  )
 
   // Urgency Select
   const lowSelect = (
@@ -55,21 +54,21 @@ const EditLeadFormComponent = (props) => {
       <option value='Medium'>Medium</option>
       <option value='High'>High</option>
     </>
-  );
+  )
   const mediumSelect = (
     <>
       <option value='Medium'>Medium</option>
       <option value='Low'>Low</option>
       <option value='High'>High</option>
     </>
-  );
+  )
   const highSelect = (
     <>
       <option value='High'>High</option>
       <option value='Medium'>Medium</option>
       <option value='Low'>Low</option>
     </>
-  );
+  )
   const newSelect = (
     <>
       <option value='New'>New</option>
@@ -77,7 +76,7 @@ const EditLeadFormComponent = (props) => {
       <option value='Pending'>Pending</option>
       <option value='Closed'>Closed</option>
     </>
-  );
+  )
   const openSelect = (
     <>
       <option value='Open'>Open</option>
@@ -85,7 +84,7 @@ const EditLeadFormComponent = (props) => {
       <option value='Pending'>Pending</option>
       <option value='Closed'>Closed</option>
     </>
-  );
+  )
   const pendingSelect = (
     <>
       <option value='Pending'>Pending</option>
@@ -93,7 +92,7 @@ const EditLeadFormComponent = (props) => {
       <option value='New'>New</option>
       <option value='Closed'>Closed</option>
     </>
-  );
+  )
   const closedSelect = (
     <>
       <option value='Closed'>Closed</option>
@@ -101,7 +100,7 @@ const EditLeadFormComponent = (props) => {
       <option value='Open'>Open</option>
       <option value='New'>New</option>
     </>
-  );
+  )
 
   const {
     product,
@@ -111,7 +110,7 @@ const EditLeadFormComponent = (props) => {
     contact_name,
     email,
     phone_number,
-  } = props.leadFormData;
+  } = props.leadFormData
   return (
     <div className='edit-lead-form-component-div'>
       <Form onSubmit={props.handleSubmit}>
@@ -203,16 +202,16 @@ const EditLeadFormComponent = (props) => {
         </Button>
       </Form>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
     showLead: state.showLead,
     leadFormData: state.leadInput,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, { leadFormInput })(
   EditLeadFormComponent
-);
+)
