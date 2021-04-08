@@ -133,7 +133,7 @@
         * It seems to me, with React.Component, you get more functionality, at least until Hooks came along. When we define a class within React, using extend React.Component, we get lifecycles that allow us to control the flow of our app.
             - constructor()
                 * Is used to initialize state and bind methods
-                    - With ES.next, we nolonger need the constructor() and we can directly define our state with state = {some: state}
+                    - With ES7, we nolonger need the constructor() and we can directly define our state with state = {some: state}
             - render()
             - componentDidMount()
             - componentDidUpdate()
@@ -174,7 +174,7 @@
     * The returned action object is then passed as an argument to the dispatch method - this happens behind the scenes since connect recognized that we passed an object as the second argument
     * The dispatch method then invokes our reducer and passes along the action object as an argument
     * The reducer then returns a NEW version of our state which triggers any component that receives our redux state as props to re-render
-# Dispatch - Is a function that takes in as its parameter an action.
+# Dispatch - Is a function that takes in as its parameter an action or action creator.
 # Action - An action is an object that has a type
 # Reducer - Is a function that sends an object (action) to the store that runs through more functions (cases) that figure out how the state will change.
 
@@ -182,7 +182,9 @@
     - Wrapping the root component, in this case App.js, with the Redux provided Provider component
 * What is redux thunk middleware? When and why would we need it?
 * What is the flow of your application? In what order do things happen? 
-    - 
+# fetch()  returns a Promise 
+  - A Promise is an object that represents some value (say data) that will be available later.
+  - Our then() function will run when the Promise the fetch() returns resolves
 * What is the difference between passing mapDispatchToProps vs. passing an object? How does connect handle these differently?
 * What is the difference between mapStateToProps and mapDispatchToProps? 
 * What do we need in our application to enable components to access the redux store?

@@ -8,7 +8,6 @@ import "./header.css"
 
 class Header extends Component {
   componentDidMount() {
-    alert("3.) Header.js")
     this.props.getCurrentUser(this.props).catch((error) => {
       alert("You'll need to login:", error)
     })

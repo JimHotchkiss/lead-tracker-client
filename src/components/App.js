@@ -6,7 +6,7 @@ import LeadForm from "../containers/leads/LeadForm"
 import EditLeadFormContainer from "../containers/leads/EditLeadFormContainer"
 import ShowLead from "../containers/leads/ShowLead"
 import ContactsContainer from "../containers/contacts/ContactsContainer"
-import UserCreate from "./users/UserCreate"
+import UserCreate from "../containers/users/UserCreate"
 import Blog from "../components/blog/Blog"
 import { Switch, Route } from "react-router-dom"
 import "./app.css"
@@ -19,7 +19,6 @@ class App extends Component {
         </div>
         <div className='components-div'>
           <Switch>
-            {alert("2.) App.js")}
             <Route exact path='/' component={DashBoard} />
             <Route path='/login' component={Login} />
             <Route path='/leads/new' component={LeadForm} />
