@@ -23,7 +23,9 @@ export const clearLeadForm = () => {
 }
 
 export const leadSubmit = (leadData, props) => {
+  console.log("b")
   return (dispatch) => {
+    console.log("c")
     return fetch(`${API_URL}/leads`, {
       credentials: "include",
       method: "POST",
@@ -34,6 +36,7 @@ export const leadSubmit = (leadData, props) => {
     })
       .then((response) => response.json())
       .then((lead) => {
+        console.log("d")
         if (lead.error) {
           alert(lead.error)
         } else {
@@ -42,7 +45,9 @@ export const leadSubmit = (leadData, props) => {
           routeToDashBoard(props)
         }
       })
+    console.log("e")
   }
+  console.log("f")
 }
 
 export const submitEditForm = (editLeadData, props) => {

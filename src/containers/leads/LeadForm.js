@@ -22,8 +22,10 @@ class LeadForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    console.log("a")
     const leadData = this.props.leadFormData
     this.props.leadSubmit(leadData, this.props)
+    console.log("g")
   }
   render() {
     const {

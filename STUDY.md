@@ -175,22 +175,44 @@
     * The dispatch method then invokes our reducer and passes along the action object as an argument
     * The reducer then returns a NEW version of our state which triggers any component that receives our redux state as props to re-render
 # Dispatch - Is a function that takes in as its parameter an action or action creator.
-# Action - An action is an object that has a type
+# Action - An action is an object that has a type, and at times a payload (data)
 # Reducer - Is a function that sends an object (action) to the store that runs through more functions (cases) that figure out how the state will change.
 
 * How do we give components access to the redux store?
     - Wrapping the root component, in this case App.js, with the Redux provided Provider component
 * What is redux thunk middleware? When and why would we need it?
+  - Thunk allows us to return a function inside of our action creator. Normally, our action creator returns a plain JavaScript object, so returning a function is a pretty big change.
+  - For asynchronous request
 * What is the flow of your application? In what order do things happen? 
 # fetch()  returns a Promise 
   - A Promise is an object that represents some value (say data) that will be available later.
   - Our then() function will run when the Promise the fetch() returns resolves
+
+# Thunk allows us to return a function inside of our action creator. Normally, our action creator returns a plain JavaScript object, so returning a function is a pretty big change.
+
+# That function receives the store's dispatch function as its argument. With that, we can dispatch multiple actions from inside that returned function.
+
+# Action Creator:
+export function fetchAstronauts() {
+  return (dispatch) => {
+    dispatch({ type: 'START_ADDING_ASTRONAUTS_REQUEST' });
+    fetch('http://api.open-notify.org/astros.json')
+      .then(response => response.json())
+      .then(astronauts => dispatch({ type: 'ADD_ASTRONAUTS', astronauts }));
+  };
+}
+
+  * Our action creator, fetchAtronauts() returns a function().
+  * This function takes in as an argument the Redux function dispatch()
+
 * What is the difference between passing mapDispatchToProps vs. passing an object? How does connect handle these differently?
 * What is the difference between mapStateToProps and mapDispatchToProps? 
 * What do we need in our application to enable components to access the redux store?
 * What triggers a component to re-render?
     - Change in the state
 * Does a re-render of a class component mean a NEW component object is created? Hint: does the constructor get invoked again on a re-render?
+  - The constructor() function is called only once when the component is originally mounted
+  - The Virtual DOM is leveraged, comparing the Virtual DOM to the actual DOM, identifying the changes, in a process called 'diffing' and the DOM is updated to reflect only those changes.
 * What are the common lifecycle methods? In what order do lifecycle methods get invoked? 
 * When does componentDidMount get executed?
     - When a component is being mounted for the first time, before the render() lifecycle method after the constructor() lifecycle method
@@ -201,7 +223,8 @@
         * Containers handle the 'thinking'. So like data manipulation and overall functionality
         * Presentational components simple render JSX
 * What is a reducer?
-    - A reducer is what 'talks' to our store to update the state
+    - Is a function()
+    - That connects with our store to update the state
 * How do we update the redux store?
     - By passing an action to the reducer
 * When/why would we pass a function to setState rather than an object?
@@ -237,3 +260,6 @@
 * What is an action?
     - Is a plain Javascript object that has a type and a payload. Basically it's telling us what part of the state to update (type: "INCREASE_COUNT", for example), and what to update the state with (payload: 2, for example)
 * What would happen if you call an action creator on it’s own rather than as a prop (i.e. addList(listObj) vs. this.props.addList(listObj))? Why is the behavior different?
+# connect()
+  - The first arguement of connect() accepts a function. That function is written to accept Redux's store state. It returns an object of the state or parts of the state.
+  - The second arguement of connect() is a function, but instead of accepting the store state, it accepts the dispatch() function. 

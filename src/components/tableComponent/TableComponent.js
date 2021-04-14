@@ -65,7 +65,6 @@ const TableComponent = (props) => {
       </thead>
       {props.monitors.map((monitor, index) => (
         <tbody key={Math.random()}>
-          {console.log(monitor)}
           <tr>
             <td>
               <Link
