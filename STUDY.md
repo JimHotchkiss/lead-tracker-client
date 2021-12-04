@@ -1,3 +1,7 @@
+# Basics - Command line 
+  * npm start - Run React app
+  * rails server (or just rails s) - Run Rails API
+
 # THINGS TO FIX OR IMPROVE 
   * Dashboard - componentDidUnmount() lifecyle (maybe)
   * Take the methods that are being called on the client side, like text truncation and unit conversions, and put them on the backend
