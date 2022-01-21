@@ -1,5 +1,6 @@
 // Asynchronized request
-const API_URL = process.env.REACT_APP_API_URL
+const API_URL = 'http://localhost:3002/api/v1'
+// process.env.REACT_APP_API_URL
 
 export const leadSubmitSucess = (lead) => {
   return { type: "SET_LEAD", lead }
@@ -36,7 +37,7 @@ export const leadSubmit = (leadData, props) => {
     })
       .then((response) => response.json())
       .then((lead) => {
-        console.log("d")
+        console.log(lead)
         if (lead.error) {
           alert(lead.error)
         } else {
@@ -45,9 +46,8 @@ export const leadSubmit = (leadData, props) => {
           routeToDashBoard(props)
         }
       })
-    console.log("e")
   }
-  console.log("f")
+
 }
 
 export const submitEditForm = (editLeadData, props) => {
