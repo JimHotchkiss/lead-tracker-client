@@ -1,5 +1,5 @@
 .pie-chart-div {
-  height: 930px;
+  height: 890px;
   width: 600px;
   padding: 24px;
 }
@@ -16,7 +16,7 @@
 
 @media only screen and (max-width: 1600px) {
   .pie-chart-div {
-    height: 715px;
+    height: 1600px;
     width: 425px;
     padding: 24px;
   }
